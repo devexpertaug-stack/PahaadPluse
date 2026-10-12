@@ -1,0 +1,7 @@
+{
+  "task_id": "task-pahadpulse-platform",
+  "task_description": "Build PahadPulse, a closed-loop hospitality guest-intelligence platform for Uttarakhand hill towns, as a single professional website: a Python FastAPI backend + Next.js dashboard covering Market Radar, Destination Lens, In-Stay Sentinel, Guest Compass and Bhasha Concierge across all 34 spec requirements, honouring the Deep (fully built: F1 What-If, F2 Time Machine, F3 Checkout Shield, F5 Playbook, F6 Gap Finder, F8 Heatmap+Evidence Packet, F12 Hinglish Benchmark) vs Minimal tiers. External services (MuRIL/IndicBERT, LLM API, WhatsApp, voice, geocoder) are abstracted behind interfaces with working local/mock/fallback implementations so the system runs end-to-end for a demo with no live third-party credentials. The frontend is a first-class deliverable: a cohesive green/white + forest + Mussoorie/Uttarakhand hill-town design system across every page. A single documented command runs the full demo.",
+  "status": "in_progress",
+  "feature_order": ["FEAT-001", "FEAT-002", "FEAT-003", "FEAT-004", "FEAT-005", "FEAT-006"],
+  "blocked_reason": null
+}

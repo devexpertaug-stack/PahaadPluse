@@ -1,0 +1,51 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Hill-town palette as CSS variables (mirrors lib/theme.ts). */
+  --color-forest: #275233;
+  --color-forest-deep: #1c3725;
+  --color-forest-bright: #3f8150;
+  --color-mist: #f4f8f4;
+  --color-mist-white: #fbfdfb;
+  --color-pine: #4f8a63;
+  --color-dawn: #dca24c;
+  --color-ink: #21422b;
+}
+
+@layer base {
+  html,
+  body {
+    @apply bg-mist-100 text-forest-900 antialiased;
+  }
+
+  body {
+    background-image: theme("backgroundImage.hill-haze");
+    background-attachment: fixed;
+    min-height: 100vh;
+  }
+
+  h1,
+  h2,
+  h3 {
+    @apply font-semibold tracking-tight text-forest-800;
+  }
+
+  a {
+    @apply transition-colors;
+  }
+}
+
+@layer components {
+  /* Thin ridge divider motif reused across cards and the shell. */
+  .ridge-divider {
+    height: 2px;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      var(--color-pine) 50%,
+      transparent 100%
+    );
+  }
+}

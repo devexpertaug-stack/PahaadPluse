@@ -2,30 +2,18 @@
 
 import { useState } from "react";
 import { PageHeader, Card, Badge, StatTile, Button } from "@/components/ui";
+import { LoadState, liveBadgeProps } from "@/components/common/LoadState";
+import { useLiveData } from "@/lib/useLiveData";
 import { api, type BriefingResponse } from "@/lib/api";
-import snapshot from "@/lib/briefingSnapshot.json";
 
-const SNAPSHOT = snapshot as unknown as BriefingResponse;
+const OWNERS = ["+919800000900"];
 
 export default function BriefingPage() {
-  const [briefing, setBriefing] = useState<BriefingResponse>(SNAPSHOT);
-  const [live, setLive] = useState(false);
-  const [busy, setBusy] = useState(false);
-
-  async function generate() {
-    setBusy(true);
-    try {
-      const res = await api.briefing(["+919800000900"]);
-      setBriefing(res.briefing);
-      setLive(true);
-    } catch {
-      /* offline */
-    } finally {
-      setBusy(false);
-    }
-  }
-
-  const m = briefing.metrics;
+  const { status, data, reload } = useLiveData<BriefingResponse>(async () => {
+    const res = await api.briefing(OWNERS);
+    return res.briefing;
+  });
+  const badge = liveBadgeProps(status);
 
   return (
     <div>
@@ -35,16 +23,25 @@ export default function BriefingPage() {
         description="A weekly Hindi script covering the rating change, the top improving and declining aspect, new changepoints, the open P1/P2 complaint count and one recommended action. Every number comes from computed PahadPulse metrics; the LLM is used only for phrasing. The script is synthesised to a ≤60-second audio clip and delivered with the text to opted-in owners via the WhatsApp mock."
         actions={
           <div className="flex items-center gap-2">
-            <Badge tone={live ? "forest" : "dawn"}>
-              {live ? "Live from API" : "Sample snapshot"}
-            </Badge>
-            <Button size="sm" onClick={generate} disabled={busy}>
-              Generate &amp; send
+            <Badge tone={badge.tone}>{badge.label}</Badge>
+            <Button size="sm" onClick={reload} disabled={status === "loading"}>
+              Regenerate &amp; send
             </Button>
           </div>
         }
       />
 
+      <LoadState status={status} onRetry={reload}>
+        {data && <BriefingBody briefing={data} />}
+      </LoadState>
+    </div>
+  );
+}
+
+function BriefingBody({ briefing }: { briefing: BriefingResponse }) {
+  const m = briefing.metrics;
+  return (
+    <div>
       <div className="mb-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         <StatTile
           label="Weekly rating"

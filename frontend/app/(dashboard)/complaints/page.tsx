@@ -1,16 +1,14 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { PageHeader, Card, Badge, StatTile, Button } from "@/components/ui";
+import { LoadState, liveBadgeProps } from "@/components/common/LoadState";
+import { useLiveData } from "@/lib/useLiveData";
 import {
   api,
   type ComplaintView,
   type SentinelMetrics,
 } from "@/lib/api";
-import snapshot from "@/lib/sentinelSnapshot.json";
-
-const SNAPSHOT = snapshot.complaints as unknown as ComplaintView[];
-const METRICS_SNAPSHOT = snapshot.metrics as unknown as SentinelMetrics;
 
 function urgencyTone(u: string | null) {
   if (u === "P1") return "dawn" as const;
@@ -25,32 +23,32 @@ function stateTone(s: string) {
 }
 
 export default function ComplaintsPage() {
-  const [complaints, setComplaints] = useState<ComplaintView[]>(SNAPSHOT);
-  const [metrics, setMetrics] = useState<SentinelMetrics>(METRICS_SNAPSHOT);
-  const [live, setLive] = useState(false);
-  const [selected, setSelected] = useState<string | null>(
-    SNAPSHOT[0]?.id ?? null,
+  const complaintsState = useLiveData<ComplaintView[]>(
+    async () => (await api.complaints()).complaints,
+    { isEmpty: (d) => d.length === 0 },
   );
+  const metricsState = useLiveData<SentinelMetrics>(() =>
+    api.sentinelMetrics(),
+  );
+  const [selected, setSelected] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
 
-  const refresh = useCallback(() => {
-    api
-      .complaints()
-      .then((res) => {
-        setComplaints(res.complaints);
-        setLive(true);
-        setSelected((cur) => cur ?? res.complaints[0]?.id ?? null);
-      })
-      .catch(() => {});
-    api
-      .sentinelMetrics()
-      .then(setMetrics)
-      .catch(() => {});
-  }, []);
+  const complaints = complaintsState.data ?? [];
+  const metrics = metricsState.data;
+  const badge = liveBadgeProps(complaintsState.status);
 
+  function refresh() {
+    complaintsState.reload();
+    metricsState.reload();
+  }
+
+  // Default-select the first complaint once the live queue loads.
+  const firstComplaintId = complaintsState.data?.[0]?.id ?? null;
   useEffect(() => {
-    refresh();
-  }, [refresh]);
+    if (selected === null && firstComplaintId) {
+      setSelected(firstComplaintId);
+    }
+  }, [firstComplaintId, selected]);
 
   const active = complaints.find((c) => c.id === selected) ?? null;
 
@@ -91,9 +89,7 @@ export default function ComplaintsPage() {
         description="Multi-channel complaint intake, triage to the right department with the matching SOP, resolution tracking and recurrence detection. The weekly operations metrics sit on top."
         actions={
           <div className="flex items-center gap-2">
-            <Badge tone={live ? "forest" : "dawn"}>
-              {live ? "Live from API" : "Sample snapshot"}
-            </Badge>
+            <Badge tone={badge.tone}>{badge.label}</Badge>
             <Button size="sm" onClick={triggerWhatsappDemo} disabled={busy}>
               Simulate WhatsApp complaint
             </Button>
@@ -101,31 +97,39 @@ export default function ComplaintsPage() {
         }
       />
 
-      <div className="mb-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        <StatTile
-          label="Complaint → department"
-          value={`${metrics.avg_complaint_to_department_seconds.toFixed(1)}s`}
-          hint="avg time to assign"
-        />
-        <StatTile
-          label="In-stay resolution rate"
-          value={`${Math.round(metrics.in_stay_resolution_rate * 100)}%`}
-          trend="up"
-          hint="resolved before checkout"
-        />
-        <StatTile
-          label="Repeat complaints / week"
-          value={metrics.repeat_complaints_this_week}
-          trend={metrics.repeat_complaints_this_week > 0 ? "down" : "flat"}
-          hint="recurrence this week"
-        />
-        <StatTile
-          label="Open complaints"
-          value={metrics.open_complaints}
-          hint={`${metrics.resolved_complaints} resolved`}
-        />
-      </div>
+      {metrics && (
+        <div className="mb-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <StatTile
+            label="Complaint → department"
+            value={`${metrics.avg_complaint_to_department_seconds.toFixed(1)}s`}
+            hint="avg time to assign"
+          />
+          <StatTile
+            label="In-stay resolution rate"
+            value={`${Math.round(metrics.in_stay_resolution_rate * 100)}%`}
+            trend="up"
+            hint="resolved before checkout"
+          />
+          <StatTile
+            label="Repeat complaints / week"
+            value={metrics.repeat_complaints_this_week}
+            trend={metrics.repeat_complaints_this_week > 0 ? "down" : "flat"}
+            hint="recurrence this week"
+          />
+          <StatTile
+            label="Open complaints"
+            value={metrics.open_complaints}
+            hint={`${metrics.resolved_complaints} resolved`}
+          />
+        </div>
+      )}
 
+      <LoadState
+        status={complaintsState.status}
+        onRetry={refresh}
+        emptyTitle="No complaints yet"
+        emptyBody="The backend is reachable but the complaint queue is empty. Simulate a WhatsApp complaint above to see triage in action."
+      >
       <div className="grid gap-6 lg:grid-cols-[1fr_1.3fr]">
         <Card title="Queue" subtitle="Newest first, across all five channels">
           <ul className="space-y-2">
@@ -175,6 +179,7 @@ export default function ComplaintsPage() {
           )}
         </Card>
       </div>
+      </LoadState>
     </div>
   );
 }

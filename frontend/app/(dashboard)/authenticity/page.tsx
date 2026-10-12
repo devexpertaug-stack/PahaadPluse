@@ -1,25 +1,16 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import { PageHeader, Card, Badge, StatTile } from "@/components/ui";
+import { LoadState, liveBadgeProps } from "@/components/common/LoadState";
+import { useLiveData } from "@/lib/useLiveData";
 import { api, type AuthenticityResponse } from "@/lib/api";
-import snapshot from "@/lib/authenticitySnapshot.json";
-
-const SNAPSHOT = snapshot as unknown as AuthenticityResponse;
 
 export default function AuthenticityPage() {
-  const [data, setData] = useState<AuthenticityResponse>(SNAPSHOT);
-  const [live, setLive] = useState(false);
-
-  useEffect(() => {
-    api
-      .authenticity()
-      .then((res) => {
-        setData(res);
-        setLive(true);
-      })
-      .catch(() => {});
-  }, []);
+  const { status, data, reload } = useLiveData<AuthenticityResponse>(
+    () => api.authenticity(),
+    { isEmpty: (d) => d.rankings.length === 0 && d.flagged_reviews.length === 0 },
+  );
+  const badge = liveBadgeProps(status);
 
   return (
     <div>
@@ -27,13 +18,11 @@ export default function AuthenticityPage() {
         eyebrow="Market Radar · F9"
         title="Authenticity Filter"
         description="Flags reviews that show suspicious signals — a daily burst (above the 28-day rolling mean + 3 SD), near-duplicate text (cosine ≥ 0.9) and single-review authors — and computes a 0–1 suspicion score. These are suspicious signals, not confirmed fakes. The adjusted view re-ranks the cluster excluding reviews with suspicion ≥ 0.7 and shows original vs adjusted ranks side by side."
-        actions={
-          <Badge tone={live ? "forest" : "dawn"}>
-            {live ? "Live from API" : "Sample snapshot"}
-          </Badge>
-        }
+        actions={<Badge tone={badge.tone}>{badge.label}</Badge>}
       />
 
+      <LoadState status={status} onRetry={reload}>
+      {data && (<>
       <div className="mb-6 grid gap-4 sm:grid-cols-3">
         <StatTile
           label="Reviews analysed"
@@ -128,6 +117,8 @@ export default function AuthenticityPage() {
           ))}
         </ul>
       </Card>
+      </>)}
+      </LoadState>
     </div>
   );
 }

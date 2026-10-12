@@ -1,53 +1,30 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import { PageHeader, Card, Badge, StatTile } from "@/components/ui";
 import { ReviewCountsTable } from "@/components/market-radar/ReviewCountsTable";
 import { TrendsPanel } from "@/components/market-radar/TrendsPanel";
 import { DecompositionPanel } from "@/components/market-radar/DecompositionPanel";
+import { LoadState, liveBadgeProps } from "@/components/common/LoadState";
+import { useLiveData } from "@/lib/useLiveData";
 import {
   api,
-  type PropertyCounts,
+  type ReviewCountsResponse,
   type TrendsResponse,
   type DecompositionResponse,
 } from "@/lib/api";
-import snapshot from "@/lib/marketRadarSnapshot.json";
-import analytics from "@/lib/analyticsSnapshot.json";
 
-const SNAPSHOT = snapshot.properties as PropertyCounts[];
-const TRENDS = analytics.trends as unknown as TrendsResponse;
-const DECOMP = analytics.decomposition as unknown as DecompositionResponse;
-const HOME_ID = (analytics.homeProperty as { id: string }).id;
-
+// The home property id drives the decomposition panel's highlighting. It is
+// derived from the live review counts (the first/home property) rather than a
+// baked snapshot so the panel always tracks the real cluster.
 export default function MarketRadarPage() {
-  const [properties, setProperties] = useState<PropertyCounts[]>(SNAPSHOT);
-  const [trends, setTrends] = useState<TrendsResponse>(TRENDS);
-  const [decomp, setDecomp] = useState<DecompositionResponse>(DECOMP);
-  const [live, setLive] = useState(false);
+  const counts = useLiveData<ReviewCountsResponse>(() => api.reviewCounts(), {
+    isEmpty: (d) => d.properties.length === 0,
+  });
+  const trends = useLiveData<TrendsResponse>(() => api.trends());
+  const decomp = useLiveData<DecompositionResponse>(() => api.decomposition());
 
-  useEffect(() => {
-    let active = true;
-    api
-      .reviewCounts()
-      .then((res) => {
-        if (active) {
-          setProperties(res.properties);
-          setLive(true);
-        }
-      })
-      .catch(() => {
-        /* keep the bundled snapshot when the API is unreachable */
-      });
-    api.trends().then((t) => active && setTrends(t)).catch(() => {});
-    api
-      .decomposition()
-      .then((d) => active && setDecomp(d))
-      .catch(() => {});
-    return () => {
-      active = false;
-    };
-  }, []);
-
+  const badge = liveBadgeProps(counts.status);
+  const properties = counts.data?.properties ?? [];
   const totalReviews = properties.reduce((sum, p) => sum + p.total, 0);
   const totalMissing = properties.reduce(
     (sum, p) => sum + p.missing_source_url,
@@ -57,6 +34,7 @@ export default function MarketRadarPage() {
   properties.forEach((p) =>
     Object.keys(p.per_platform).forEach((k) => platforms.add(k)),
   );
+  const homeId = properties[0]?.property_id ?? "";
 
   return (
     <div>
@@ -64,39 +42,47 @@ export default function MarketRadarPage() {
         eyebrow="Market Radar"
         title="Market Radar"
         description="Per-property, per-platform review coverage for your Mussoorie cluster. Counts refresh after each collection job."
-        actions={
-          <Badge tone={live ? "forest" : "dawn"}>
-            {live ? "Live from API" : "Sample snapshot"}
-          </Badge>
-        }
+        actions={<Badge tone={badge.tone}>{badge.label}</Badge>}
       />
 
-      <div className="mb-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        <StatTile label="Properties tracked" value={properties.length} hint="cluster" />
-        <StatTile label="Platforms" value={platforms.size} hint="review sources" />
-        <StatTile label="Reviews collected" value={totalReviews} trend="up" hint="across cluster" />
-        <StatTile
-          label="Source URL unavailable"
-          value={totalMissing}
-          trend={totalMissing > 0 ? "down" : "flat"}
-          hint="pseudonymised, URL missing"
-        />
-      </div>
-
-      <Card
-        title="Review counts by property and platform"
-        subtitle="Updates after a collection job completes (Req 1.10)"
-        className="mb-6"
+      <LoadState
+        status={counts.status}
+        onRetry={counts.reload}
+        emptyBody="The backend returned no tracked properties. Seed or ingest reviews to populate Market Radar."
       >
-        <ReviewCountsTable properties={properties} />
-      </Card>
+        <div className="mb-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <StatTile label="Properties tracked" value={properties.length} hint="cluster" />
+          <StatTile label="Platforms" value={platforms.size} hint="review sources" />
+          <StatTile label="Reviews collected" value={totalReviews} trend="up" hint="across cluster" />
+          <StatTile
+            label="Source URL unavailable"
+            value={totalMissing}
+            trend={totalMissing > 0 ? "down" : "flat"}
+            hint="pseudonymised, URL missing"
+          />
+        </div>
+
+        <Card
+          title="Review counts by property and platform"
+          subtitle="Updates after a collection job completes (Req 1.10)"
+          className="mb-6"
+        >
+          <ReviewCountsTable properties={properties} />
+        </Card>
+      </LoadState>
 
       <div className="mb-6">
-        <TrendsPanel data={trends} />
+        <LoadState status={trends.status} onRetry={trends.reload}>
+          {trends.data && <TrendsPanel data={trends.data} />}
+        </LoadState>
       </div>
 
       <div className="mb-6">
-        <DecompositionPanel data={decomp} homePropertyId={HOME_ID} />
+        <LoadState status={decomp.status} onRetry={decomp.reload}>
+          {decomp.data && (
+            <DecompositionPanel data={decomp.data} homePropertyId={homeId} />
+          )}
+        </LoadState>
       </div>
 
       <Card

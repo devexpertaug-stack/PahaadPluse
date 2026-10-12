@@ -1,11 +1,11 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import { PageHeader, Card, Badge } from "@/components/ui";
+import { LoadState, liveBadgeProps } from "@/components/common/LoadState";
+import { useLiveData } from "@/lib/useLiveData";
 import { api, type BenchmarkResponse, type BenchmarkSystem } from "@/lib/api";
-import analytics from "@/lib/analyticsSnapshot.json";
 
-const BENCHMARK = analytics.benchmark as unknown as BenchmarkResponse;
 const LABELS = ["positive", "neutral", "negative"] as const;
 
 function Metric({
@@ -26,30 +26,17 @@ function Metric({
 }
 
 export default function BenchmarkPage() {
-  const [data, setData] = useState<BenchmarkResponse>(BENCHMARK);
-  const [live, setLive] = useState(false);
-  const [system, setSystem] = useState<string>(BENCHMARK.systems[0]?.name ?? "");
+  const { status, data, reload } = useLiveData<BenchmarkResponse>(
+    () => api.benchmark(),
+    { isEmpty: (d) => d.systems.length === 0 },
+  );
+  const [system, setSystem] = useState<string>("");
+  const badge = liveBadgeProps(status);
 
-  useEffect(() => {
-    let active = true;
-    api
-      .benchmark()
-      .then((b) => {
-        if (active) {
-          setData(b);
-          setSystem(b.systems[0]?.name ?? "");
-          setLive(true);
-        }
-      })
-      .catch(() => {});
-    return () => {
-      active = false;
-    };
-  }, []);
-
+  const activeName = system || data?.systems[0]?.name || "";
   const selected: BenchmarkSystem | undefined = useMemo(
-    () => data.systems.find((s) => s.name === system) ?? data.systems[0],
-    [data, system],
+    () => data?.systems.find((s) => s.name === activeName) ?? data?.systems[0],
+    [data, activeName],
   );
 
   const aspectKeys = selected
@@ -61,14 +48,16 @@ export default function BenchmarkPage() {
       <PageHeader
         eyebrow="Bhasha Concierge · F12"
         title="Hinglish Accuracy Benchmark"
-        description={`Macro-F1 with 95% bootstrap CIs for the Sentiment_Engine, a generic off-the-shelf tool and a plain-LLM zero-shot baseline on ${data.test_set_size} held-out reviews. Idempotent for seed ${data.seed}.`}
-        actions={
-          <Badge tone={live ? "forest" : "dawn"}>
-            {live ? "Live from API" : "Sample snapshot"}
-          </Badge>
+        description={
+          data
+            ? `Macro-F1 with 95% bootstrap CIs for the Sentiment_Engine, a generic off-the-shelf tool and a plain-LLM zero-shot baseline on ${data.test_set_size} held-out reviews. Idempotent for seed ${data.seed}.`
+            : "Macro-F1 with 95% bootstrap CIs for the Sentiment_Engine, a generic off-the-shelf tool and a plain-LLM zero-shot baseline on held-out reviews."
         }
+        actions={<Badge tone={badge.tone}>{badge.label}</Badge>}
       />
 
+      <LoadState status={status} onRetry={reload}>
+      {data && (<>
       <Card
         title="Results by system"
         subtitle="Macro-F1 [95% bootstrap CI]"
@@ -204,6 +193,8 @@ export default function BenchmarkPage() {
           the Sentiment_Engine tuning vocabulary (Req 16.6).
         </p>
       </Card>
+      </>)}
+      </LoadState>
     </div>
   );
 }

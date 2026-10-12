@@ -1,30 +1,25 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import { PageHeader, Card, Badge, StatTile } from "@/components/ui";
 import { MiniTrend } from "@/components/common/MiniTrend";
+import { LoadState, liveBadgeProps } from "@/components/common/LoadState";
+import { useLiveData } from "@/lib/useLiveData";
 import { api, type ForecastResponse, type AspectForecast } from "@/lib/api";
 import { palette } from "@/lib/theme";
-import snapshot from "@/lib/forecastSnapshot.json";
-
-const SNAPSHOT = snapshot as unknown as ForecastResponse;
 
 export default function ForecastPage() {
-  const [data, setData] = useState<ForecastResponse>(SNAPSHOT);
-  const [live, setLive] = useState(false);
+  const { status, data, reload } = useLiveData<ForecastResponse>(
+    () => api.forecast(),
+    { isEmpty: (d) => d.forecasts.length === 0 },
+  );
+  const badge = liveBadgeProps(status);
 
-  useEffect(() => {
-    api
-      .forecast()
-      .then((res) => {
-        setData(res);
-        setLive(true);
-      })
-      .catch(() => {});
-  }, []);
-
-  const withWarnings = data.forecasts.filter((f) => f.early_warnings.length > 0);
-  const shown = (withWarnings.length ? withWarnings : data.forecasts).slice(0, 6);
+  const withWarnings =
+    data?.forecasts.filter((f) => f.early_warnings.length > 0) ?? [];
+  const shown = (withWarnings.length ? withWarnings : data?.forecasts ?? []).slice(
+    0,
+    6,
+  );
 
   return (
     <div>
@@ -32,14 +27,11 @@ export default function ForecastPage() {
         eyebrow="In-Stay Sentinel · F11"
         title="Complaint Forecasting"
         description="A 4-week-ahead weekly forecast of negative aspect-mention counts per aspect, with an 80% prediction interval built from seasonal components and recent changepoints. Early warnings fire when the forecast upper bound exceeds the trailing 12-week mean by more than 50%. Accuracy is the mean absolute error over the most recent 8 held-out weeks."
-        actions={
-          <Badge tone={live ? "forest" : "dawn"}>
-            {live ? "Live from API" : "Sample snapshot"}
-          </Badge>
-        }
+        actions={<Badge tone={badge.tone}>{badge.label}</Badge>}
       />
 
-      {data.early_warnings.length > 0 && (
+      <LoadState status={status} onRetry={reload}>
+      {data && data.early_warnings.length > 0 && (
         <Card
           title="Early warnings"
           subtitle="Forecast upper bound exceeds the trailing mean by >50%"
@@ -67,6 +59,7 @@ export default function ForecastPage() {
           <ForecastCard key={f.aspect} forecast={f} />
         ))}
       </div>
+      </LoadState>
     </div>
   );
 }

@@ -42,26 +42,11 @@ export default function ReviewRepliesPage() {
       setDraft(res.reply);
       setEditing(res.reply.body);
     } catch {
-      // offline fallback preview
-      setDraft({
-        id: `reply-${review.review_id}`,
-        review_id: review.review_id,
-        property_id: review.property_id,
-        language: review.detected_language,
-        body:
-          "[template-generated] Thank you for your feedback. We have acted on your concern and hope to welcome you back soon.",
-        template_generated: true,
-        cited_fix: null,
-        cited_source: null,
-        negative_aspects: review.negative_aspects as unknown as string[],
-        pii_redacted: true,
-        state: "draft",
-        approved_by: null,
-        approved_at: null,
-      });
-      setEditing(
-        "[template-generated] Thank you for your feedback. We have acted on your concern and hope to welcome you back soon.",
-      );
+      // The draft is generated live from logged complaints/interventions and
+      // property facts. If the backend is unreachable we surface that honestly
+      // rather than fabricating a reply that looks grounded.
+      setDraft(null);
+      setStatus("Could not reach the backend to draft a reply. Start the API and try again.");
     } finally {
       setBusy(false);
     }
@@ -75,8 +60,7 @@ export default function ReviewRepliesPage() {
       setDraft(res.reply);
       setStatus("Reply approved and marked ready to post.");
     } catch {
-      setDraft({ ...draft, state: "ready_to_post", approved_by: "owner@pineview" });
-      setStatus("Reply approved (offline preview).");
+      setStatus("Could not reach the backend to approve the reply. Start the API and try again.");
     } finally {
       setBusy(false);
     }

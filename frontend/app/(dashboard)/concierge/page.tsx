@@ -2,16 +2,14 @@
 
 import { useEffect, useRef, useState } from "react";
 import { PageHeader, Card, Badge, StatTile, Button } from "@/components/ui";
+import { LoadState, liveBadgeProps } from "@/components/common/LoadState";
+import { useLiveData } from "@/lib/useLiveData";
 import {
   api,
   type ConciergeResult,
   type ConciergeMetrics,
   type PropertyFactView,
 } from "@/lib/api";
-import snapshot from "@/lib/conciergeSnapshot.json";
-
-const FACTS = snapshot.facts as unknown as PropertyFactView[];
-const METRICS = snapshot.metrics as unknown as ConciergeMetrics;
 
 interface Turn {
   question: string;
@@ -36,25 +34,23 @@ const SAMPLE_QUESTIONS = [
 ];
 
 export default function ConciergePage() {
-  const [facts, setFacts] = useState<PropertyFactView[]>(FACTS);
-  const [metrics, setMetrics] = useState<ConciergeMetrics>(METRICS);
+  const factsState = useLiveData<PropertyFactView[]>(
+    async () => (await api.conciergeFacts()).facts,
+    { isEmpty: (d) => d.length === 0 },
+  );
+  const metricsState = useLiveData<ConciergeMetrics>(() =>
+    api.conciergeMetrics(),
+  );
   const [turns, setTurns] = useState<Turn[]>([]);
   const [input, setInput] = useState("");
-  const [live, setLive] = useState(false);
+  const [chatError, setChatError] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
   const [factEdits, setFactEdits] = useState<Record<string, string>>({});
   const endRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    api
-      .conciergeFacts()
-      .then((res) => {
-        setFacts(res.facts);
-        setLive(true);
-      })
-      .catch(() => {});
-    api.conciergeMetrics().then(setMetrics).catch(() => {});
-  }, []);
+  const facts = factsState.data ?? [];
+  const metrics = metricsState.data;
+  const badge = liveBadgeProps(factsState.status);
 
   useEffect(() => {
     endRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -63,39 +59,17 @@ export default function ConciergePage() {
   async function send(message: string) {
     if (!message.trim()) return;
     setBusy(true);
+    setChatError(null);
     try {
       const res = await api.conciergeMessage(message);
       setTurns((prev) => [...prev, { question: message, result: res.result }]);
-      api.conciergeMetrics().then(setMetrics).catch(() => {});
+      metricsState.reload();
     } catch {
-      // offline demo fallback: naive local grounding
-      const fact = facts.find((f) =>
-        message.toLowerCase().includes(f.topic.toLowerCase()),
+      // No fabricated offline answer: surface honestly that the live concierge
+      // backend is unreachable rather than inventing a grounded reply.
+      setChatError(
+        "Could not reach the concierge backend. Start the API and try again — answers are generated live, not from a snapshot.",
       );
-      const result: ConciergeResult = fact
-        ? {
-            language: "en",
-            is_complaint: false,
-            answer: fact.text,
-            fact_ids: [fact.id],
-            confidence: 0.9,
-            handed_off: false,
-            resolved_without_staff: true,
-            template_generated: true,
-            complaint_id: null,
-          }
-        : {
-            language: "en",
-            is_complaint: false,
-            answer: "Our front-desk team will reply to you shortly.",
-            fact_ids: [],
-            confidence: 0.2,
-            handed_off: true,
-            resolved_without_staff: false,
-            template_generated: false,
-            complaint_id: null,
-          };
-      setTurns((prev) => [...prev, { question: message, result }]);
     } finally {
       setInput("");
       setBusy(false);
@@ -107,11 +81,11 @@ export default function ConciergePage() {
     if (!text) return;
     setBusy(true);
     try {
-      const res = await api.updateFact(fact.id, text);
-      setFacts((prev) => prev.map((f) => (f.id === fact.id ? res.fact : f)));
+      await api.updateFact(fact.id, text);
+      factsState.reload();
       setFactEdits((prev) => ({ ...prev, [fact.id]: "" }));
     } catch {
-      /* offline */
+      setChatError("Could not save the fact — the backend is unreachable.");
     } finally {
       setBusy(false);
     }
@@ -123,31 +97,35 @@ export default function ConciergePage() {
         eyebrow="Bhasha Concierge"
         title="Bhasha Concierge"
         description="A multilingual guest assistant (Hindi, English, Bengali, Tamil, French). Every answer is grounded in versioned Property_Facts with the fact ids logged. Low-confidence queries hand off to the front desk; complaint messages open a Sentinel complaint on the concierge channel."
-        actions={
-          <Badge tone={live ? "forest" : "dawn"}>
-            {live ? "Live from API" : "Sample snapshot"}
-          </Badge>
-        }
+        actions={<Badge tone={badge.tone}>{badge.label}</Badge>}
       />
 
-      <div className="mb-6 grid gap-4 sm:grid-cols-3">
-        <StatTile
-          label="Resolved without staff"
-          value={`${Math.round(metrics.resolved_without_staff_rate * 100)}%`}
-          trend="up"
-          hint="this week"
-        />
-        <StatTile
-          label="Queries answered"
-          value={metrics.resolved_without_staff}
-          hint={`${metrics.total_queries} total`}
-        />
-        <StatTile
-          label="Handed off"
-          value={metrics.handed_off}
-          hint="to front desk"
-        />
-      </div>
+      {metrics && (
+        <div className="mb-6 grid gap-4 sm:grid-cols-3">
+          <StatTile
+            label="Resolved without staff"
+            value={`${Math.round(metrics.resolved_without_staff_rate * 100)}%`}
+            trend="up"
+            hint="this week"
+          />
+          <StatTile
+            label="Queries answered"
+            value={metrics.resolved_without_staff}
+            hint={`${metrics.total_queries} total`}
+          />
+          <StatTile
+            label="Handed off"
+            value={metrics.handed_off}
+            hint="to front desk"
+          />
+        </div>
+      )}
+
+      {chatError && (
+        <div className="mb-4 rounded-xl border border-dawn-400/50 bg-dawn-400/10 px-4 py-2 text-sm text-forest-800">
+          {chatError}
+        </div>
+      )}
 
       <div className="grid gap-6 lg:grid-cols-[1.4fr_1fr]">
         <Card title="Conversation" subtitle="Ask in any supported language">
@@ -236,6 +214,12 @@ export default function ConciergePage() {
           title="Property Facts"
           subtitle="Versioned grounding source — edits reflect in answers within 5 minutes"
         >
+          <LoadState
+            status={factsState.status}
+            onRetry={factsState.reload}
+            emptyTitle="No property facts"
+            emptyBody="The backend is reachable but has no grounding facts yet."
+          >
           <ul className="space-y-3">
             {facts.map((f) => (
               <li
@@ -274,6 +258,7 @@ export default function ConciergePage() {
               </li>
             ))}
           </ul>
+          </LoadState>
         </Card>
       </div>
     </div>

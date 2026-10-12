@@ -1,11 +1,11 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useEffect } from "react";
 import { PageHeader, Card, Badge, StatTile } from "@/components/ui";
+import { LoadState, liveBadgeProps } from "@/components/common/LoadState";
+import { useLiveData } from "@/lib/useLiveData";
 import { api, type BoardResponse, type BoardRow } from "@/lib/api";
-import snapshot from "@/lib/sentinelSnapshot.json";
 
-const SNAPSHOT = snapshot.board as unknown as BoardResponse;
 const POLL_MS = 4000; // < 5s budget (Req 15.6)
 
 function urgencyTone(urgency: string | undefined) {
@@ -27,30 +27,19 @@ function countdown(hours: number) {
 }
 
 export default function CheckoutShieldPage() {
-  const [board, setBoard] = useState<BoardResponse>(SNAPSHOT);
-  const [live, setLive] = useState(false);
-  const [lastUpdated, setLastUpdated] = useState<string | null>(null);
+  const { status, data, reload } = useLiveData<BoardResponse>(
+    () => api.board(),
+    { isEmpty: (d) => (d.rows?.length ?? 0) === 0 },
+  );
+  const badge = liveBadgeProps(status);
 
-  const poll = useCallback(() => {
-    api
-      .board()
-      .then((res) => {
-        setBoard(res);
-        setLive(true);
-        setLastUpdated(new Date().toLocaleTimeString());
-      })
-      .catch(() => {
-        /* keep the last board when the API is unreachable */
-      });
-  }, []);
-
+  // Poll the live board on a <5s cadence (Req 15.6).
   useEffect(() => {
-    poll();
-    const id = setInterval(poll, POLL_MS);
+    const id = setInterval(reload, POLL_MS);
     return () => clearInterval(id);
-  }, [poll]);
+  }, [reload]);
 
-  const rows = board.rows ?? [];
+  const rows = data?.rows ?? [];
   const highRisk = rows.filter((r) => r.high_risk).length;
   const pinned = rows.filter((r) => r.pinned).length;
 
@@ -62,44 +51,46 @@ export default function CheckoutShieldPage() {
         description="A live risk board of every in-house stay, sorted by risk. High-risk stays (≥ 0.6) are highlighted and alert managers; those with under 4 hours to checkout are pinned to the top so the team can recover the guest before they leave."
         actions={
           <div className="flex items-center gap-2">
-            <Badge tone={live ? "forest" : "dawn"}>
-              {live ? "Live · auto-refresh 4s" : "Sample snapshot"}
+            <Badge tone={badge.tone}>
+              {status === "ready" ? "Live · auto-refresh 4s" : badge.label}
             </Badge>
-            {lastUpdated && (
-              <span className="text-xs text-forest-500">
-                updated {lastUpdated}
-              </span>
-            )}
           </div>
         }
       />
 
-      <div className="mb-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        <StatTile label="In-house stays" value={rows.length} hint="currently tracked" />
-        <StatTile
-          label="High risk (≥ 0.6)"
-          value={highRisk}
-          trend={highRisk > 0 ? "down" : "flat"}
-          hint="managers notified"
-        />
-        <StatTile
-          label="Pinned (< 4h to checkout)"
-          value={pinned}
-          trend={pinned > 0 ? "down" : "flat"}
-          hint="recover before checkout"
-        />
-        <StatTile
-          label="Risk threshold"
-          value={board.high_risk_threshold ?? 0.6}
-          hint="highlight + alert"
-        />
-      </div>
+      <LoadState
+        status={status}
+        onRetry={reload}
+        emptyTitle="No in-house stays"
+        emptyBody="The backend is reachable but no stays are currently tracked. Seed demo stays to populate the Checkout Shield board."
+      >
+        <div className="mb-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <StatTile label="In-house stays" value={rows.length} hint="currently tracked" />
+          <StatTile
+            label="High risk (≥ 0.6)"
+            value={highRisk}
+            trend={highRisk > 0 ? "down" : "flat"}
+            hint="managers notified"
+          />
+          <StatTile
+            label="Pinned (< 4h to checkout)"
+            value={pinned}
+            trend={pinned > 0 ? "down" : "flat"}
+            hint="recover before checkout"
+          />
+          <StatTile
+            label="Risk threshold"
+            value={data?.high_risk_threshold ?? 0.6}
+            hint="highlight + alert"
+          />
+        </div>
 
-      <div className="space-y-3">
-        {rows.map((row) => (
-          <RiskCard key={row.stay_id} row={row} />
-        ))}
-      </div>
+        <div className="space-y-3">
+          {rows.map((row) => (
+            <RiskCard key={row.stay_id} row={row} />
+          ))}
+        </div>
+      </LoadState>
     </div>
   );
 }

@@ -1,7 +1,9 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { PageHeader, Card, Badge, StatTile, Button } from "@/components/ui";
+import { LoadState, liveBadgeProps } from "@/components/common/LoadState";
+import { useLiveData } from "@/lib/useLiveData";
 import {
   api,
   type GuestCompassStay,
@@ -9,11 +11,6 @@ import {
   type Recommendations,
   type RecommendationCard,
 } from "@/lib/api";
-import snapshot from "@/lib/guestCompassSnapshot.json";
-
-const STAYS = snapshot.stays as unknown as GuestCompassStay[];
-const RECS = snapshot.recommendations as unknown as Recommendations;
-const METRICS = snapshot.metrics as unknown as GuestCompassMetrics;
 
 function categoryTone(category: string) {
   switch (category) {
@@ -29,35 +26,41 @@ function categoryTone(category: string) {
 }
 
 export default function GuestCompassPage() {
-  const [stays, setStays] = useState<GuestCompassStay[]>(STAYS);
-  const [selected, setSelected] = useState<string>(STAYS[0]?.id ?? "gc-honeymoon");
-  const [recs, setRecs] = useState<Recommendations>(RECS);
-  const [metrics, setMetrics] = useState<GuestCompassMetrics>(METRICS);
-  const [live, setLive] = useState(false);
+  const staysState = useLiveData<GuestCompassStay[]>(
+    async () => (await api.guestCompassStays()).stays,
+    { isEmpty: (d) => d.length === 0 },
+  );
+  const metricsState = useLiveData<GuestCompassMetrics>(() =>
+    api.guestCompassMetrics(),
+  );
+  const [selected, setSelected] = useState<string>("");
+  const [recs, setRecs] = useState<Recommendations | null>(null);
   const [busy, setBusy] = useState(false);
   const [revenueInput, setRevenueInput] = useState<Record<string, string>>({});
 
-  useEffect(() => {
-    api
-      .guestCompassStays()
-      .then((res) => {
-        setStays(res.stays);
-        setLive(true);
-      })
-      .catch(() => {});
-    api.guestCompassMetrics().then(setMetrics).catch(() => {});
-  }, []);
+  const stays = staysState.data ?? [];
+  const metrics = metricsState.data;
+  const badge = liveBadgeProps(staysState.status);
 
-  const loadRecs = useCallback((stayId: string) => {
-    api
-      .guestRecommendations(stayId)
-      .then(setRecs)
-      .catch(() => setRecs(RECS));
-  }, []);
+  // Default-select the first stay once the live list loads.
+  const firstStayId = staysState.data?.[0]?.id ?? null;
+  useEffect(() => {
+    if (!selected && firstStayId) {
+      setSelected(firstStayId);
+    }
+  }, [firstStayId, selected]);
 
   useEffect(() => {
-    loadRecs(selected);
-  }, [selected, loadRecs]);
+    if (!selected) return;
+    let active = true;
+    api
+      .guestRecommendations(selected)
+      .then((r) => active && setRecs(r))
+      .catch(() => active && setRecs(null));
+    return () => {
+      active = false;
+    };
+  }, [selected]);
 
   async function record(card: RecommendationCard, accepted: boolean) {
     setBusy(true);
@@ -71,9 +74,9 @@ export default function GuestCompassPage() {
         revenue_inr: revenue,
       });
       setRecs(res.recommendations);
-      setMetrics(res.metrics);
+      metricsState.reload();
     } catch {
-      /* offline demo */
+      /* surfaced via the live error state on reload */
     } finally {
       setBusy(false);
     }
@@ -87,33 +90,37 @@ export default function GuestCompassPage() {
         eyebrow="Guest Compass"
         title="Guest Compass"
         description="Contextual-bandit upsell recommendations for a Stay. Cold-start segments drive the first offers; the policy learns from accept/decline. Aspects where this property trails the cluster median are down-weighted, and upsells are suppressed while a Stay has an open P1/P2 complaint."
-        actions={
-          <Badge tone={live ? "forest" : "dawn"}>
-            {live ? "Live from API" : "Sample snapshot"}
-          </Badge>
-        }
+        actions={<Badge tone={badge.tone}>{badge.label}</Badge>}
       />
 
-      <div className="mb-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        <StatTile
-          label="Uptake rate"
-          value={`${Math.round(metrics.uptake_rate * 100)}%`}
-          trend="up"
-          hint={`${metrics.accepted}/${metrics.offers} offers accepted`}
-        />
-        <StatTile
-          label="Ancillary revenue"
-          value={`₹${metrics.ancillary_revenue_inr.toLocaleString("en-IN")}`}
-          hint="this week"
-        />
-        <StatTile
-          label="Revenue / guest / week"
-          value={`₹${metrics.revenue_per_guest_per_week.toLocaleString("en-IN")}`}
-          hint={`${metrics.guests_this_week} guests`}
-        />
-        <StatTile label="Offers made" value={metrics.offers} hint="all stays" />
-      </div>
+      {metrics && (
+        <div className="mb-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <StatTile
+            label="Uptake rate"
+            value={`${Math.round(metrics.uptake_rate * 100)}%`}
+            trend="up"
+            hint={`${metrics.accepted}/${metrics.offers} offers accepted`}
+          />
+          <StatTile
+            label="Ancillary revenue"
+            value={`₹${metrics.ancillary_revenue_inr.toLocaleString("en-IN")}`}
+            hint="this week"
+          />
+          <StatTile
+            label="Revenue / guest / week"
+            value={`₹${metrics.revenue_per_guest_per_week.toLocaleString("en-IN")}`}
+            hint={`${metrics.guests_this_week} guests`}
+          />
+          <StatTile label="Offers made" value={metrics.offers} hint="all stays" />
+        </div>
+      )}
 
+      <LoadState
+        status={staysState.status}
+        onRetry={staysState.reload}
+        emptyTitle="No active stays"
+        emptyBody="The backend is reachable but there are no stays to recommend upsells for. Seed demo stays to populate Guest Compass."
+      >
       <div className="grid gap-6 lg:grid-cols-[1fr_1.6fr]">
         <Card title="Stays" subtitle="Open a Stay to see front-desk offers">
           <ul className="space-y-2">
@@ -146,14 +153,18 @@ export default function GuestCompassPage() {
         <Card
           title={activeStay ? `Offers · ${activeStay.label}` : "Recommendation cards"}
           subtitle={
-            recs.suppressed
-              ? "Upsell suppressed"
-              : recs.cold_start
-                ? `Cold-start segment: ${recs.segment ?? ""}`
-                : "Learned policy"
+            !recs
+              ? "Loading offers…"
+              : recs.suppressed
+                ? "Upsell suppressed"
+                : recs.cold_start
+                  ? `Cold-start segment: ${recs.segment ?? ""}`
+                  : "Learned policy"
           }
         >
-          {recs.suppressed ? (
+          {!recs ? (
+            <p className="text-sm text-forest-600">Loading recommendations…</p>
+          ) : recs.suppressed ? (
             <div className="rounded-xl border border-dawn-400/40 bg-dawn-400/10 p-4 text-sm text-forest-800">
               <p className="font-medium">Upsell cards suppressed</p>
               <p className="mt-1 text-forest-600">
@@ -230,6 +241,7 @@ export default function GuestCompassPage() {
           )}
         </Card>
       </div>
+      </LoadState>
     </div>
   );
 }

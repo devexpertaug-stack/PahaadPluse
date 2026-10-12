@@ -1,22 +1,21 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
 import { PageHeader, Card, Badge, StatTile, Button } from "@/components/ui";
+import { LoadState, liveBadgeProps } from "@/components/common/LoadState";
+import { useLiveData } from "@/lib/useLiveData";
 import {
   api,
   DESTINATION_THEMES,
   type HeatmapResponse,
   type HotspotQuote,
 } from "@/lib/api";
-import snapshot from "@/lib/sentinelSnapshot.json";
 
 const HotspotMap = dynamic(
   () => import("@/components/destination/HotspotMap").then((m) => m.HotspotMap),
   { ssr: false, loading: () => <MapSkeleton /> },
 );
-
-const SNAPSHOT = snapshot.heatmap as unknown as HeatmapResponse;
 
 function MapSkeleton() {
   return (
@@ -27,37 +26,26 @@ function MapSkeleton() {
 }
 
 export default function DestinationPage() {
-  const [data, setData] = useState<HeatmapResponse>(SNAPSHOT);
   const [theme, setTheme] = useState<string>("");
   const [start, setStart] = useState<string>("");
   const [end, setEnd] = useState<string>("");
   const [selected, setSelected] = useState<string | null>(null);
   const [quotes, setQuotes] = useState<HotspotQuote[]>([]);
-  const [live, setLive] = useState(false);
   const [language, setLanguage] = useState<"en" | "hi">("en");
 
-  const fetchHeatmap = useMemo(
-    () => (t: string, s: string, e: string) => {
-      api
-        .heatmap({
-          theme: t || undefined,
-          start: s || undefined,
-          end: e || undefined,
-        })
-        .then((res) => {
-          setData(res);
-          setLive(true);
-        })
-        .catch(() => {
-          /* keep the bundled snapshot offline */
-        });
+  const { status, data, reload } = useLiveData<HeatmapResponse>(
+    () =>
+      api.heatmap({
+        theme: theme || undefined,
+        start: start || undefined,
+        end: end || undefined,
+      }),
+    {
+      deps: [theme, start, end],
+      isEmpty: (d) => (d.hotspots?.length ?? 0) === 0,
     },
-    [],
   );
-
-  useEffect(() => {
-    fetchHeatmap(theme, start, end);
-  }, [theme, start, end, fetchHeatmap]);
+  const badge = liveBadgeProps(status);
 
   useEffect(() => {
     if (!selected) {
@@ -74,8 +62,8 @@ export default function DestinationPage() {
       .catch(() => setQuotes([]));
   }, [selected, theme, start, end]);
 
-  const hotspots = data.hotspots ?? [];
-  const totalNegative = data.total_negative_mentions ?? 0;
+  const hotspots = data?.hotspots ?? [];
+  const totalNegative = data?.total_negative_mentions ?? 0;
 
   return (
     <div>
@@ -83,11 +71,7 @@ export default function DestinationPage() {
         eyebrow="Destination Lens · F8"
         title="Destination Lens"
         description="A geocoded heatmap of negative guest mentions across Mussoorie's landmarks. Filter by issue theme and date range, then generate an Evidence Packet for the authorities."
-        actions={
-          <Badge tone={live ? "forest" : "dawn"}>
-            {live ? "Live from API" : "Sample snapshot"}
-          </Badge>
-        }
+        actions={<Badge tone={badge.tone}>{badge.label}</Badge>}
       />
 
       <div className="mb-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -165,6 +149,12 @@ export default function DestinationPage() {
         </div>
       </Card>
 
+      <LoadState
+        status={status}
+        onRetry={reload}
+        emptyTitle="No negative mentions in this window"
+        emptyBody="The backend is reachable but returned no geocoded hotspots for the current theme and date filters. Try widening the filters or reset them."
+      >
       <div className="grid gap-6 lg:grid-cols-[1.4fr_1fr]">
         <Card
           title="Negative-mention heatmap"
@@ -276,6 +266,7 @@ export default function DestinationPage() {
           )}
         </Card>
       </div>
+      </LoadState>
     </div>
   );
 }

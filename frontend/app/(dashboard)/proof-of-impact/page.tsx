@@ -1,37 +1,26 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { PageHeader, Card, Badge, StatTile, Button } from "@/components/ui";
 import { MiniTrend } from "@/components/common/MiniTrend";
+import { LoadState, liveBadgeProps } from "@/components/common/LoadState";
+import { useLiveData } from "@/lib/useLiveData";
 import { api, type ImpactResult, ASPECTS } from "@/lib/api";
 import { palette } from "@/lib/theme";
-import snapshot from "@/lib/impactSnapshot.json";
-
-const RESULTS = snapshot.results as unknown as ImpactResult[];
 
 export default function ProofOfImpactPage() {
-  const [results, setResults] = useState<ImpactResult[]>(RESULTS);
-  const [live, setLive] = useState(false);
+  const { status, data, reload } = useLiveData<ImpactResult[]>(
+    async () => (await api.impact()).results,
+    { isEmpty: (d) => d.length === 0 },
+  );
   const [busy, setBusy] = useState(false);
   const [form, setForm] = useState({
     aspect: "Food",
     description: "",
     date: "2024-04-01",
   });
-
-  function load() {
-    api
-      .impact()
-      .then((res) => {
-        if (res.results.length) {
-          setResults(res.results);
-          setLive(true);
-        }
-      })
-      .catch(() => {});
-  }
-
-  useEffect(load, []);
+  const results = data ?? [];
+  const badge = liveBadgeProps(status);
 
   async function logIntervention() {
     setBusy(true);
@@ -42,9 +31,9 @@ export default function ProofOfImpactPage() {
         description: form.description || `Intervention on ${form.aspect}`,
         date: form.date,
       });
-      load();
+      reload();
     } catch {
-      /* offline */
+      /* surfaced via the live error state on reload */
     } finally {
       setBusy(false);
     }
@@ -56,11 +45,7 @@ export default function ProofOfImpactPage() {
         eyebrow="Market Radar · F10"
         title="Proof of Impact"
         description="Log an operational intervention; once there are 30+ days of post-intervention reviews we estimate a difference-in-differences effect on the aspect score using the other cluster properties as a control, with a 90% confidence interval and a parallel-trends check."
-        actions={
-          <Badge tone={live ? "forest" : "dawn"}>
-            {live ? "Live from API" : "Sample snapshot"}
-          </Badge>
-        }
+        actions={<Badge tone={badge.tone}>{badge.label}</Badge>}
       />
 
       <Card
@@ -110,6 +95,12 @@ export default function ProofOfImpactPage() {
         </div>
       </Card>
 
+      <LoadState
+        status={status}
+        onRetry={reload}
+        emptyTitle="No interventions logged yet"
+        emptyBody="Log an intervention above to estimate its difference-in-differences effect once 30+ days of post-intervention reviews exist."
+      >
       <div className="space-y-6">
         {results.map((r) => (
           <Card
@@ -182,6 +173,7 @@ export default function ProofOfImpactPage() {
           </Card>
         ))}
       </div>
+      </LoadState>
     </div>
   );
 }

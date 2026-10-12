@@ -297,8 +297,173 @@ export const ASPECTS = [
   "Booking_Experience",
 ] as const;
 
+// ---- Destination Lens (F8) types ----
+export interface Hotspot {
+  canonical: string;
+  label: string;
+  latitude: number;
+  longitude: number;
+  negative_count: number;
+  total_count: number;
+  themes: Record<string, number>;
+  distinct_properties: number;
+}
+
+export interface HeatmapResponse {
+  destination: string;
+  theme: string | null;
+  themes_available: string[];
+  start: string | null;
+  end: string | null;
+  hotspots: Hotspot[];
+  total_negative_mentions: number;
+}
+
+export interface HotspotQuote {
+  text: string;
+  platform: string;
+  date: string;
+  source_url: string | null;
+  property_name: string;
+}
+
+export const DESTINATION_THEMES = [
+  "traffic",
+  "parking",
+  "water",
+  "garbage",
+  "road condition",
+  "safety",
+] as const;
+
+// ---- In-Stay Sentinel types ----
+export interface RiskFactor {
+  label: string;
+  contribution: number;
+}
+
+export interface BoardRow {
+  stay_id: string;
+  room: string;
+  guest_pseudonym: string;
+  hours_to_checkout: number;
+  score: number;
+  high_risk: boolean;
+  pinned: boolean;
+  top_factors: RiskFactor[];
+  top_open_complaint: {
+    id: string;
+    issue_type: string;
+    urgency: string;
+    department: string;
+    text: string;
+  } | null;
+  responsible_department: string | null;
+  sop_action: string | null;
+}
+
+export interface BoardResponse {
+  generated_at: string;
+  high_risk_threshold: number;
+  rows: BoardRow[];
+}
+
+export interface SentinelMetrics {
+  avg_complaint_to_department_seconds: number;
+  in_stay_resolution_rate: number;
+  repeat_complaints_this_week: number;
+  total_complaints: number;
+  resolved_complaints: number;
+  open_complaints: number;
+}
+
+export interface SOPView {
+  department: string;
+  issue_type: string;
+  corrective_steps: string[];
+  target_resolution_minutes: number;
+}
+
+export interface ComplaintView {
+  id: string;
+  stay_id: string | null;
+  room: string | null;
+  guest_pseudonym: string | null;
+  channel: string;
+  text: string;
+  language: string;
+  transcript: string | null;
+  transcript_translation_en: string | null;
+  transcription_confidence: number | null;
+  flagged_for_staff: boolean;
+  created_at: string;
+  assigned_at: string | null;
+  resolved_at: string | null;
+  department: string | null;
+  original_predicted_department: string | null;
+  department_confidence: number | null;
+  urgency: string | null;
+  issue_type: string | null;
+  requires_manual_assignment: boolean;
+  state: string;
+  is_recurrence: boolean;
+  recurrence_of: string | null;
+  escalated: boolean;
+  resolution_note: string | null;
+  reassignments: { from: string; to: string; reason: string; at: string }[];
+  sop: SOPView | null;
+}
+
 export const api = {
   health: () => request<HealthResponse>("/health"),
+  // Destination Lens
+  heatmap: (params?: { theme?: string; start?: string; end?: string }) => {
+    const q = new URLSearchParams();
+    if (params?.theme) q.set("theme", params.theme);
+    if (params?.start) q.set("start", params.start);
+    if (params?.end) q.set("end", params.end);
+    const qs = q.toString();
+    return request<HeatmapResponse>(`/destination/heatmap${qs ? `?${qs}` : ""}`);
+  },
+  hotspotQuotes: (
+    canonical: string,
+    params?: { theme?: string; start?: string; end?: string },
+  ) => {
+    const q = new URLSearchParams();
+    if (params?.theme) q.set("theme", params.theme);
+    if (params?.start) q.set("start", params.start);
+    if (params?.end) q.set("end", params.end);
+    const qs = q.toString();
+    return request<{ canonical: string; quotes: HotspotQuote[] }>(
+      `/destination/hotspots/${encodeURIComponent(canonical)}/quotes${qs ? `?${qs}` : ""}`,
+    );
+  },
+  evidencePacketUrl: (
+    canonical: string,
+    params?: { theme?: string; start?: string; end?: string; language?: string },
+  ) => {
+    const q = new URLSearchParams({ canonical, role: "destination_official" });
+    if (params?.theme) q.set("theme", params.theme);
+    if (params?.start) q.set("start", params.start);
+    if (params?.end) q.set("end", params.end);
+    if (params?.language) q.set("language", params.language);
+    return `${API_BASE_URL}/destination/evidence-packet?${q.toString()}`;
+  },
+  // Sentinel
+  board: () => request<BoardResponse>("/sentinel/board"),
+  sentinelMetrics: () => request<SentinelMetrics>("/sentinel/metrics"),
+  complaints: () =>
+    request<{ complaints: ComplaintView[] }>("/sentinel/complaints"),
+  resolveComplaint: (id: string, note: string) =>
+    request<{ complaint: ComplaintView }>(
+      `/sentinel/complaints/${encodeURIComponent(id)}/resolve`,
+      { method: "POST", body: JSON.stringify({ note }) },
+    ),
+  demoWhatsapp: (body: { from_number: string; body: string; language: string }) =>
+    request<{ complaint: ComplaintView; acknowledgement: string | null; risk: number | null }>(
+      "/sentinel/demo/whatsapp",
+      { method: "POST", body: JSON.stringify(body) },
+    ),
   reviewCounts: () =>
     request<ReviewCountsResponse>("/market-radar/review-counts"),
   propertyReviews: (propertyId: string, platform?: string) =>

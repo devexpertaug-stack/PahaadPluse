@@ -32,7 +32,8 @@ def test_whatsapp_webhook_rejects_bad_signature() -> None:
         content=b"{}",
         headers={"x-hub-signature-256": "sha256=deadbeef"},
     )
-    assert response.status_code == 401
+    # Bad signature -> 403 + Audit_Log entry (Req 20.4).
+    assert response.status_code == 403
 
 
 def test_whatsapp_webhook_accepts_valid_signature() -> None:

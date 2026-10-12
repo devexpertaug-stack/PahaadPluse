@@ -10,10 +10,10 @@ from fastapi import APIRouter
 
 from app.api.routers.analytics import router as analytics_router
 from app.api.routers.collection import router as collection_router
+from app.api.routers.destination import router as destination_router
 from app.api.routers.reviews import router as market_radar_router
+from app.api.routers.sentinel import router as sentinel_router
 
-destination_router = APIRouter(prefix="/destination", tags=["destination-lens"])
-sentinel_router = APIRouter(prefix="/sentinel", tags=["in-stay-sentinel"])
 guest_compass_router = APIRouter(prefix="/guest-compass", tags=["guest-compass"])
 concierge_router = APIRouter(prefix="/concierge", tags=["bhasha-concierge"])
 

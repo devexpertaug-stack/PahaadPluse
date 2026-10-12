@@ -92,6 +92,30 @@ export const navItems: NavItem[] = [
     description: "Surface unmet guest needs in your cluster",
   },
   {
+    label: "Proof of Impact",
+    href: "/proof-of-impact",
+    group: "Market Radar",
+    description: "Difference-in-differences effect of your interventions",
+  },
+  {
+    label: "Authenticity Filter",
+    href: "/authenticity",
+    group: "Market Radar",
+    description: "Suspicious-signal flags + authenticity-adjusted rankings",
+  },
+  {
+    label: "Review Replies",
+    href: "/review-replies",
+    group: "Market Radar",
+    description: "Closed-loop, fact-grounded review reply drafts",
+  },
+  {
+    label: "Weekly Briefing",
+    href: "/briefing",
+    group: "Market Radar",
+    description: "Owner's weekly Hindi voice briefing",
+  },
+  {
     label: "Destination Lens",
     href: "/destination",
     group: "Destination Lens",
@@ -108,6 +132,12 @@ export const navItems: NavItem[] = [
     href: "/complaints",
     group: "In-Stay Sentinel",
     description: "Live in-stay complaints and resolution",
+  },
+  {
+    label: "Complaint Forecast",
+    href: "/forecast",
+    group: "In-Stay Sentinel",
+    description: "4-week negative-mention forecast with early warnings",
   },
   {
     label: "Guest Compass",

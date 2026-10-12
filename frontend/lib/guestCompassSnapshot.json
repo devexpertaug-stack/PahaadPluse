@@ -1,0 +1,28 @@
+{
+  "stays": [
+    { "id": "gc-honeymoon", "label": "Honeymoon couple · Deluxe", "purpose": "honeymoon", "party": "couple", "has_open_p1_p2": false },
+    { "id": "gc-family", "label": "Family of four · Valley suite", "purpose": "leisure", "party": "family", "has_open_p1_p2": false },
+    { "id": "gc-business", "label": "Business solo traveller", "purpose": "business", "party": "solo", "has_open_p1_p2": false },
+    { "id": "stay-charlie", "label": "In-house stay with an open complaint", "purpose": "leisure", "party": "couple", "has_open_p1_p2": true }
+  ],
+  "recommendations": {
+    "stay_id": "gc-honeymoon",
+    "suppressed": false,
+    "segment": "honeymoon|couple|monsoon",
+    "cold_start": true,
+    "market_weak_aspects": ["Food", "Service", "Staff"],
+    "cards": [
+      { "item_id": "candlelight-dinner", "category": "food", "name": "Candlelight hilltop dinner", "reason": "A quiet dinner with a Himalayan sunset", "price_inr": 2500.0, "score": 0.71, "market_down_weighted": true },
+      { "item_id": "spa-ayurveda", "category": "spa", "name": "Ayurvedic hill spa therapy", "reason": "90-minute relaxation therapy", "price_inr": 2200.0, "score": 0.64, "market_down_weighted": false },
+      { "item_id": "room-upgrade", "category": "rooms", "name": "Valley-view room upgrade", "reason": "Panoramic Doon valley view for your stay", "price_inr": 1800.0, "score": 0.52, "market_down_weighted": false }
+    ]
+  },
+  "metrics": {
+    "offers": 12,
+    "accepted": 5,
+    "uptake_rate": 0.417,
+    "ancillary_revenue_inr": 11500.0,
+    "revenue_per_guest_per_week": 2875.0,
+    "guests_this_week": 4
+  }
+}

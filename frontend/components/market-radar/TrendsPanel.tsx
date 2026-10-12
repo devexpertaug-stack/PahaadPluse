@@ -3,6 +3,7 @@
 import { useMemo, useState } from "react";
 import { Card } from "@/components/ui";
 import { LineChart, type Series } from "@/components/charts/LineChart";
+import { Drilldown } from "@/components/common/Drilldown";
 import { ASPECTS, type TrendsResponse } from "@/lib/api";
 import { palette } from "@/lib/theme";
 
@@ -100,6 +101,37 @@ export function TrendsPanel({ data }: { data: TrendsResponse }) {
             Periods with no mentions show a no-data gap; percentages are to 1
             decimal place.
           </p>
+        </div>
+      </div>
+
+      <div className="mt-6 border-t border-mist-200 pt-4">
+        <p className="mb-2 text-sm font-medium text-forest-700">
+          Every number is clickable — drill down to the source reviews
+        </p>
+        <div className="flex flex-wrap gap-2 text-sm">
+          {trend.buckets
+            .filter((b) => b.negative > 0)
+            .slice(-8)
+            .map((b) => (
+              <span
+                key={b.period}
+                className="rounded-lg border border-mist-300 bg-mist-50 px-2 py-1"
+              >
+                <span className="text-xs text-forest-500">{b.period}: </span>
+                <Drilldown
+                  metric={`${aspect} negative mentions · ${b.period}`}
+                  kind="count"
+                  clicked_value={b.negative}
+                  aspect={aspect}
+                  label="negative"
+                  period={b.period}
+                  granularity={data.granularity}
+                  platform={data.platforms}
+                >
+                  {b.negative} negative
+                </Drilldown>
+              </span>
+            ))}
         </div>
       </div>
     </Card>

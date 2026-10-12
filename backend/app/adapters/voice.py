@@ -156,3 +156,69 @@ def get_voice_pipeline() -> VoicePipeline:
         except Exception:  # pragma: no cover - defensive, model unavailable
             pass
     return StubVoicePipeline()
+
+
+# ---------------------------------------------------------------------------
+# Text-to-speech (TTS) adapter for the Owner's weekly Hindi voice briefing
+# (Req 22). Interface + a stub that emits a placeholder audio artifact when a
+# real TTS engine (e.g. gTTS) is not reachable in the sandbox.
+# ---------------------------------------------------------------------------
+# Average Hindi narration pace used to estimate audio duration from a script so
+# the briefing can be kept within the 60-second cap (Req 22.3).
+HINDI_WORDS_PER_SECOND = 2.5
+MAX_BRIEFING_SECONDS = 60.0
+
+
+@dataclass
+class SpeechArtifact:
+    """Result of a text-to-speech synthesis for the voice briefing."""
+
+    audio: bytes
+    engine: str
+    is_placeholder: bool
+    estimated_seconds: float
+    note: str | None = None
+
+
+class TextToSpeech(ABC):
+    """Interface for turning a script into speech audio."""
+
+    @abstractmethod
+    def synthesize(self, script: str, *, language: str = "hi") -> SpeechArtifact:
+        """Synthesize ``script`` into audio bytes."""
+
+
+def estimate_speech_seconds(script: str) -> float:
+    """Estimate narration seconds for ``script`` at the Hindi pace."""
+    words = max(1, len(script.split()))
+    return round(words / HINDI_WORDS_PER_SECOND, 1)
+
+
+class StubTextToSpeech(TextToSpeech):
+    """Offline TTS stub.
+
+    In the sandbox gTTS / a cloud TTS is typically unreachable, so this emits a
+    deterministic placeholder audio artifact (a tiny WAV-like header plus the
+    UTF-8 script bytes) and documents that it is a placeholder. The whole
+    briefing loop stays demonstrable offline.
+    """
+
+    def synthesize(self, script: str, *, language: str = "hi") -> SpeechArtifact:
+        estimated = estimate_speech_seconds(script)
+        header = b"RIFF\x00\x00\x00\x00WAVEfmt placeholder;"
+        audio = header + script.encode("utf-8")
+        return SpeechArtifact(
+            audio=audio,
+            engine="stub",
+            is_placeholder=True,
+            estimated_seconds=estimated,
+            note=(
+                "Placeholder audio artifact: no live TTS engine reachable in "
+                "this environment. The script text accompanies the audio."
+            ),
+        )
+
+
+def get_tts() -> TextToSpeech:
+    """Select the TTS engine (only the offline stub is wired for the demo)."""
+    return StubTextToSpeech()

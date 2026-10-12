@@ -414,6 +414,257 @@ export interface ComplaintView {
   sop: SOPView | null;
 }
 
+// ---- Minimal features (FEAT-005) types ----
+export interface DrilldownEvidence {
+  text: string;
+  quote: string;
+  start: number;
+  end: number;
+}
+
+export interface DrilldownRecord {
+  kind: string;
+  property_id: string;
+  property_name: string;
+  platform: string | null;
+  aspect: string | null;
+  label: string | null;
+  date: string;
+  source_url: string;
+  source_url_available: boolean;
+  evidence: DrilldownEvidence;
+}
+
+export interface DrilldownResponse {
+  metric: string;
+  clicked_value: number | null;
+  is_count: boolean;
+  count: number;
+  count_matches: boolean | null;
+  records: DrilldownRecord[];
+}
+
+export interface DrilldownQuery {
+  metric: string;
+  kind?: "count" | "share";
+  clicked_value: number;
+  property_id?: string;
+  aspect?: string;
+  label?: string;
+  platform?: string[];
+  start?: string;
+  end?: string;
+  period?: string;
+  granularity?: string;
+}
+
+export interface CellStat {
+  n: number;
+  positives: number;
+  mean_score: number;
+}
+
+export interface ImpactResult {
+  intervention_id: string;
+  property_id: string;
+  aspect: string;
+  intervention_date: string;
+  sufficient_post_data: boolean;
+  post_days: number;
+  effect: number | null;
+  ci_lower: number | null;
+  ci_upper: number | null;
+  confidence_level: number;
+  home_pre: CellStat | null;
+  home_post: CellStat | null;
+  control_pre: CellStat | null;
+  control_post: CellStat | null;
+  parallel_trends_warning: boolean;
+  parallel_trends_pvalue: number | null;
+  home_trend: { week: string; score: number }[];
+  control_trend: { week: string; score: number }[];
+  message: string | null;
+}
+
+export interface ForecastPoint {
+  week: string;
+  point: number;
+  lower: number;
+  upper: number;
+  early_warning: boolean;
+}
+
+export interface AspectForecast {
+  property_id: string;
+  aspect: string;
+  history: { week: string; negatives: number }[];
+  forecast: ForecastPoint[];
+  trailing_mean: number;
+  mae: number | null;
+  early_warnings: {
+    aspect: string;
+    week: string;
+    forecast_upper: number;
+    trailing_mean: number;
+  }[];
+}
+
+export interface ForecastResponse {
+  property_id: string;
+  horizon_weeks: number;
+  prediction_interval: number;
+  heldout_weeks: number;
+  forecasts: AspectForecast[];
+  early_warnings: {
+    aspect: string;
+    week: string;
+    forecast_upper: number;
+    trailing_mean: number;
+  }[];
+}
+
+export interface AuthRanking {
+  property_id: string;
+  property_name: string;
+  original_rank: number;
+  original_mean: number;
+  adjusted_rank: number;
+  adjusted_mean: number;
+  rank_delta: number;
+}
+
+export interface FlaggedReview {
+  review_id: string;
+  property_id: string;
+  property_name: string;
+  platform: string;
+  date: string;
+  rating: number;
+  text: string;
+  source_url: string;
+  burst: boolean;
+  near_duplicate: boolean;
+  single_review_author: boolean;
+  suspicion: number;
+  label: string;
+}
+
+export interface AuthenticityResponse {
+  suspicion_exclude_threshold: number;
+  near_duplicate_threshold: number;
+  excluded_count: number;
+  total_reviews: number;
+  rankings: AuthRanking[];
+  flagged_reviews: FlaggedReview[];
+}
+
+export interface ReplyDraft {
+  id: string;
+  review_id: string;
+  property_id: string;
+  language: string;
+  body: string;
+  template_generated: boolean;
+  cited_fix: string | null;
+  cited_source: string | null;
+  negative_aspects: string[];
+  pii_redacted: boolean;
+  state: string;
+  approved_by: string | null;
+  approved_at: string | null;
+}
+
+export interface BriefingResponse {
+  property_id: string;
+  property_name: string;
+  week_of: string;
+  language: string;
+  script: string;
+  metrics: {
+    week_rating: number;
+    prev_week_rating: number;
+    rating_change: number;
+    top_improving_aspect: string | null;
+    top_improving_delta: number;
+    top_declining_aspect: string | null;
+    top_declining_delta: number;
+    new_changepoints: number;
+    open_p1_p2: number;
+    recommended_action: string;
+  };
+  estimated_seconds: number;
+  max_seconds: number;
+  within_cap: boolean;
+  template_generated: boolean;
+  audio_is_placeholder: boolean;
+  audio_note: string | null;
+  delivered_to: string[];
+}
+
+export interface RecommendationCard {
+  item_id: string;
+  category: string;
+  name: string;
+  reason: string;
+  price_inr: number;
+  score: number;
+  market_down_weighted: boolean;
+}
+
+export interface Recommendations {
+  stay_id: string;
+  suppressed: boolean;
+  reason?: string;
+  segment?: string;
+  cold_start?: boolean;
+  market_weak_aspects?: string[];
+  cards: RecommendationCard[];
+}
+
+export interface GuestCompassStay {
+  id: string;
+  label: string;
+  purpose: string;
+  party: string;
+  has_open_p1_p2: boolean;
+}
+
+export interface GuestCompassMetrics {
+  offers: number;
+  accepted: number;
+  uptake_rate: number;
+  ancillary_revenue_inr: number;
+  revenue_per_guest_per_week: number;
+  guests_this_week: number;
+}
+
+export interface ConciergeResult {
+  language: string;
+  is_complaint: boolean;
+  answer: string | null;
+  fact_ids: string[];
+  confidence: number;
+  handed_off: boolean;
+  resolved_without_staff: boolean;
+  template_generated: boolean;
+  complaint_id: string | null;
+}
+
+export interface PropertyFactView {
+  id: string;
+  topic: string;
+  text: string;
+  version: number;
+  updated_at: string;
+}
+
+export interface ConciergeMetrics {
+  total_queries: number;
+  resolved_without_staff: number;
+  handed_off: number;
+  resolved_without_staff_rate: number;
+}
+
 export const api = {
   health: () => request<HealthResponse>("/health"),
   // Destination Lens
@@ -517,4 +768,95 @@ export const api = {
     request<GapFinderResponse>("/market-radar/analytics/gap-finder"),
   benchmark: () =>
     request<BenchmarkResponse>("/market-radar/analytics/benchmark"),
+
+  // ---- Minimal features (FEAT-005) ----
+  drilldown: (q: DrilldownQuery) => {
+    const params = new URLSearchParams();
+    params.set("metric", q.metric);
+    params.set("kind", q.kind ?? "count");
+    params.set("clicked_value", String(q.clicked_value));
+    if (q.property_id) params.set("property_id", q.property_id);
+    if (q.aspect) params.set("aspect", q.aspect);
+    if (q.label) params.set("label", q.label);
+    if (q.start) params.set("start", q.start);
+    if (q.end) params.set("end", q.end);
+    if (q.period) params.set("period", q.period);
+    if (q.granularity) params.set("granularity", q.granularity);
+    (q.platform ?? []).forEach((p) => params.append("platform", p));
+    return request<DrilldownResponse>(`/minimal/drilldown?${params.toString()}`);
+  },
+  impact: () => request<{ results: ImpactResult[] }>("/minimal/impact"),
+  logIntervention: (body: {
+    property_id: string;
+    aspect: string;
+    description: string;
+    date: string;
+  }) =>
+    request<{ intervention: unknown; impact: ImpactResult }>(
+      "/minimal/interventions",
+      { method: "POST", body: JSON.stringify(body) },
+    ),
+  forecast: (aspect?: string) =>
+    request<ForecastResponse>(
+      `/minimal/forecast${aspect ? `?aspect=${encodeURIComponent(aspect)}` : ""}`,
+    ),
+  authenticity: () => request<AuthenticityResponse>("/minimal/authenticity"),
+  draftReply: (body: {
+    review_id: string;
+    property_id: string;
+    text: string;
+    detected_language: string;
+    negative_aspects: string[];
+  }) =>
+    request<{ reply: ReplyDraft }>("/minimal/replies/draft", {
+      method: "POST",
+      body: JSON.stringify(body),
+    }),
+  approveReply: (replyId: string, approver: string, edited_body?: string) =>
+    request<{ reply: ReplyDraft }>(
+      `/minimal/replies/${encodeURIComponent(replyId)}/approve`,
+      { method: "POST", body: JSON.stringify({ approver, edited_body }) },
+    ),
+  briefing: (owners: string[]) =>
+    request<{ briefing: BriefingResponse }>("/minimal/briefing", {
+      method: "POST",
+      body: JSON.stringify({ opted_in_owners: owners }),
+    }),
+
+  // ---- Guest Compass ----
+  guestCompassStays: () =>
+    request<{ stays: GuestCompassStay[] }>("/guest-compass/stays"),
+  guestRecommendations: (stayId: string) =>
+    request<Recommendations>(
+      `/guest-compass/recommendations/${encodeURIComponent(stayId)}`,
+    ),
+  guestOutcome: (
+    stayId: string,
+    body: { item_id: string; accepted: boolean; revenue_inr: number },
+  ) =>
+    request<{
+      outcome: { stay_id: string; item_id: string; accepted: boolean; revenue_inr: number };
+      recommendations: Recommendations;
+      metrics: GuestCompassMetrics;
+    }>(`/guest-compass/stays/${encodeURIComponent(stayId)}/outcome`, {
+      method: "POST",
+      body: JSON.stringify(body),
+    }),
+  guestCompassMetrics: () =>
+    request<GuestCompassMetrics>("/guest-compass/metrics"),
+
+  // ---- Bhasha Concierge ----
+  conciergeMessage: (message: string, stay_id?: string) =>
+    request<{ result: ConciergeResult }>("/concierge/message", {
+      method: "POST",
+      body: JSON.stringify({ message, stay_id }),
+    }),
+  conciergeFacts: () =>
+    request<{ facts: PropertyFactView[] }>("/concierge/facts"),
+  updateFact: (factId: string, text: string) =>
+    request<{ fact: PropertyFactView }>(
+      `/concierge/facts/${encodeURIComponent(factId)}`,
+      { method: "POST", body: JSON.stringify({ text }) },
+    ),
+  conciergeMetrics: () => request<ConciergeMetrics>("/concierge/metrics"),
 };

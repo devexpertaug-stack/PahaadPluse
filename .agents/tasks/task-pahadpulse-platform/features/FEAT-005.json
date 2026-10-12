@@ -2,7 +2,7 @@
   "id": "FEAT-005",
   "type": "feat",
   "description": "Minimal differentiating features and the two Minimal subsystems: F7 Owner's weekly Hindi voice briefing (Req 22), F9 Fake-review-adjusted benchmarks (Req 23), F10 Proof of Impact (Req 24), F11 Complaint forecasting (Req 25), F13 Closed-loop review replies (Req 26), F14 Every-number-is-clickable Drilldown (Req 27), Guest Compass contextual-bandit recommender (Req 28), and Bhasha Concierge multilingual grounded assistant (Req 29). These are thin but must work end-to-end on the website.",
-  "status": "pending",
+  "status": "in_progress",
   "steps": [
     "F14 Drilldown (Req 27) in app/services/common/drilldown.py + a reusable frontend <Drilldown> component: every displayed count/share/score/chart point links to the source Review_Records or Complaints behind it; the drilldown highlights each relevant Aspect_Mention evidence span; for count metrics the number of listed source records equals the clicked count (invariant, tested); each listed Review_Record shows its source URL (or 'source URL unavailable'). Build this early in the feature so other Minimal views reuse it, and retrofit existing Market Radar / Sentinel numbers to be clickable.",
     "F10 Proof of Impact (Req 24) in app/services/market_radar/impact.py + website: a manager logs an Intervention (date, Aspect, description, Home_Property); once >=30 days of post-Intervention reviews exist, estimate a difference-in-differences effect on the Aspect score using the other Cluster Properties as control, with a 90% CI; the website shows pre/post trends for the Home_Property vs control plus the estimated effect; a parallel-trends warning when pre-period trends differ significantly (p<0.05).",

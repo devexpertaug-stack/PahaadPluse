@@ -5,6 +5,8 @@
  * defaults to the local API port.
  */
 
+import { getToken, type SessionUser } from "@/lib/auth";
+
 export const API_BASE_URL =
   process.env.NEXT_PUBLIC_API_BASE_URL ?? "http://127.0.0.1:8000";
 
@@ -15,14 +17,27 @@ export interface HealthResponse {
 }
 
 async function request<T>(path: string, init?: RequestInit): Promise<T> {
+  const token = getToken();
+  const authHeader: Record<string, string> = token
+    ? { Authorization: `Bearer ${token}` }
+    : {};
   const res = await fetch(`${API_BASE_URL}${path}`, {
-    headers: { "Content-Type": "application/json", ...(init?.headers ?? {}) },
+    headers: {
+      "Content-Type": "application/json",
+      ...authHeader,
+      ...(init?.headers ?? {}),
+    },
     ...init,
   });
   if (!res.ok) {
     throw new Error(`API ${path} failed with ${res.status}`);
   }
   return (await res.json()) as T;
+}
+
+export interface LoginResponse {
+  token: string;
+  user: SessionUser;
 }
 
 export interface PropertyCounts {
@@ -667,6 +682,13 @@ export interface ConciergeMetrics {
 
 export const api = {
   health: () => request<HealthResponse>("/health"),
+  // ---- Auth (FEAT-002) ----
+  login: (username: string, password: string) =>
+    request<LoginResponse>("/auth/login", {
+      method: "POST",
+      body: JSON.stringify({ username, password }),
+    }),
+  me: () => request<SessionUser>("/auth/me"),
   // Destination Lens
   heatmap: (params?: { theme?: string; start?: string; end?: string }) => {
     const q = new URLSearchParams();

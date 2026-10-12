@@ -32,6 +32,7 @@ from __future__ import annotations
 # imports make the schema step correct the moment an ORM model is added.
 from app import models  # noqa: F401
 from app.core.db import Base, engine
+from app.services.auth.service import get_auth_service
 from app.services.concierge.service import get_concierge
 from app.services.destination_lens.service import get_destination_lens_service
 from app.services.guest_compass.service import get_guest_compass
@@ -68,6 +69,8 @@ def warm_services() -> None:
     get_sentinel_service()
     get_guest_compass()
     get_concierge()
+    # Seed the demo auth accounts (owner/manager for The Forest Season Resort).
+    get_auth_service()
 
 
 async def seed_all() -> None:

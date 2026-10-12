@@ -6,6 +6,7 @@ Each router is registered on the FastAPI app.
 from __future__ import annotations
 
 from app.api.routers.analytics import router as analytics_router
+from app.api.routers.auth import router as auth_router
 from app.api.routers.collection import router as collection_router
 from app.api.routers.concierge import router as concierge_router
 from app.api.routers.destination import router as destination_router
@@ -15,6 +16,7 @@ from app.api.routers.reviews import router as market_radar_router
 from app.api.routers.sentinel import router as sentinel_router
 
 ALL_ROUTERS = [
+    auth_router,
     market_radar_router,
     collection_router,
     analytics_router,
@@ -26,6 +28,7 @@ ALL_ROUTERS = [
 ]
 
 __all__ = [
+    "auth_router",
     "market_radar_router",
     "collection_router",
     "analytics_router",

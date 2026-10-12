@@ -75,6 +75,28 @@ To seed the backend independently (e.g. before running the API by hand):
 cd backend && uv run python -m app.seed
 ```
 
+## Signing in (demo credentials)
+
+The dashboard is gated behind a demo login (`/login`). The seed step creates an
+**owner/manager account for The Forest Season Resort** (`mus-forestseason`) with
+known, documented credentials. Passwords are stored only as argon2 hashes; the
+login endpoint returns a signed session token (HMAC keyed on `SESSION_SECRET`)
+that expires after ~12 hours.
+
+| Role    | Username                       | Password            |
+| ------- | ------------------------------ | ------------------- |
+| Owner   | `owner@forestseason.demo`      | `ForestSeason@2024` |
+| Manager | `manager@forestseason.demo`    | `Mussoorie@2024`    |
+
+Sign in at `http://localhost:3000/login` (the login page also shows a one-click
+"demo credentials" hint). The header then shows the logged-in user and the
+property scope (The Forest Season Resort), with a **Log out** action. Repeated
+failed logins trigger a basic account lockout.
+
+The auth API: `POST /auth/login` → `{ token, user }`; `GET /auth/me` →
+the current resort-scoped user (send `Authorization: Bearer <token>`). Only
+`GET /health` and the WhatsApp webhook stay public (Req 30.1).
+
 ## Architecture (text diagram)
 
 ```

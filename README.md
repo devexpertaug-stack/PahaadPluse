@@ -17,6 +17,43 @@ green/white + forest + hill-town design system.
 > set — surfaced on the `/market-radar` pages. Other subsystems remain themed
 > placeholders that later features fill in.
 
+## The demo in one line
+
+**[The Forest Season Resort](#the-forest-season-resort-demo-home-property)** —
+a Mussoorie resort set in the deodar forest — is the demo's **home property**.
+It carries ~18 months of multilingual, multi-platform reviews so every analytics
+page has real depth. To run the full populated, login-capable stack:
+
+```bash
+make setup   # one-time: backend uv sync + frontend npm install
+make demo    # seeds the resort data + demo users, then starts both servers
+```
+
+Then open **http://localhost:3000**, go to `/login`, and sign in with:
+
+| Role    | Username                    | Password            |
+| ------- | --------------------------- | ------------------- |
+| Owner   | `owner@forestseason.demo`   | `ForestSeason@2024` |
+| Manager | `manager@forestseason.demo` | `Mussoorie@2024`    |
+
+Everything runs **FREE with no third-party credentials**. See
+[Signing in](#signing-in-demo-credentials), the
+[honesty note](#is-this-real-scraped-data-honesty-note), and
+[Getting a live URL (free)](#getting-a-live-url-free) below.
+
+## The Forest Season Resort (demo home property)
+
+The cluster's **home property is The Forest Season Resort** (`mus-forestseason`),
+a Mussoorie resort in the deodar forest. It is the account you log in as and the
+property every dashboard centres on. Its ~18-month, five-platform
+(Google / MakeMyTrip / Booking.com / TripAdvisor / Agoda) review history is run
+through the real ingestion pipeline so the Deep analytics — time-series
+decomposition, Bayesian changepoint detection, Time Machine, Playbook,
+gap-finder, Checkout Shield risk scoring — all have genuine depth. Six
+surrounding Mussoorie properties act as competitors to give cluster context. The
+dataset itself is **synthetic/representative** (see the honesty note); it is run
+through the identical pipeline that real collected reviews would use.
+
 ## Market Radar data layer (FEAT-002)
 
 The canonical review pipeline lives in `backend/app/services/market_radar/`:
@@ -96,6 +133,128 @@ failed logins trigger a basic account lockout.
 The auth API: `POST /auth/login` → `{ token, user }`; `GET /auth/me` →
 the current resort-scoped user (send `Authorization: Bearer <token>`). Only
 `GET /health` and the WhatsApp webhook stay public (Req 30.1).
+
+The `/login` screen is a full-bleed branded page: a vibrant alpine gradient with
+layered mountain/forest silhouettes, built entirely from the theme and inline
+SVG so it stays free and self-contained (no external or copyrighted image). To
+use your own photo instead, drop it into `frontend/public/` (e.g.
+`login-bg.jpg`) and set a single `backgroundImage` on the root `<div>` of
+`frontend/app/login/page.tsx` (e.g. `style={{ backgroundImage:
+"url(/login-bg.jpg)" }}`); the gradient overlay is kept semi-transparent so it
+still reads well over a photo.
+
+## Is this real scraped data? (honesty note)
+
+**No — and deliberately so.** The review corpus is a **synthetic, representative
+dataset**, not a verbatim scrape of any platform. It is written to mirror the
+structure, length, rating distribution and language mix (English / Devanagari /
+Hinglish) of genuine public Mussoorie reviews, and it is run through the
+**real** ingestion/collection pipeline exactly as live-collected reviews would
+be:
+
+```
+Review_Collector → Review_Parser (parse) → language/transliteration
+→ aspect-level sentiment → Aspect_Normalizer (normalise)
+→ market model → Bayesian changepoints
+```
+
+The Forest Season Resort's reviews are produced by a deterministic, seeded
+generator (`backend/app/seed/forest_season_reviews.py`), then fed through the
+identical `ReviewParser` + enrichment path; the same JSON can be POSTed to
+`POST /market-radar/collection/upload` to exercise the live Review_Collector end
+to end.
+
+**Genuine live scraping of Google, MakeMyTrip, Booking.com, TripAdvisor and
+Agoda is NOT performed.** Doing so requires each platform's **official API or
+written permission** and must respect each site's **robots.txt and terms of
+service** — there is no free, credential-less path that honours those terms. The
+scrape-mode mechanism is kept for authenticity in
+`backend/app/services/market_radar/responsible.py`: it fetches and caches
+robots.txt (24h), skips disallowed URLs, rate-limits to ≤1 request / 5s per
+domain, disables a domain on server errors, and sends an identified
+`PahadPulse/<version> (+mailto:<contact>)` user-agent. Reviewer identities are
+never stored — only a salted-HMAC `author_pseudonym`.
+
+Everything in this demo therefore runs **FREE, offline, with no third-party
+credentials**. Full provenance, counts and pseudonymisation details are in
+[`data/datasheet.md`](./data/datasheet.md).
+
+## Getting a live URL (free)
+
+You asked for a public live URL. This project is **deploy-ready** and there are
+several **zero-cost** ways to get one. **No paid AWS or other cloud resources
+are provisioned by this project** — there is no infra-as-code that spins up paid
+services. A real managed cloud deployment (including anything on your AWS
+credits) is a **separate, explicitly-confirmed step** and is intentionally not
+done automatically.
+
+> The app reads two configurable values: the frontend calls the API via
+> **`NEXT_PUBLIC_API_BASE_URL`** (default `http://127.0.0.1:8000`, see
+> [`frontend/.env.example`](./frontend/.env.example)); the backend allows the
+> browser origin via **`FRONTEND_ORIGIN`** (CORS, see
+> [`.env.example`](./.env.example)). Point these at each other and the deployed
+> frontend and backend talk cleanly.
+
+### Option A — GitHub Codespaces (fastest free public URL)
+
+1. Push this repo to GitHub, then **Code → Codespaces → Create codespace**. The
+   included [`.devcontainer/devcontainer.json`](./.devcontainer/devcontainer.json)
+   installs Python 3.11, Node 22 and `uv` and runs `make setup` automatically.
+2. In the Codespace terminal, run `make demo`.
+3. Open the **Ports** panel, find port **3000**, and set its **Visibility to
+   Public** — Codespaces gives you an instant `https://…-3000.app.github.dev`
+   URL you can share for the demo. (Port 8000 is forwarded too; the frontend in
+   the Codespace reaches the API over `localhost`, so you usually only make 3000
+   public.)
+
+Codespaces includes a monthly free usage allowance; stop the codespace when
+you are done. **Free, nothing provisioned in your cloud account.**
+
+### Option B — Vercel (frontend) + a free-tier backend
+
+Deploy the two halves on free tiers and wire them with the env vars above:
+
+1. **Backend** on a free tier (Render / Railway / Fly.io free plan):
+   - Start command (example): `cd backend && uv run uvicorn app.main:app --host 0.0.0.0 --port $PORT`
+   - Set **`FRONTEND_ORIGIN`** to your Vercel URL, e.g.
+     `https://pahadpulse.vercel.app` (this is the CORS allow-list).
+   - Set a strong **`SESSION_SECRET`** (and `PSEUDONYM_SALT`, `PII_ENCRYPTION_KEY`).
+   - Note the public API URL it gives you, e.g. `https://pahadpulse-api.onrender.com`.
+2. **Frontend** on **Vercel free tier** (root directory `frontend/`):
+   - Set **`NEXT_PUBLIC_API_BASE_URL`** to the backend URL from step 1.
+   - Deploy — Vercel gives you the public `https://…vercel.app` URL.
+3. Open the Vercel URL, go to `/login`, and sign in with the demo credentials.
+
+Free tiers only; **no paid AWS/cloud resources** are required or provisioned.
+
+### Option C — Free tunnel over local `make demo`
+
+For a quick temporary public URL from your own machine while `make demo` runs:
+
+```bash
+make demo                              # terminal 1: local stack on :3000 / :8000
+cloudflared tunnel --url http://localhost:3000   # terminal 2 (or: ngrok http 3000)
+```
+
+The tunnel prints a public `https://…` URL. Cloudflare Quick Tunnels and
+ngrok's free tier are both **free**. For login to work through the tunnel, the
+browser and the API must agree on origins: either run the API behind a second
+tunnel and set `NEXT_PUBLIC_API_BASE_URL` + `FRONTEND_ORIGIN` to the tunnel
+URLs, or prefer Option A/B which handle this cleanly.
+
+> **Note on this sandbox.** The build/CI sandbox cannot itself open a public
+> listener (a dev-server guard blocks live `uvicorn`/`next dev`), so the live
+> URL is produced by **you** running one of the free options above from your own
+> machine or Codespace. The code paths are verified in-process here (seed +
+> `TestClient`); the servers run normally on a real machine via `make demo`.
+
+### Optional — local containers (free, provisions nothing)
+
+If you prefer containers for a Codespace or local run, you can containerise the
+two apps for **local/Codespaces use only** (nothing is provisioned in any
+cloud). This repo ships the devcontainer above rather than a Dockerfile to keep
+`make demo` the single, simplest entry point; add a `Dockerfile`/`compose.yml`
+yourself only if your target host needs it.
 
 ## Architecture (text diagram)
 

@@ -2,7 +2,7 @@
   "id": "FEAT-001",
   "type": "chore",
   "description": "Project scaffolding and green baseline for the whole platform: a FastAPI backend skeleton (Python 3.11, uv, SQLite), a Next.js (App Router, TypeScript, Tailwind) web dashboard skeleton with the cohesive green/white + forest + Mussoorie/Uttarakhand hill-town design system, shared tooling, the external-service adapter interfaces with working local/fallback implementations, and a single root demo command that launches BOTH the API and the website. The ENTIRE product is a website: every subsystem added in later features is a page/route in this one Next.js app, served through the API. This feature establishes the skeleton that compiles, lints, and tests green with no features yet.",
-  "status": "in_progress",
+  "status": "completed",
   "steps": [
     "Create repo root files: README.md (project overview, architecture diagram-in-text, Deep vs Minimal feature map, and the SINGLE documented demo command per Req 34.1), CONTRIBUTING.md, .gitignore (python + node + .env + sqlite db), .env.example documenting ALL external config and feature flags (LLM_API_*, WHATSAPP_* provider+signing-secret, GEOCODER_*, SENTIMENT_MODEL_*, PII_ENCRYPTION_KEY, PSEUDONYM_SALT, SESSION_SECRET) per Req 32.2 — real values never committed.",
     "Create a root Makefile with targets: `setup` (backend uv sync + frontend npm install), `test`, `lint`, `build`, and `demo`. Create scripts/demo.sh invoked by `make demo` that (for now) just starts the API and the Next.js dev/prod server concurrently and prints the dashboard URL. Later features extend it to seed data and run the scripted scenario.",

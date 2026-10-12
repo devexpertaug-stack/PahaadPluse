@@ -8,6 +8,8 @@ registers the (currently empty) subsystem routers.
 from __future__ import annotations
 
 import json
+from collections.abc import AsyncIterator
+from contextlib import asynccontextmanager
 
 from fastapi import FastAPI, Request, Response, status
 from fastapi.middleware.cors import CORSMiddleware
@@ -16,7 +18,24 @@ from app import __version__
 from app.adapters.whatsapp import get_default_gateway
 from app.api.routers import ALL_ROUTERS
 from app.core.config import get_settings
+from app.seed.warm import seed_all
 from app.services.sentinel.service import get_sentinel_service, record_bad_signature
+
+
+@asynccontextmanager
+async def lifespan(_app: FastAPI) -> AsyncIterator[None]:
+    """Initialise the DB schema and warm the seeded services on startup.
+
+    On a fresh clone nothing has created ``backend/data`` or the SQLite schema,
+    and the in-memory services only seed on first request — so without this a
+    cold start can look empty/broken. :func:`app.seed.warm.seed_all` ensures the
+    schema exists (``Base.metadata.create_all``, without raising on an empty or
+    absent DB) and eagerly warms every process-wide service, so data is present
+    immediately and any seeding error surfaces at startup rather than on the
+    first browser request. It is idempotent, so repeated startups are safe.
+    """
+    await seed_all()
+    yield
 
 
 def create_app() -> FastAPI:
@@ -26,6 +45,7 @@ def create_app() -> FastAPI:
         title="PahadPulse API",
         version=__version__,
         description="Hospitality guest-intelligence platform for Uttarakhand hill towns.",
+        lifespan=lifespan,
     )
 
     app.add_middleware(

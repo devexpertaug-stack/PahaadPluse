@@ -29,6 +29,17 @@ echo "=============================================="
 echo " PahadPulse demo"
 echo "=============================================="
 
+# --- Seed / DB init (Req 34.1) ---
+# A fresh clone has no backend/data dir or SQLite schema, and the in-memory
+# services only seed on first request. Seed explicitly BEFORE the servers start
+# so the single demo command always yields a populated, working dashboard. The
+# seed step is idempotent (safe to re-run) so it does not break `set -e`.
+echo "Seeding demo data and initialising the database..."
+(
+  cd "$BACKEND_DIR"
+  uv run python -m app.seed
+)
+
 # --- Backend API ---
 echo "Starting FastAPI backend on http://$API_HOST:$API_PORT ..."
 (

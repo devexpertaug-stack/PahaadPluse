@@ -50,12 +50,30 @@ uv run python scripts/build_hinglish_test_set.py  # Hinglish evaluation set + ka
 
 ```bash
 make setup   # one-time: backend uv sync + frontend npm install
-make demo    # starts the API and the website, prints the dashboard URL
+make demo    # seeds demo data, then starts the API and the website
 ```
 
-`make demo` launches the FastAPI backend and the Next.js website concurrently
-and prints the dashboard URL (http://localhost:3000). Later features extend the
-demo script to seed the sample dataset and run the scripted scenario (Req 34.2).
+`make demo` now **seeds and initialises the backend before launching the
+servers**, so a fresh clone yields a populated, working dashboard end to end:
+
+1. It runs the explicit seed step (`cd backend && uv run python -m app.seed`),
+   which ensures `backend/data/` exists, creates the database schema, and warms
+   every in-memory service so the sample dataset is loaded eagerly. The step is
+   idempotent — safe to run repeatedly.
+2. It then launches the FastAPI backend and the Next.js website concurrently,
+   wiring `NEXT_PUBLIC_API_BASE_URL` and CORS so the browser can reach the API,
+   and prints the dashboard URL (http://localhost:3000).
+
+The backend also runs this same seed on startup via a FastAPI lifespan hook, so
+the services are warm the moment the API accepts requests (and any seeding error
+surfaces at startup rather than on the first browser request) regardless of how
+uvicorn is launched.
+
+To seed the backend independently (e.g. before running the API by hand):
+
+```bash
+cd backend && uv run python -m app.seed
+```
 
 ## Architecture (text diagram)
 

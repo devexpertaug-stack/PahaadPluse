@@ -1,0 +1,25 @@
+{
+  "id": "FEAT-001",
+  "type": "chore",
+  "description": "Confirm the baseline is green before making changes. Install/verify dependencies and run all four quality gates for both the frontend and backend so later features start from a known-good state. No source changes in this feature.",
+  "status": "completed",
+  "steps": [
+    "From the repo root /projects/sandbox/PahaadPluse, confirm git is on branch main with a clean tree (`git status`).",
+    "Frontend: `cd frontend && npm install` (deps likely already present), then run `npm run lint` (expect no errors), `npx vitest run` (expect 14 passed across 4 files), and `npm run build` (expect ~21 routes build clean).",
+    "Backend: `cd backend && uv run ruff check .` (expect clean) and `uv run pytest` (expect 232 passed).",
+    "Reproduce the backend run path in-process (the live uvicorn/next dev servers are blocked by the sandbox dev-server guard): run a `uv run python - <<'PY' ... PY` heredoc that builds `fastapi.testclient.TestClient(app)` from `app.main` and GETs /health, /market-radar/review-counts, /sentinel/board, /destination/heatmap, /guest-compass/stays, /market-radar/analytics/trends. Record each status code and response length in findings.",
+    "Record the baseline results (test counts, route count, which endpoints returned data) in this feature's findings field."
+  ],
+  "acceptance_criteria": [
+    "`npm run lint`, `npx vitest run`, and `npm run build` all succeed in frontend/.",
+    "`uv run ruff check .` and `uv run pytest` all succeed in backend/.",
+    "The in-process TestClient run shows the listed endpoints return HTTP 200 with non-empty bodies; this is documented in findings."
+  ],
+  "verification": [
+    "cd frontend && npm run lint && npx vitest run && npm run build",
+    "cd backend && uv run ruff check . && uv run pytest",
+    "In-process TestClient heredoc prints 200 + data for the listed endpoints"
+  ],
+  "blocked_reason": null,
+  "findings": "Baseline confirmed GREEN on branch main (clean tree; only untracked item is the .agents/tasks/task-pahadpulse-refresh/ task-state folder). No source changes made in this feature.\n\nFRONTEND (frontend/):\n- npm install: up to date, 610 packages audited (18 npm-audit vulns reported but pre-existing, not addressed per no-source-change rule).\n- npm run lint: PASS — 'No ESLint warnings or errors'.\n- npx vitest run: PASS — 14 tests passed across 4 files (components/ui/StatTile.test.tsx [2], components/market-radar/ReviewCountsTable.test.tsx [3], app/(dashboard)/sentinel-destination-pages.test.tsx [3], app/(dashboard)/deep-pages.test.tsx [6]).\n- npm run build: PASS — Next.js 14.2.33, compiled successfully, 21 static route entries generated. Routes: / , /_not-found, /authenticity, /benchmark, /briefing, /checkout-shield, /complaints, /concierge, /destination, /forecast, /gap-finder, /guest-compass, /market-radar, /market-radar/unmapped-categories, /playbook, /proof-of-impact, /review-replies, /time-machine, /what-if (all prerendered static).\n\nBACKEND (backend/):\n- uv run ruff check .: PASS — 'All checks passed!'.\n- uv run pytest: PASS — 232 passed, 1 warning (StarletteDeprecationWarning about httpx/testclient — benign) in ~30s.\n\nIN-PROCESS RUN PATH (TestClient(app) from app.main via uv run python heredoc; live uvicorn/next dev not launched due to sandbox dev-server guard). All endpoints returned HTTP 200 with non-empty bodies:\n- /health                              status=200 len=56\n- /market-radar/review-counts          status=200 len=1160\n- /sentinel/board                      status=200 len=2196\n- /destination/heatmap                 status=200 len=1182\n- /guest-compass/stays                 status=200 len=493\n- /market-radar/analytics/trends       status=200 len=13533\n\nConclusion: all four quality gates (FE lint+vitest+build, BE ruff+pytest) are green and the in-process endpoints already serve data from in-memory services. This matches the expected baseline (FE lint clean, 14 vitest / 4 files, ~21 routes; BE ruff clean, 232 pytest). Confirms the backend logic is sound — the user-reported 'backend doesn't work' is a run-path/seed issue to be addressed in a later feature, not a logic bug. Later features (FE visual overhaul, BE startup lifespan/seed) start from this known-good state."
+}

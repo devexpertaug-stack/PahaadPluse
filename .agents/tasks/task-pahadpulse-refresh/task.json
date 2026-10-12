@@ -1,0 +1,7 @@
+{
+  "task_id": "task-pahadpulse-refresh",
+  "task_description": "Follow-up on the already-built PahadPulse platform (branch main). Two goals from the user: (1) FRONTEND VISUAL OVERHAUL — the UI looks lame/dull; redesign the design system to a vibrant, lively, professional multi-hue MOUNTAIN palette with a real typography pairing (next/font) and more life/polish, replacing the dull forest green while keeping the Uttarakhand/Mussoorie identity; centralise in the three theme files + shared primitives so all 18 pages inherit it. (2) BACKEND 'DOESN'T WORK' — the backend logic is actually fine (in-process endpoints return 200 with data, 232 tests pass); the real failure is the run path: no startup DB-init/seed and scripts/demo.sh never seeds, so a fresh clone can look empty/broken. Add a startup lifespan + eager seed and make `make demo` (Req 34.1 single command) yield a populated working stack; verify in-process with TestClient (live dev servers are blocked by the sandbox guard). Keep all four quality gates green (FE lint+vitest+build, BE ruff+pytest). Do NOT push or open PRs.",
+  "status": "in_progress",
+  "feature_order": ["FEAT-001", "FEAT-002", "FEAT-003"],
+  "blocked_reason": null
+}

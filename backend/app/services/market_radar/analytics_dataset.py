@@ -43,7 +43,7 @@ IST = ZoneInfo("Asia/Kolkata")
 
 # The Home_Property whose managers get changepoint notifications (Req 9.4) and
 # whose lagging aspects drive the Playbook (Req 12).
-HOME_PROPERTY_ID = "mus-pineview"
+HOME_PROPERTY_ID = "mus-forestseason"
 # A strong competitor used as the Cluster_Leader fallback in tests/fixtures.
 LEADER_PROPERTY_ID = "mus-cloudvalley"
 
@@ -205,6 +205,7 @@ def _base_positive_rate(property_id: str, aspect: Aspect) -> float:
 
     # Property personalities (property-specific effect).
     personality = {
+        "mus-forestseason": 0.08,  # the Home_Property (generally well-liked)
         "mus-pineview": 0.05,
         "mus-deodarresidency": 0.0,
         "mus-cloudvalley": 0.18,  # the leader

@@ -16,7 +16,7 @@ _TM = TimeMachine()
 
 def test_nearest_changepoint_within_30_days() -> None:
     cp = _TM.nearest_changepoint(
-        _RUN.changepoints, "mus-pineview", date(2024, 1, 15), Aspect.FOOD
+        _RUN.changepoints, "mus-forestseason", date(2024, 1, 15), Aspect.FOOD
     )
     assert cp is not None
     assert cp.date == "2024-01-01"
@@ -24,7 +24,7 @@ def test_nearest_changepoint_within_30_days() -> None:
 
 def test_no_changepoint_message_when_far() -> None:
     result = _TM.investigate(
-        _RUN.changepoints, "mus-pineview", date(2023, 1, 1), Aspect.FOOD
+        _RUN.changepoints, "mus-forestseason", date(2023, 1, 1), Aspect.FOOD
     )
     # Far from the injected 2024-01 decline.
     if result.changepoint is None:
@@ -33,7 +33,7 @@ def test_no_changepoint_message_when_far() -> None:
 
 def test_investigate_returns_causes_and_quotes() -> None:
     result = _TM.investigate(
-        _RUN.changepoints, "mus-pineview", date(2024, 1, 15), Aspect.FOOD
+        _RUN.changepoints, "mus-forestseason", date(2024, 1, 15), Aspect.FOOD
     )
     assert result.changepoint is not None
     assert len(result.causes) <= 3
@@ -46,7 +46,7 @@ def test_investigate_returns_causes_and_quotes() -> None:
 
 def test_scope_label_for_home_specific_decline() -> None:
     result = _TM.investigate(
-        _RUN.changepoints, "mus-pineview", date(2024, 1, 15), Aspect.FOOD
+        _RUN.changepoints, "mus-forestseason", date(2024, 1, 15), Aspect.FOOD
     )
     assert result.scope_label in {"property-specific", "market-wide", "undetermined"}
     assert result.scope_label == "property-specific"
@@ -54,14 +54,14 @@ def test_scope_label_for_home_specific_decline() -> None:
 
 def test_interventions_near_changepoint_listed() -> None:
     result = _TM.investigate(
-        _RUN.changepoints, "mus-pineview", date(2024, 1, 15), Aspect.FOOD
+        _RUN.changepoints, "mus-forestseason", date(2024, 1, 15), Aspect.FOOD
     )
     assert any(i.label for i in result.interventions)
 
 
 def test_failure_message_leaves_data_unchanged() -> None:
     result = _TM.investigate(
-        _RUN.changepoints, "mus-pineview", date(2024, 1, 15), Aspect.FOOD, force_failure=True
+        _RUN.changepoints, "mus-forestseason", date(2024, 1, 15), Aspect.FOOD, force_failure=True
     )
     assert result.failed is True
     assert result.causes == []

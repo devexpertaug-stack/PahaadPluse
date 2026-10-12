@@ -45,9 +45,9 @@ def _m(review_id, property_id, property_name, platform, d, text, url):
 # box. These describe DESTINATION issues (not property reviews) drawn from the
 # public reviews' language mix; author identity is a generic placeholder.
 _DESTINATION_SEED: list[dict] = [
-    _m("d-mall-1", "mus-pineview", "Pine View Inn", "Google", "2024-03-10",
+    _m("d-mall-1", "mus-forestseason", "The Forest Season Resort", "Google", "2024-03-10",
        "Terrible traffic jam near Mall Road every evening, took an hour to walk.",
-       "https://www.google.com/maps/place/pineview-mussoorie"),
+       "https://www.google.com/maps/place/forestseason-mussoorie"),
     _m("d-mall-2", "mus-deodarresidency", "Deodar Residency", "TripAdvisor", "2024-04-02",
        "Mall Road mein bahut garbage pada tha, gandagi bahut thi.",
        "https://www.tripadvisor.in/Hotel_Review-deodarresidency-mussoorie.html"),
@@ -66,9 +66,9 @@ _DESTINATION_SEED: list[dict] = [
     _m("d-kempty-2", "mus-camelsback", "Camel's Back Retreat", "Agoda", "2024-04-15",
        "Kempty Falls ke paas bahut kooda tha, water bhi ganda tha.",
        "https://www.agoda.com/camelsback-mussoorie/hotel/mussoorie-in.html"),
-    _m("d-kempty-3", "mus-pineview", "Pine View Inn", "TripAdvisor", "2024-05-20",
+    _m("d-kempty-3", "mus-forestseason", "The Forest Season Resort", "TripAdvisor", "2024-05-20",
        "केम्प्टी फॉल पर पार्किंग नहीं मिली और गंदगी बहुत थी।",
-       "https://www.tripadvisor.in/Hotel_Review-pineview-mussoorie.html"),
+       "https://www.tripadvisor.in/Hotel_Review-forestseason-mussoorie.html"),
     _m("d-gun-1", "mus-deodarresidency", "Deodar Residency", "Google", "2024-02-09",
        "Gun Hill ropeway queue was chaos, no parking and water shortage at the top.",
        "https://www.google.com/maps/place/deodarresidency-mussoorie"),
@@ -81,9 +81,9 @@ _DESTINATION_SEED: list[dict] = [
     _m("d-camel-2", "mus-himalayanook", "Himalayan Nook Homestay", "TripAdvisor", "2024-05-12",
        "कैमल बैक रोड पर पानी की सप्लाई की समस्या थी।",
        "https://www.tripadvisor.in/Hotel_Review-himalayanook-mussoorie.html"),
-    _m("d-landour-1", "mus-pineview", "Pine View Inn", "Booking.com", "2024-04-08",
+    _m("d-landour-1", "mus-forestseason", "The Forest Season Resort", "Booking.com", "2024-04-08",
        "Landour roads are narrow with bad traffic and no parking space at all.",
-       "https://www.booking.com/hotel/in/pineview-mussoorie.html"),
+       "https://www.booking.com/hotel/in/forestseason-mussoorie.html"),
 ]
 
 

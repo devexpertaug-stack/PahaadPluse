@@ -36,8 +36,8 @@ def pseudonymise_guest(identifier: str) -> str:
 
 
 # Reference property (matches the home property used across the platform).
-HOME_PROPERTY_ID = "mus-pineview"
-HOME_PROPERTY_NAME = "Pine View Inn"
+HOME_PROPERTY_ID = "mus-forestseason"
+HOME_PROPERTY_NAME = "The Forest Season Resort"
 
 
 # ---------------------------------------------------------------------------

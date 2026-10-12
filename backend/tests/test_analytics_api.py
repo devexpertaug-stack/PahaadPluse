@@ -28,7 +28,7 @@ def test_trends_invalid_range_422() -> None:
 def test_decomposition_endpoint() -> None:
     r = client.get("/market-radar/analytics/decomposition")
     assert r.status_code == 200
-    assert r.json()["cluster_size"] == 6
+    assert r.json()["cluster_size"] == 7
 
 
 def test_changepoints_endpoint() -> None:
@@ -54,7 +54,7 @@ def test_what_if_model_and_project() -> None:
 def test_time_machine_endpoint() -> None:
     r = client.get(
         "/market-radar/analytics/time-machine",
-        params={"property_id": "mus-pineview", "at": "2024-01-15", "aspect": "Food"},
+        params={"property_id": "mus-forestseason", "at": "2024-01-15", "aspect": "Food"},
     )
     assert r.status_code == 200
     assert r.json()["changepoint"]["date"] == "2024-01-01"

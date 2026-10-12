@@ -24,13 +24,13 @@ def test_fit_produces_cells_with_valid_intervals() -> None:
 
 
 def test_cluster_size_and_flags_present() -> None:
-    assert _FIT.cluster_size == 6
+    assert _FIT.cluster_size == 7
     assert _FIT.insufficient_cluster is False
 
 
 def test_insufficient_cluster_flagged_when_small() -> None:
     # Restrict observations to two properties -> cluster too small.
-    obs = tuple(o for o in _MODEL._obs if o.property_id in {"mus-pineview", "mus-cloudvalley"})
+    obs = tuple(o for o in _MODEL._obs if o.property_id in {"mus-forestseason", "mus-cloudvalley"})
     small = MarketModel(obs).fit_cluster(aspects=[Aspect.FOOD])
     assert small.cluster_size == 2
     assert small.insufficient_cluster is True

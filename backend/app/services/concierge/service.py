@@ -42,7 +42,7 @@ _TOPIC_KEYWORDS: dict[str, tuple[str, ...]] = {
     "fact-parking": ("parking", "car", "पार्किंग", "gaadi", "voiture", "stationnement"),
     "fact-mallroad": ("mall road", "mall", "माल", "market", "bazaar", "walk", "distance"),
     "fact-spa": ("spa", "massage", "स्पा", "therapy", "ayurveda"),
-    "fact-pool": ("pool", "swim", "पूल", "jacuzzi", "piscine", "nager"),
+    "fact-pets": ("pet", "pets", "dog", "cat", "पालतू", "kutta", "animal"),
 }
 
 # Complaint-indicating keywords across the supported languages (Req 29.4).
@@ -135,24 +135,31 @@ def _default_facts() -> dict[str, PropertyFact]:
     now = datetime.now(UTC)
     specs = [
         ("fact-breakfast", "breakfast",
-         "Breakfast is served from 7:30am to 10:30am in the valley-view dining hall."),
+         "Breakfast at The Forest Season Resort is served from 7:30am to 10:30am "
+         "in the deodar forest-view dining hall, with local Garhwali specialities."),
         ("fact-checkout", "checkout",
-         "Check-out time is 11:00am; late check-out until 1:00pm is subject to availability."),
+         "Check-out time is 11:00am; late check-out until 1:00pm is subject to "
+         "availability. Check-in is from 1:00pm."),
         ("fact-wifi", "wifi",
-         "Complimentary high-speed wifi is available in all rooms; the password "
-         "is on the welcome card."),
+         "Complimentary high-speed wifi reaches every room and the lobby; the "
+         "password is printed on your welcome card at check-in."),
         ("fact-parking", "parking",
-         "Free on-site parking is available for in-house guests near the main gate."),
+         "Free on-site parking is available for in-house guests inside the resort "
+         "gate, with valet assistance on request."),
         ("fact-mallroad", "location",
-         "Mall Road is a 7-minute walk from the property."),
+         "The resort sits in the deodar forest, a 10-minute drive (or 15-minute "
+         "walk) from Mall Road, Mussoorie."),
         ("fact-spa", "spa",
-         "The Ayurvedic spa is open from 10:00am to 8:00pm; booking is recommended."),
-        ("fact-pool", "pool",
-         "There is no swimming pool; a heated indoor jacuzzi is available in winter."),
+         "The forest-side Ayurvedic spa is open from 10:00am to 8:00pm; booking "
+         "a treatment in advance is recommended."),
+        ("fact-pets", "pets",
+         "The Forest Season Resort is pet-friendly: well-behaved pets are welcome "
+         "in garden-view rooms for a small cleaning fee, by prior arrangement."),
     ]
     return {
         fid: PropertyFact(
-            id=fid, property_id="mus-pineview", topic=topic, text=text, version=1, updated_at=now
+            id=fid, property_id="mus-forestseason", topic=topic, text=text, version=1,
+            updated_at=now,
         )
         for fid, topic, text in specs
     }
@@ -182,7 +189,7 @@ class BhashaConcierge:
         version = (existing.version + 1) if existing else 1
         updated = PropertyFact(
             id=fact_id,
-            property_id=existing.property_id if existing else "mus-pineview",
+            property_id=existing.property_id if existing else "mus-forestseason",
             topic=existing.topic if existing else fact_id,
             text=text,
             version=version,

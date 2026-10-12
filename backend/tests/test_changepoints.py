@@ -23,7 +23,7 @@ def test_detects_injected_home_food_decline() -> None:
     hits = [
         c
         for c in _RUN.changepoints
-        if c.property_id == "mus-pineview"
+        if c.property_id == "mus-forestseason"
         and c.aspect == Aspect.FOOD
         and c.direction == "decline"
     ]
@@ -34,7 +34,7 @@ def test_detects_injected_home_food_decline() -> None:
 def test_decline_notification_has_time_machine_link() -> None:
     notifs = [n for n in _RUN.notifications if n.aspect == "Food"]
     assert notifs
-    assert notifs[0].time_machine_link.startswith("/time-machine?property=mus-pineview")
+    assert notifs[0].time_machine_link.startswith("/time-machine?property=mus-forestseason")
 
 
 def test_posteriors_bounded_and_spike_on_shift() -> None:

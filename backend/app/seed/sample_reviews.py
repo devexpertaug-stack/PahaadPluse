@@ -1,9 +1,15 @@
 """Canonical sample Mussoorie review dataset (Req 2.8).
 
 This module is the single source of truth for the checked-in sample dataset. It
-describes a Cluster of six Mussoorie Properties with reviews across all five
-platforms (Google, MakeMyTrip, Booking.com, TripAdvisor, Agoda) and a mix of
-English, Devanagari-Hindi and romanised-Hindi (Hinglish) text.
+describes a Cluster of Mussoorie (Uttarakhand) Properties with reviews across
+all five platforms (Google, MakeMyTrip, Booking.com, TripAdvisor, Agoda) and a
+mix of English, Devanagari-Hindi and romanised-Hindi (Hinglish) text.
+
+The cluster's Home_Property is **The Forest Season Resort**
+(``mus-forestseason``). Its deep, ~18-month multi-platform review set is
+*generated* deterministically in :mod:`app.seed.forest_season_reviews` and
+spliced in here, while the six competitor properties keep their compact
+hand-authored reviews.
 
 Honesty note (per the datasheet): this environment cannot crawl the live review
 platforms, so the records below are a *representative, hand-authored* dataset
@@ -29,7 +35,7 @@ from app.services.market_radar.pipeline import enrich
 from app.services.market_radar.responsible import pseudonymise_reviewer
 
 CLUSTER_NAME = "Mussoorie Mall Road Cluster"
-COLLECTION_DATE_RANGE = ("2023-09-01", "2024-06-30")
+COLLECTION_DATE_RANGE = ("2023-01-10", "2024-06-30")
 
 
 @dataclass(frozen=True)
@@ -41,6 +47,8 @@ class PropertySpec:
 
 
 PROPERTIES: list[PropertySpec] = [
+    # Home_Property of the cluster (Mussoorie, Uttarakhand).
+    PropertySpec("mus-forestseason", "The Forest Season Resort"),
     PropertySpec("mus-pineview", "Pine View Inn"),
     PropertySpec("mus-deodarresidency", "Deodar Residency"),
     PropertySpec("mus-cloudvalley", "Cloud Valley Resort"),
@@ -159,11 +167,23 @@ def _source_url(platform: Platform, property_id: str, has_url: bool) -> str | No
     return _URL_PATTERN[platform].format(slug=_slug(property_id))
 
 
+def _all_seed_reviews() -> list[RawSeedReview]:
+    """The full seed: generated Home_Property reviews + competitor reviews.
+
+    The Forest Season Resort's deep, deterministic ~18-month multi-platform set
+    is generated in :mod:`app.seed.forest_season_reviews`; the competitor
+    properties keep their compact hand-authored reviews in ``_SEED``.
+    """
+    from app.seed.forest_season_reviews import generate_forest_season_seed
+
+    return [*generate_forest_season_seed(), *_SEED]
+
+
 def build_raw_records() -> list[dict]:
     """Build pseudonymised raw review dicts (pre-parse) from the seed."""
     prop_names = {p.property_id: p.name for p in PROPERTIES}
     out: list[dict] = []
-    for seed in _SEED:
+    for seed in _all_seed_reviews():
         out.append(
             {
                 "id": f"{seed.platform.value}:{seed.platform_review_id}",

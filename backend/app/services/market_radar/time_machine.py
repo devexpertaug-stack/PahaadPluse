@@ -149,8 +149,8 @@ class TimeMachineResult:
 
 # A small, checked-in log of operational interventions used for the demo.
 _INTERVENTIONS: list[Intervention] = [
-    Intervention("2024-01-05", "New kitchen contractor onboarded", "mus-pineview"),
-    Intervention("2023-12-20", "Head chef resigned", "mus-pineview"),
+    Intervention("2024-01-05", "New kitchen contractor onboarded", "mus-forestseason"),
+    Intervention("2023-12-20", "Head chef resigned", "mus-forestseason"),
     Intervention("2024-02-10", "Staff training refresh", "mus-deodarresidency"),
 ]
 

@@ -46,6 +46,6 @@ def test_flagged_reviews_carry_source_url() -> None:
 def test_campaign_boost_drops_after_adjustment() -> None:
     av = AuthenticityFilter().adjusted_view()
     by_id = {r["property_id"]: r for r in av["rankings"]}
-    boosted = by_id["mus-pineview"]
+    boosted = by_id["mus-forestseason"]
     # The boosted property's adjusted rank is worse than its (inflated) original.
     assert boosted["adjusted_rank"] >= boosted["original_rank"]

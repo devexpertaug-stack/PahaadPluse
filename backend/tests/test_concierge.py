@@ -62,7 +62,7 @@ def test_complaint_message_routes_to_sentinel_concierge_channel() -> None:
 def test_resolved_without_staff_metric() -> None:
     c = _concierge()
     c.handle("What time is breakfast?")
-    c.handle("Is there a swimming pool?")
+    c.handle("Are pets allowed at the resort?")
     c.handle("Can you arrange a private jet?")  # handoff
     m = c.metrics()
     assert m["total_queries"] == 3

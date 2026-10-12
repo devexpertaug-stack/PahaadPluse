@@ -17,7 +17,7 @@ from app.seed.warm import ensure_schema, seed_all, warm_services
 
 DATA_ENDPOINTS = [
     "/market-radar/review-counts",
-    "/market-radar/properties/mus-pineview/reviews",
+    "/market-radar/properties/mus-forestseason/reviews",
     "/sentinel/board",
     "/sentinel/metrics",
     "/destination/heatmap",

@@ -18,7 +18,15 @@ def test_review_counts_cover_cluster() -> None:
     properties = resp.json()["properties"]
     assert len(properties) >= 5
     assert all("per_platform" in p for p in properties)
-    assert sum(p["total"] for p in properties) == 30
+    # 52 generated Home_Property reviews + 6 competitors x 5 platforms = 82
+    # baseline (upload tests may add more to the shared store, so use >=).
+    assert sum(p["total"] for p in properties) >= 82
+    # The Home_Property (The Forest Season Resort) is present on all 5 platforms.
+    home = next(p for p in properties if p["property_id"] == "mus-forestseason")
+    assert set(home["per_platform"]) >= {
+        "Google", "MakeMyTrip", "Booking.com", "TripAdvisor", "Agoda"
+    }
+    assert home["total"] >= 52
 
 
 def test_property_reviews_and_source_url_handling() -> None:

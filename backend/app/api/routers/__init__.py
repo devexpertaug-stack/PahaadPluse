@@ -8,7 +8,9 @@ from __future__ import annotations
 
 from fastapi import APIRouter
 
-market_radar_router = APIRouter(prefix="/market-radar", tags=["market-radar"])
+from app.api.routers.collection import router as collection_router
+from app.api.routers.reviews import router as market_radar_router
+
 destination_router = APIRouter(prefix="/destination", tags=["destination-lens"])
 sentinel_router = APIRouter(prefix="/sentinel", tags=["in-stay-sentinel"])
 guest_compass_router = APIRouter(prefix="/guest-compass", tags=["guest-compass"])
@@ -16,6 +18,7 @@ concierge_router = APIRouter(prefix="/concierge", tags=["bhasha-concierge"])
 
 ALL_ROUTERS = [
     market_radar_router,
+    collection_router,
     destination_router,
     sentinel_router,
     guest_compass_router,
@@ -24,6 +27,7 @@ ALL_ROUTERS = [
 
 __all__ = [
     "market_radar_router",
+    "collection_router",
     "destination_router",
     "sentinel_router",
     "guest_compass_router",

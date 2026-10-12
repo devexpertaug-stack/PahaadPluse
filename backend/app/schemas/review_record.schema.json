@@ -1,0 +1,309 @@
+{
+  "$defs": {
+    "Aspect": {
+      "description": "The nine canonical cross-platform aspects (Req 5).",
+      "enum": [
+        "Food",
+        "Room",
+        "Housekeeping",
+        "Staff",
+        "Location",
+        "Service",
+        "Value_for_Money",
+        "Cleanliness",
+        "Booking_Experience"
+      ],
+      "title": "Aspect",
+      "type": "string"
+    },
+    "AspectMention": {
+      "description": "An aspect-level sentiment mention produced by the Sentiment_Engine.",
+      "properties": {
+        "aspect": {
+          "$ref": "#/$defs/Aspect"
+        },
+        "label": {
+          "$ref": "#/$defs/SentimentLabel"
+        },
+        "confidence": {
+          "maximum": 1.0,
+          "minimum": 0.0,
+          "title": "Confidence",
+          "type": "number"
+        },
+        "evidence": {
+          "description": "Substring of the ORIGINAL text.",
+          "minLength": 1,
+          "title": "Evidence",
+          "type": "string"
+        }
+      },
+      "required": [
+        "aspect",
+        "label",
+        "confidence",
+        "evidence"
+      ],
+      "title": "AspectMention",
+      "type": "object"
+    },
+    "AspectRating": {
+      "description": "A normalised sub-rating mapped to a canonical Aspect (Req 5).",
+      "properties": {
+        "aspect": {
+          "$ref": "#/$defs/Aspect"
+        },
+        "source_category": {
+          "description": "Raw platform category label.",
+          "title": "Source Category",
+          "type": "string"
+        },
+        "native_value": {
+          "title": "Native Value",
+          "type": "number"
+        },
+        "normalised_value": {
+          "maximum": 5.0,
+          "minimum": 1.0,
+          "title": "Normalised Value",
+          "type": "number"
+        },
+        "mapping_version": {
+          "title": "Mapping Version",
+          "type": "string"
+        }
+      },
+      "required": [
+        "aspect",
+        "source_category",
+        "native_value",
+        "normalised_value",
+        "mapping_version"
+      ],
+      "title": "AspectRating",
+      "type": "object"
+    },
+    "Language": {
+      "description": "Detected language tags produced before sentiment (Req 4).",
+      "enum": [
+        "en",
+        "hi",
+        "hi-Latn",
+        "und"
+      ],
+      "title": "Language",
+      "type": "string"
+    },
+    "Platform": {
+      "description": "Review source platforms in scope (Req 1/3).",
+      "enum": [
+        "Google",
+        "MakeMyTrip",
+        "Booking.com",
+        "TripAdvisor",
+        "Agoda"
+      ],
+      "title": "Platform",
+      "type": "string"
+    },
+    "Script": {
+      "description": "Detected dominant script (Req 4.1).",
+      "enum": [
+        "Latin",
+        "Devanagari",
+        "mixed"
+      ],
+      "title": "Script",
+      "type": "string"
+    },
+    "SentimentLabel": {
+      "description": "Sentiment polarity labels used across the platform (Req 6).",
+      "enum": [
+        "positive",
+        "negative",
+        "neutral"
+      ],
+      "title": "SentimentLabel",
+      "type": "string"
+    }
+  },
+  "description": "Canonical normalised review record (Req 3).\n\n``text`` always stores the ORIGINAL review text char-for-char. For\nromanised Hindi (``hi-Latn``) a Devanagari form is additionally stored in\n``transliterated_text`` and is used as sentiment-model input, but evidence\nspans are always substrings of ``text`` (Req 4.4, 6.4).",
+  "properties": {
+    "id": {
+      "description": "Stable PahadPulse record id.",
+      "title": "Id",
+      "type": "string"
+    },
+    "platform": {
+      "$ref": "#/$defs/Platform"
+    },
+    "platform_review_id": {
+      "description": "Native review id on the platform.",
+      "title": "Platform Review Id",
+      "type": "string"
+    },
+    "property_id": {
+      "description": "Property identifier within the cluster.",
+      "title": "Property Id",
+      "type": "string"
+    },
+    "property_name": {
+      "title": "Property Name",
+      "type": "string"
+    },
+    "author_pseudonym": {
+      "title": "Author Pseudonym",
+      "type": "string"
+    },
+    "date": {
+      "format": "date",
+      "title": "Date",
+      "type": "string"
+    },
+    "native_rating": {
+      "title": "Native Rating",
+      "type": "number"
+    },
+    "normalised_rating": {
+      "maximum": 5.0,
+      "minimum": 1.0,
+      "title": "Normalised Rating",
+      "type": "number"
+    },
+    "text": {
+      "title": "Text",
+      "type": "string"
+    },
+    "detected_language": {
+      "$ref": "#/$defs/Language",
+      "default": "und"
+    },
+    "script": {
+      "$ref": "#/$defs/Script",
+      "default": "Latin"
+    },
+    "detection_confidence": {
+      "default": 0.0,
+      "maximum": 1.0,
+      "minimum": 0.0,
+      "title": "Detection Confidence",
+      "type": "number"
+    },
+    "transliterated_text": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Transliterated Text"
+    },
+    "source_url": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Source Url"
+    },
+    "aspect_ratings": {
+      "items": {
+        "$ref": "#/$defs/AspectRating"
+      },
+      "title": "Aspect Ratings",
+      "type": "array"
+    },
+    "overall_sentiment": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/SentimentLabel"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "overall_sentiment_confidence": {
+      "anyOf": [
+        {
+          "maximum": 1.0,
+          "minimum": 0.0,
+          "type": "number"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Overall Sentiment Confidence"
+    },
+    "aspect_mentions": {
+      "items": {
+        "$ref": "#/$defs/AspectMention"
+      },
+      "title": "Aspect Mentions",
+      "type": "array"
+    },
+    "sentiment_model_version": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Sentiment Model Version"
+    },
+    "missing_source_url": {
+      "default": false,
+      "title": "Missing Source Url",
+      "type": "boolean"
+    },
+    "transliteration_failed": {
+      "default": false,
+      "title": "Transliteration Failed",
+      "type": "boolean"
+    },
+    "sentiment_unsupported": {
+      "default": false,
+      "title": "Sentiment Unsupported",
+      "type": "boolean"
+    },
+    "sentiment_text_absent": {
+      "default": false,
+      "title": "Sentiment Text Absent",
+      "type": "boolean"
+    },
+    "sentiment_failed": {
+      "default": false,
+      "title": "Sentiment Failed",
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "id",
+    "platform",
+    "platform_review_id",
+    "property_id",
+    "property_name",
+    "author_pseudonym",
+    "date",
+    "native_rating",
+    "normalised_rating",
+    "text"
+  ],
+  "title": "Review_Record",
+  "type": "object",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pahadpulse.example/schemas/review_record.schema.json"
+}

@@ -1,0 +1,4326 @@
+[
+  {
+    "id": "hinglish-0000",
+    "text": "stay kaafi niraashajanak raha, kamra mein dhool aur badboo thi aur daam zyada tha faayda kam.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "negative",
+    "aspect_labels": {
+      "Cleanliness": "negative",
+      "Value_for_Money": "negative"
+    }
+  },
+  {
+    "id": "hinglish-0001",
+    "text": "stay aam raha, daam ke hisaab se faydemand raha aur seva bahut sust thi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "neutral",
+    "aspect_labels": {
+      "Value_for_Money": "positive",
+      "Service": "negative"
+    }
+  },
+  {
+    "id": "hinglish-0002",
+    "text": "poora trip pareshan karne wala raha, kamra chhota aur ghutan bhara tha aur seva aam thi aur staff theek tha.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "negative",
+    "aspect_labels": {
+      "Room": "negative",
+      "Service": "neutral",
+      "Staff": "neutral"
+    }
+  },
+  {
+    "id": "hinglish-0003",
+    "text": "poora trip yaadgaar tha, safai roz hoti thi aur jagah thodi door thi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "positive",
+    "aspect_labels": {
+      "Housekeeping": "positive",
+      "Location": "neutral"
+    }
+  },
+  {
+    "id": "hinglish-0004",
+    "text": "stay kaafi niraashajanak raha, booking mein kaafi dikkat aayi aur kamra chhota aur ghutan bhara tha aur seva turant aur tezz thi aur daam zyada tha faayda kam.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "negative",
+    "aspect_labels": {
+      "Booking_Experience": "negative",
+      "Room": "negative",
+      "Service": "positive",
+      "Value_for_Money": "negative"
+    }
+  },
+  {
+    "id": "hinglish-0005",
+    "text": "overall experience nirash karne wala tha, staff ruhkha aur anmana tha aur kamra mein dhool aur badboo thi aur khana thanda aur bekaar tha aur jagah mall road ke ekdam paas thi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "negative",
+    "aspect_labels": {
+      "Staff": "negative",
+      "Cleanliness": "negative",
+      "Food": "negative",
+      "Location": "positive"
+    }
+  },
+  {
+    "id": "hinglish-0006",
+    "text": "overall experience nirash karne wala tha, safai average thi aur staff ruhkha aur anmana tha aur seva bahut sust thi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "negative",
+    "aspect_labels": {
+      "Housekeeping": "neutral",
+      "Staff": "negative",
+      "Service": "negative"
+    }
+  },
+  {
+    "id": "hinglish-0007",
+    "text": "poora trip pareshan karne wala raha, jagah bahut door aur pahunchna mushkil tha aur safai roz hoti thi aur seva bahut sust thi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "negative",
+    "aspect_labels": {
+      "Location": "negative",
+      "Housekeeping": "positive",
+      "Service": "negative"
+    }
+  },
+  {
+    "id": "hinglish-0008",
+    "text": "poora trip saadharan tha, khana lajawab tha aur kamra chhota aur ghutan bhara tha aur safai aam thi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "neutral",
+    "aspect_labels": {
+      "Food": "positive",
+      "Room": "negative",
+      "Cleanliness": "neutral"
+    }
+  },
+  {
+    "id": "hinglish-0009",
+    "text": "stay sukhad raha, booking ekdam aasaan rahi aur staff ruhkha aur anmana tha aur safai roz hoti thi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "positive",
+    "aspect_labels": {
+      "Booking_Experience": "positive",
+      "Staff": "negative",
+      "Housekeeping": "positive"
+    }
+  },
+  {
+    "id": "hinglish-0010",
+    "text": "overall experience nirash karne wala tha, staff ruhkha aur anmana tha aur jagah bahut door aur pahunchna mushkil tha aur seva bahut sust thi aur kamra mein dhool aur badboo thi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "negative",
+    "aspect_labels": {
+      "Staff": "negative",
+      "Location": "negative",
+      "Service": "negative",
+      "Cleanliness": "negative"
+    }
+  },
+  {
+    "id": "hinglish-0011",
+    "text": "poora trip saadharan tha, kamra theek-thaak tha aur seva aam thi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "neutral",
+    "aspect_labels": {
+      "Room": "neutral",
+      "Service": "neutral"
+    }
+  },
+  {
+    "id": "hinglish-0012",
+    "text": "stay sukhad raha, jagah mall road ke ekdam paas thi aur seva turant aur tezz thi aur daam zyada tha faayda kam.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "positive",
+    "aspect_labels": {
+      "Location": "positive",
+      "Service": "positive",
+      "Value_for_Money": "negative"
+    }
+  },
+  {
+    "id": "hinglish-0013",
+    "text": "stay sukhad raha, safai average thi aur staff theek tha aur poora kamra chamkata hua tha.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "positive",
+    "aspect_labels": {
+      "Housekeeping": "neutral",
+      "Staff": "neutral",
+      "Cleanliness": "positive"
+    }
+  },
+  {
+    "id": "hinglish-0014",
+    "text": "overall experience nirash karne wala tha, seva bahut sust thi aur kamra mein dhool aur badboo thi aur khana normal tha.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "negative",
+    "aspect_labels": {
+      "Service": "negative",
+      "Cleanliness": "negative",
+      "Food": "neutral"
+    }
+  },
+  {
+    "id": "hinglish-0015",
+    "text": "poora trip pareshan karne wala raha, daam zyada tha faayda kam aur jagah bahut door aur pahunchna mushkil tha.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "negative",
+    "aspect_labels": {
+      "Value_for_Money": "negative",
+      "Location": "negative"
+    }
+  },
+  {
+    "id": "hinglish-0016",
+    "text": "overall experience nirash karne wala tha, kamra khula aur aaramdayak tha aur khana thanda aur bekaar tha aur seva bahut sust thi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "negative",
+    "aspect_labels": {
+      "Room": "positive",
+      "Food": "negative",
+      "Service": "negative"
+    }
+  },
+  {
+    "id": "hinglish-0017",
+    "text": "stay kaafi niraashajanak raha, kamra theek-thaak tha aur booking mein kaafi dikkat aayi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "negative",
+    "aspect_labels": {
+      "Room": "neutral",
+      "Booking_Experience": "negative"
+    }
+  },
+  {
+    "id": "hinglish-0018",
+    "text": "poora trip pareshan karne wala raha, kamra chhota aur ghutan bhara tha aur staff ruhkha aur anmana tha aur seva aam thi aur daam theek tha.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "negative",
+    "aspect_labels": {
+      "Room": "negative",
+      "Staff": "negative",
+      "Service": "neutral",
+      "Value_for_Money": "neutral"
+    }
+  },
+  {
+    "id": "hinglish-0019",
+    "text": "stay aam raha, booking normal rahi aur safai bilkul nahi hui aur kamra khula aur aaramdayak tha.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "neutral",
+    "aspect_labels": {
+      "Booking_Experience": "neutral",
+      "Housekeeping": "negative",
+      "Room": "positive"
+    }
+  },
+  {
+    "id": "hinglish-0020",
+    "text": "stay kaafi niraashajanak raha, kamra chhota aur ghutan bhara tha aur safai aam thi aur booking normal rahi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "negative",
+    "aspect_labels": {
+      "Room": "negative",
+      "Cleanliness": "neutral",
+      "Booking_Experience": "neutral"
+    }
+  },
+  {
+    "id": "hinglish-0021",
+    "text": "stay aam raha, seva aam thi aur booking normal rahi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "neutral",
+    "aspect_labels": {
+      "Service": "neutral",
+      "Booking_Experience": "neutral"
+    }
+  },
+  {
+    "id": "hinglish-0022",
+    "text": "stay sukhad raha, poora kamra chamkata hua tha aur kamra khula aur aaramdayak tha.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "positive",
+    "aspect_labels": {
+      "Cleanliness": "positive",
+      "Room": "positive"
+    }
+  },
+  {
+    "id": "hinglish-0023",
+    "text": "stay kaafi niraashajanak raha, daam theek tha aur jagah bahut door aur pahunchna mushkil tha.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "negative",
+    "aspect_labels": {
+      "Value_for_Money": "neutral",
+      "Location": "negative"
+    }
+  },
+  {
+    "id": "hinglish-0024",
+    "text": "poora trip saadharan tha, booking normal rahi aur seva aam thi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "neutral",
+    "aspect_labels": {
+      "Booking_Experience": "neutral",
+      "Service": "neutral"
+    }
+  },
+  {
+    "id": "hinglish-0025",
+    "text": "overall experience theek-thaak raha, safai roz hoti thi aur kamra mein dhool aur badboo thi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "neutral",
+    "aspect_labels": {
+      "Housekeeping": "positive",
+      "Cleanliness": "negative"
+    }
+  },
+  {
+    "id": "hinglish-0026",
+    "text": "stay sukhad raha, booking ekdam aasaan rahi aur staff bada vinamra tha.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "positive",
+    "aspect_labels": {
+      "Booking_Experience": "positive",
+      "Staff": "positive"
+    }
+  },
+  {
+    "id": "hinglish-0027",
+    "text": "stay kaafi niraashajanak raha, safai average thi aur daam zyada tha faayda kam.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "negative",
+    "aspect_labels": {
+      "Housekeeping": "neutral",
+      "Value_for_Money": "negative"
+    }
+  },
+  {
+    "id": "hinglish-0028",
+    "text": "overall experience theek-thaak raha, booking mein kaafi dikkat aayi aur jagah mall road ke ekdam paas thi aur kamra chhota aur ghutan bhara tha aur safai roz hoti thi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "neutral",
+    "aspect_labels": {
+      "Booking_Experience": "negative",
+      "Location": "positive",
+      "Room": "negative",
+      "Housekeeping": "positive"
+    }
+  },
+  {
+    "id": "hinglish-0029",
+    "text": "overall experience theek-thaak raha, booking ekdam aasaan rahi aur daam zyada tha faayda kam.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "neutral",
+    "aspect_labels": {
+      "Booking_Experience": "positive",
+      "Value_for_Money": "negative"
+    }
+  },
+  {
+    "id": "hinglish-0030",
+    "text": "poora trip yaadgaar tha, jagah thodi door thi aur daam ke hisaab se faydemand raha aur booking normal rahi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "positive",
+    "aspect_labels": {
+      "Location": "neutral",
+      "Value_for_Money": "positive",
+      "Booking_Experience": "neutral"
+    }
+  },
+  {
+    "id": "hinglish-0031",
+    "text": "stay kaafi niraashajanak raha, kamra mein dhool aur badboo thi aur seva bahut sust thi aur jagah thodi door thi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "negative",
+    "aspect_labels": {
+      "Cleanliness": "negative",
+      "Service": "negative",
+      "Location": "neutral"
+    }
+  },
+  {
+    "id": "hinglish-0032",
+    "text": "stay kaafi niraashajanak raha, staff ruhkha aur anmana tha aur kamra mein dhool aur badboo thi aur booking normal rahi aur seva bahut sust thi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "negative",
+    "aspect_labels": {
+      "Staff": "negative",
+      "Cleanliness": "negative",
+      "Booking_Experience": "neutral",
+      "Service": "negative"
+    }
+  },
+  {
+    "id": "hinglish-0033",
+    "text": "stay sukhad raha, kamra theek-thaak tha aur safai roz hoti thi aur poora kamra chamkata hua tha.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "positive",
+    "aspect_labels": {
+      "Room": "neutral",
+      "Housekeeping": "positive",
+      "Cleanliness": "positive"
+    }
+  },
+  {
+    "id": "hinglish-0034",
+    "text": "stay sukhad raha, staff bada vinamra tha aur kamra theek-thaak tha aur safai bilkul nahi hui aur seva turant aur tezz thi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "positive",
+    "aspect_labels": {
+      "Staff": "positive",
+      "Room": "neutral",
+      "Housekeeping": "negative",
+      "Service": "positive"
+    }
+  },
+  {
+    "id": "hinglish-0035",
+    "text": "stay aam raha, poora kamra chamkata hua tha aur daam zyada tha faayda kam.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "neutral",
+    "aspect_labels": {
+      "Cleanliness": "positive",
+      "Value_for_Money": "negative"
+    }
+  },
+  {
+    "id": "hinglish-0036",
+    "text": "poora trip pareshan karne wala raha, safai roz hoti thi aur daam theek tha aur khana thanda aur bekaar tha aur seva bahut sust thi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "negative",
+    "aspect_labels": {
+      "Housekeeping": "positive",
+      "Value_for_Money": "neutral",
+      "Food": "negative",
+      "Service": "negative"
+    }
+  },
+  {
+    "id": "hinglish-0037",
+    "text": "poora trip pareshan karne wala raha, jagah thodi door thi aur staff ruhkha aur anmana tha aur booking ekdam aasaan rahi aur seva bahut sust thi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "negative",
+    "aspect_labels": {
+      "Location": "neutral",
+      "Staff": "negative",
+      "Booking_Experience": "positive",
+      "Service": "negative"
+    }
+  },
+  {
+    "id": "hinglish-0038",
+    "text": "overall experience nirash karne wala tha, safai bilkul nahi hui aur khana thanda aur bekaar tha aur daam theek tha aur booking ekdam aasaan rahi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "negative",
+    "aspect_labels": {
+      "Housekeeping": "negative",
+      "Food": "negative",
+      "Value_for_Money": "neutral",
+      "Booking_Experience": "positive"
+    }
+  },
+  {
+    "id": "hinglish-0039",
+    "text": "poora trip yaadgaar tha, safai average thi aur staff bada vinamra tha.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "positive",
+    "aspect_labels": {
+      "Housekeeping": "neutral",
+      "Staff": "positive"
+    }
+  },
+  {
+    "id": "hinglish-0040",
+    "text": "poora trip yaadgaar tha, booking ekdam aasaan rahi aur jagah mall road ke ekdam paas thi aur seva aam thi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "positive",
+    "aspect_labels": {
+      "Booking_Experience": "positive",
+      "Location": "positive",
+      "Service": "neutral"
+    }
+  },
+  {
+    "id": "hinglish-0041",
+    "text": "overall experience nirash karne wala tha, safai average thi aur safai aam thi aur daam zyada tha faayda kam aur seva bahut sust thi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "negative",
+    "aspect_labels": {
+      "Housekeeping": "neutral",
+      "Cleanliness": "neutral",
+      "Value_for_Money": "negative",
+      "Service": "negative"
+    }
+  },
+  {
+    "id": "hinglish-0042",
+    "text": "stay aam raha, booking ekdam aasaan rahi aur khana thanda aur bekaar tha aur jagah thodi door thi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "neutral",
+    "aspect_labels": {
+      "Booking_Experience": "positive",
+      "Food": "negative",
+      "Location": "neutral"
+    }
+  },
+  {
+    "id": "hinglish-0043",
+    "text": "poora trip yaadgaar tha, safai average thi aur jagah mall road ke ekdam paas thi aur khana lajawab tha aur staff bada vinamra tha.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "positive",
+    "aspect_labels": {
+      "Housekeeping": "neutral",
+      "Location": "positive",
+      "Food": "positive",
+      "Staff": "positive"
+    }
+  },
+  {
+    "id": "hinglish-0044",
+    "text": "stay aam raha, daam theek tha aur seva aam thi aur jagah thodi door thi aur kamra theek-thaak tha.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "neutral",
+    "aspect_labels": {
+      "Value_for_Money": "neutral",
+      "Service": "neutral",
+      "Location": "neutral",
+      "Room": "neutral"
+    }
+  },
+  {
+    "id": "hinglish-0045",
+    "text": "poora trip pareshan karne wala raha, seva bahut sust thi aur jagah bahut door aur pahunchna mushkil tha aur safai bilkul nahi hui.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "negative",
+    "aspect_labels": {
+      "Service": "negative",
+      "Location": "negative",
+      "Housekeeping": "negative"
+    }
+  },
+  {
+    "id": "hinglish-0046",
+    "text": "poora trip saadharan tha, jagah thodi door thi aur safai average thi aur khana lajawab tha aur staff ruhkha aur anmana tha.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "neutral",
+    "aspect_labels": {
+      "Location": "neutral",
+      "Housekeeping": "neutral",
+      "Food": "positive",
+      "Staff": "negative"
+    }
+  },
+  {
+    "id": "hinglish-0047",
+    "text": "poora trip saadharan tha, booking normal rahi aur jagah bahut door aur pahunchna mushkil tha aur staff theek tha aur daam ke hisaab se faydemand raha.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "neutral",
+    "aspect_labels": {
+      "Booking_Experience": "neutral",
+      "Location": "negative",
+      "Staff": "neutral",
+      "Value_for_Money": "positive"
+    }
+  },
+  {
+    "id": "hinglish-0048",
+    "text": "overall experience behtareen raha, staff bada vinamra tha aur jagah thodi door thi aur seva bahut sust thi aur poora kamra chamkata hua tha.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "positive",
+    "aspect_labels": {
+      "Staff": "positive",
+      "Location": "neutral",
+      "Service": "negative",
+      "Cleanliness": "positive"
+    }
+  },
+  {
+    "id": "hinglish-0049",
+    "text": "overall experience nirash karne wala tha, staff ruhkha aur anmana tha aur seva aam thi aur safai bilkul nahi hui aur kamra chhota aur ghutan bhara tha.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "negative",
+    "aspect_labels": {
+      "Staff": "negative",
+      "Service": "neutral",
+      "Housekeeping": "negative",
+      "Room": "negative"
+    }
+  },
+  {
+    "id": "hinglish-0050",
+    "text": "poora trip yaadgaar tha, seva turant aur tezz thi aur kamra khula aur aaramdayak tha aur jagah thodi door thi aur booking normal rahi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "positive",
+    "aspect_labels": {
+      "Service": "positive",
+      "Room": "positive",
+      "Location": "neutral",
+      "Booking_Experience": "neutral"
+    }
+  },
+  {
+    "id": "hinglish-0051",
+    "text": "stay kaafi niraashajanak raha, kamra chhota aur ghutan bhara tha aur jagah bahut door aur pahunchna mushkil tha.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "negative",
+    "aspect_labels": {
+      "Room": "negative",
+      "Location": "negative"
+    }
+  },
+  {
+    "id": "hinglish-0052",
+    "text": "stay aam raha, khana lajawab tha aur booking ekdam aasaan rahi aur staff ruhkha aur anmana tha aur safai bilkul nahi hui.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "neutral",
+    "aspect_labels": {
+      "Food": "positive",
+      "Booking_Experience": "positive",
+      "Staff": "negative",
+      "Housekeeping": "negative"
+    }
+  },
+  {
+    "id": "hinglish-0053",
+    "text": "stay kaafi niraashajanak raha, daam zyada tha faayda kam aur jagah bahut door aur pahunchna mushkil tha.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "negative",
+    "aspect_labels": {
+      "Value_for_Money": "negative",
+      "Location": "negative"
+    }
+  },
+  {
+    "id": "hinglish-0054",
+    "text": "poora trip yaadgaar tha, booking ekdam aasaan rahi aur jagah thodi door thi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "positive",
+    "aspect_labels": {
+      "Booking_Experience": "positive",
+      "Location": "neutral"
+    }
+  },
+  {
+    "id": "hinglish-0055",
+    "text": "overall experience nirash karne wala tha, daam zyada tha faayda kam aur staff theek tha.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "negative",
+    "aspect_labels": {
+      "Value_for_Money": "negative",
+      "Staff": "neutral"
+    }
+  },
+  {
+    "id": "hinglish-0056",
+    "text": "poora trip yaadgaar tha, jagah mall road ke ekdam paas thi aur staff bada vinamra tha.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "positive",
+    "aspect_labels": {
+      "Location": "positive",
+      "Staff": "positive"
+    }
+  },
+  {
+    "id": "hinglish-0057",
+    "text": "overall experience behtareen raha, safai aam thi aur safai roz hoti thi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "positive",
+    "aspect_labels": {
+      "Cleanliness": "neutral",
+      "Housekeeping": "positive"
+    }
+  },
+  {
+    "id": "hinglish-0058",
+    "text": "stay kaafi niraashajanak raha, booking ekdam aasaan rahi aur safai bilkul nahi hui aur kamra chhota aur ghutan bhara tha.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "negative",
+    "aspect_labels": {
+      "Booking_Experience": "positive",
+      "Housekeeping": "negative",
+      "Room": "negative"
+    }
+  },
+  {
+    "id": "hinglish-0059",
+    "text": "overall experience theek-thaak raha, jagah mall road ke ekdam paas thi aur seva aam thi aur staff ruhkha aur anmana tha.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "neutral",
+    "aspect_labels": {
+      "Location": "positive",
+      "Service": "neutral",
+      "Staff": "negative"
+    }
+  },
+  {
+    "id": "hinglish-0060",
+    "text": "stay sukhad raha, staff bada vinamra tha aur booking mein kaafi dikkat aayi aur safai roz hoti thi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "positive",
+    "aspect_labels": {
+      "Staff": "positive",
+      "Booking_Experience": "negative",
+      "Housekeeping": "positive"
+    }
+  },
+  {
+    "id": "hinglish-0061",
+    "text": "overall experience behtareen raha, safai aam thi aur staff bada vinamra tha aur booking ekdam aasaan rahi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "positive",
+    "aspect_labels": {
+      "Cleanliness": "neutral",
+      "Staff": "positive",
+      "Booking_Experience": "positive"
+    }
+  },
+  {
+    "id": "hinglish-0062",
+    "text": "poora trip pareshan karne wala raha, jagah thodi door thi aur daam zyada tha faayda kam aur seva turant aur tezz thi aur booking mein kaafi dikkat aayi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "negative",
+    "aspect_labels": {
+      "Location": "neutral",
+      "Value_for_Money": "negative",
+      "Service": "positive",
+      "Booking_Experience": "negative"
+    }
+  },
+  {
+    "id": "hinglish-0063",
+    "text": "poora trip saadharan tha, booking mein kaafi dikkat aayi aur daam theek tha aur seva turant aur tezz thi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "neutral",
+    "aspect_labels": {
+      "Booking_Experience": "negative",
+      "Value_for_Money": "neutral",
+      "Service": "positive"
+    }
+  },
+  {
+    "id": "hinglish-0064",
+    "text": "overall experience behtareen raha, poora kamra chamkata hua tha aur booking normal rahi aur seva turant aur tezz thi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "positive",
+    "aspect_labels": {
+      "Cleanliness": "positive",
+      "Booking_Experience": "neutral",
+      "Service": "positive"
+    }
+  },
+  {
+    "id": "hinglish-0065",
+    "text": "poora trip saadharan tha, kamra khula aur aaramdayak tha aur seva bahut sust thi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "neutral",
+    "aspect_labels": {
+      "Room": "positive",
+      "Service": "negative"
+    }
+  },
+  {
+    "id": "hinglish-0066",
+    "text": "poora trip saadharan tha, kamra chhota aur ghutan bhara tha aur booking mein kaafi dikkat aayi aur safai roz hoti thi aur poora kamra chamkata hua tha.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "neutral",
+    "aspect_labels": {
+      "Room": "negative",
+      "Booking_Experience": "negative",
+      "Housekeeping": "positive",
+      "Cleanliness": "positive"
+    }
+  },
+  {
+    "id": "hinglish-0067",
+    "text": "poora trip yaadgaar tha, kamra theek-thaak tha aur jagah mall road ke ekdam paas thi aur safai average thi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "positive",
+    "aspect_labels": {
+      "Room": "neutral",
+      "Location": "positive",
+      "Housekeeping": "neutral"
+    }
+  },
+  {
+    "id": "hinglish-0068",
+    "text": "poora trip yaadgaar tha, staff bada vinamra tha aur daam theek tha aur booking normal rahi aur jagah mall road ke ekdam paas thi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "positive",
+    "aspect_labels": {
+      "Staff": "positive",
+      "Value_for_Money": "neutral",
+      "Booking_Experience": "neutral",
+      "Location": "positive"
+    }
+  },
+  {
+    "id": "hinglish-0069",
+    "text": "stay sukhad raha, staff ruhkha aur anmana tha aur poora kamra chamkata hua tha aur kamra khula aur aaramdayak tha.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "positive",
+    "aspect_labels": {
+      "Staff": "negative",
+      "Cleanliness": "positive",
+      "Room": "positive"
+    }
+  },
+  {
+    "id": "hinglish-0070",
+    "text": "overall experience theek-thaak raha, seva turant aur tezz thi aur kamra mein dhool aur badboo thi aur jagah thodi door thi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "neutral",
+    "aspect_labels": {
+      "Service": "positive",
+      "Cleanliness": "negative",
+      "Location": "neutral"
+    }
+  },
+  {
+    "id": "hinglish-0071",
+    "text": "poora trip pareshan karne wala raha, kamra chhota aur ghutan bhara tha aur safai average thi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "negative",
+    "aspect_labels": {
+      "Room": "negative",
+      "Housekeeping": "neutral"
+    }
+  },
+  {
+    "id": "hinglish-0072",
+    "text": "overall experience behtareen raha, daam ke hisaab se faydemand raha aur safai bilkul nahi hui aur safai aam thi aur staff bada vinamra tha.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "positive",
+    "aspect_labels": {
+      "Value_for_Money": "positive",
+      "Housekeeping": "negative",
+      "Cleanliness": "neutral",
+      "Staff": "positive"
+    }
+  },
+  {
+    "id": "hinglish-0073",
+    "text": "poora trip yaadgaar tha, kamra khula aur aaramdayak tha aur staff bada vinamra tha aur jagah bahut door aur pahunchna mushkil tha.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "positive",
+    "aspect_labels": {
+      "Room": "positive",
+      "Staff": "positive",
+      "Location": "negative"
+    }
+  },
+  {
+    "id": "hinglish-0074",
+    "text": "poora trip pareshan karne wala raha, jagah bahut door aur pahunchna mushkil tha aur safai bilkul nahi hui.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "negative",
+    "aspect_labels": {
+      "Location": "negative",
+      "Housekeeping": "negative"
+    }
+  },
+  {
+    "id": "hinglish-0075",
+    "text": "poora trip saadharan tha, khana lajawab tha aur seva bahut sust thi aur jagah thodi door thi aur booking normal rahi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "neutral",
+    "aspect_labels": {
+      "Food": "positive",
+      "Service": "negative",
+      "Location": "neutral",
+      "Booking_Experience": "neutral"
+    }
+  },
+  {
+    "id": "hinglish-0076",
+    "text": "poora trip saadharan tha, safai aam thi aur seva turant aur tezz thi aur safai bilkul nahi hui.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "neutral",
+    "aspect_labels": {
+      "Cleanliness": "neutral",
+      "Service": "positive",
+      "Housekeeping": "negative"
+    }
+  },
+  {
+    "id": "hinglish-0077",
+    "text": "overall experience nirash karne wala tha, kamra khula aur aaramdayak tha aur khana thanda aur bekaar tha aur seva bahut sust thi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "negative",
+    "aspect_labels": {
+      "Room": "positive",
+      "Food": "negative",
+      "Service": "negative"
+    }
+  },
+  {
+    "id": "hinglish-0078",
+    "text": "overall experience nirash karne wala tha, jagah bahut door aur pahunchna mushkil tha aur booking normal rahi aur safai roz hoti thi aur kamra chhota aur ghutan bhara tha.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "negative",
+    "aspect_labels": {
+      "Location": "negative",
+      "Booking_Experience": "neutral",
+      "Housekeeping": "positive",
+      "Room": "negative"
+    }
+  },
+  {
+    "id": "hinglish-0079",
+    "text": "poora trip saadharan tha, booking mein kaafi dikkat aayi aur daam ke hisaab se faydemand raha aur kamra khula aur aaramdayak tha aur seva bahut sust thi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "neutral",
+    "aspect_labels": {
+      "Booking_Experience": "negative",
+      "Value_for_Money": "positive",
+      "Room": "positive",
+      "Service": "negative"
+    }
+  },
+  {
+    "id": "hinglish-0080",
+    "text": "stay sukhad raha, jagah mall road ke ekdam paas thi aur kamra khula aur aaramdayak tha aur booking normal rahi aur seva aam thi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "positive",
+    "aspect_labels": {
+      "Location": "positive",
+      "Room": "positive",
+      "Booking_Experience": "neutral",
+      "Service": "neutral"
+    }
+  },
+  {
+    "id": "hinglish-0081",
+    "text": "poora trip yaadgaar tha, poora kamra chamkata hua tha aur kamra khula aur aaramdayak tha aur safai average thi aur booking normal rahi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "positive",
+    "aspect_labels": {
+      "Cleanliness": "positive",
+      "Room": "positive",
+      "Housekeeping": "neutral",
+      "Booking_Experience": "neutral"
+    }
+  },
+  {
+    "id": "hinglish-0082",
+    "text": "stay sukhad raha, khana normal tha aur poora kamra chamkata hua tha aur safai roz hoti thi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "positive",
+    "aspect_labels": {
+      "Food": "neutral",
+      "Cleanliness": "positive",
+      "Housekeeping": "positive"
+    }
+  },
+  {
+    "id": "hinglish-0083",
+    "text": "stay aam raha, daam ke hisaab se faydemand raha aur kamra chhota aur ghutan bhara tha.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "neutral",
+    "aspect_labels": {
+      "Value_for_Money": "positive",
+      "Room": "negative"
+    }
+  },
+  {
+    "id": "hinglish-0084",
+    "text": "stay sukhad raha, jagah mall road ke ekdam paas thi aur seva turant aur tezz thi aur kamra theek-thaak tha.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "positive",
+    "aspect_labels": {
+      "Location": "positive",
+      "Service": "positive",
+      "Room": "neutral"
+    }
+  },
+  {
+    "id": "hinglish-0085",
+    "text": "overall experience nirash karne wala tha, booking ekdam aasaan rahi aur seva bahut sust thi aur daam zyada tha faayda kam.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "negative",
+    "aspect_labels": {
+      "Booking_Experience": "positive",
+      "Service": "negative",
+      "Value_for_Money": "negative"
+    }
+  },
+  {
+    "id": "hinglish-0086",
+    "text": "overall experience behtareen raha, safai roz hoti thi aur poora kamra chamkata hua tha aur jagah thodi door thi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "positive",
+    "aspect_labels": {
+      "Housekeeping": "positive",
+      "Cleanliness": "positive",
+      "Location": "neutral"
+    }
+  },
+  {
+    "id": "hinglish-0087",
+    "text": "poora trip yaadgaar tha, khana lajawab tha aur safai roz hoti thi aur daam ke hisaab se faydemand raha aur safai aam thi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "positive",
+    "aspect_labels": {
+      "Food": "positive",
+      "Housekeeping": "positive",
+      "Value_for_Money": "positive",
+      "Cleanliness": "neutral"
+    }
+  },
+  {
+    "id": "hinglish-0088",
+    "text": "overall experience nirash karne wala tha, kamra chhota aur ghutan bhara tha aur daam zyada tha faayda kam aur jagah thodi door thi aur staff bada vinamra tha.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "negative",
+    "aspect_labels": {
+      "Room": "negative",
+      "Value_for_Money": "negative",
+      "Location": "neutral",
+      "Staff": "positive"
+    }
+  },
+  {
+    "id": "hinglish-0089",
+    "text": "poora trip saadharan tha, safai average thi aur kamra khula aur aaramdayak tha aur jagah bahut door aur pahunchna mushkil tha aur khana normal tha.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "neutral",
+    "aspect_labels": {
+      "Housekeeping": "neutral",
+      "Room": "positive",
+      "Location": "negative",
+      "Food": "neutral"
+    }
+  },
+  {
+    "id": "hinglish-0090",
+    "text": "stay kaafi niraashajanak raha, jagah bahut door aur pahunchna mushkil tha aur kamra khula aur aaramdayak tha aur safai bilkul nahi hui.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "negative",
+    "aspect_labels": {
+      "Location": "negative",
+      "Room": "positive",
+      "Housekeeping": "negative"
+    }
+  },
+  {
+    "id": "hinglish-0091",
+    "text": "poora trip yaadgaar tha, staff theek tha aur seva bahut sust thi aur kamra khula aur aaramdayak tha aur daam ke hisaab se faydemand raha.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "positive",
+    "aspect_labels": {
+      "Staff": "neutral",
+      "Service": "negative",
+      "Room": "positive",
+      "Value_for_Money": "positive"
+    }
+  },
+  {
+    "id": "hinglish-0092",
+    "text": "poora trip saadharan tha, poora kamra chamkata hua tha aur staff ruhkha aur anmana tha.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "neutral",
+    "aspect_labels": {
+      "Cleanliness": "positive",
+      "Staff": "negative"
+    }
+  },
+  {
+    "id": "hinglish-0093",
+    "text": "poora trip saadharan tha, safai roz hoti thi aur seva bahut sust thi aur poora kamra chamkata hua tha aur staff ruhkha aur anmana tha.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "neutral",
+    "aspect_labels": {
+      "Housekeeping": "positive",
+      "Service": "negative",
+      "Cleanliness": "positive",
+      "Staff": "negative"
+    }
+  },
+  {
+    "id": "hinglish-0094",
+    "text": "stay aam raha, seva aam thi aur safai roz hoti thi aur khana thanda aur bekaar tha.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "neutral",
+    "aspect_labels": {
+      "Service": "neutral",
+      "Housekeeping": "positive",
+      "Food": "negative"
+    }
+  },
+  {
+    "id": "hinglish-0095",
+    "text": "stay kaafi niraashajanak raha, booking mein kaafi dikkat aayi aur staff ruhkha aur anmana tha aur seva turant aur tezz thi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "negative",
+    "aspect_labels": {
+      "Booking_Experience": "negative",
+      "Staff": "negative",
+      "Service": "positive"
+    }
+  },
+  {
+    "id": "hinglish-0096",
+    "text": "overall experience theek-thaak raha, poora kamra chamkata hua tha aur booking normal rahi aur kamra theek-thaak tha aur safai bilkul nahi hui.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "neutral",
+    "aspect_labels": {
+      "Cleanliness": "positive",
+      "Booking_Experience": "neutral",
+      "Room": "neutral",
+      "Housekeeping": "negative"
+    }
+  },
+  {
+    "id": "hinglish-0097",
+    "text": "stay aam raha, seva aam thi aur kamra khula aur aaramdayak tha aur daam zyada tha faayda kam.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "neutral",
+    "aspect_labels": {
+      "Service": "neutral",
+      "Room": "positive",
+      "Value_for_Money": "negative"
+    }
+  },
+  {
+    "id": "hinglish-0098",
+    "text": "poora trip pareshan karne wala raha, safai bilkul nahi hui aur seva bahut sust thi aur poora kamra chamkata hua tha.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "negative",
+    "aspect_labels": {
+      "Housekeeping": "negative",
+      "Service": "negative",
+      "Cleanliness": "positive"
+    }
+  },
+  {
+    "id": "hinglish-0099",
+    "text": "stay kaafi niraashajanak raha, daam zyada tha faayda kam aur jagah bahut door aur pahunchna mushkil tha aur seva turant aur tezz thi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "negative",
+    "aspect_labels": {
+      "Value_for_Money": "negative",
+      "Location": "negative",
+      "Service": "positive"
+    }
+  },
+  {
+    "id": "hinglish-0100",
+    "text": "poora trip yaadgaar tha, safai aam thi aur seva aam thi aur daam ke hisaab se faydemand raha.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "positive",
+    "aspect_labels": {
+      "Cleanliness": "neutral",
+      "Service": "neutral",
+      "Value_for_Money": "positive"
+    }
+  },
+  {
+    "id": "hinglish-0101",
+    "text": "stay aam raha, booking ekdam aasaan rahi aur seva bahut sust thi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "neutral",
+    "aspect_labels": {
+      "Booking_Experience": "positive",
+      "Service": "negative"
+    }
+  },
+  {
+    "id": "hinglish-0102",
+    "text": "overall experience theek-thaak raha, poora kamra chamkata hua tha aur khana normal tha aur seva aam thi aur daam zyada tha faayda kam.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "neutral",
+    "aspect_labels": {
+      "Cleanliness": "positive",
+      "Food": "neutral",
+      "Service": "neutral",
+      "Value_for_Money": "negative"
+    }
+  },
+  {
+    "id": "hinglish-0103",
+    "text": "overall experience behtareen raha, khana thanda aur bekaar tha aur kamra theek-thaak tha aur jagah mall road ke ekdam paas thi aur daam ke hisaab se faydemand raha.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "positive",
+    "aspect_labels": {
+      "Food": "negative",
+      "Room": "neutral",
+      "Location": "positive",
+      "Value_for_Money": "positive"
+    }
+  },
+  {
+    "id": "hinglish-0104",
+    "text": "poora trip yaadgaar tha, safai bilkul nahi hui aur daam ke hisaab se faydemand raha aur staff bada vinamra tha.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "positive",
+    "aspect_labels": {
+      "Housekeeping": "negative",
+      "Value_for_Money": "positive",
+      "Staff": "positive"
+    }
+  },
+  {
+    "id": "hinglish-0105",
+    "text": "stay kaafi niraashajanak raha, jagah bahut door aur pahunchna mushkil tha aur safai bilkul nahi hui aur khana normal tha.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "negative",
+    "aspect_labels": {
+      "Location": "negative",
+      "Housekeeping": "negative",
+      "Food": "neutral"
+    }
+  },
+  {
+    "id": "hinglish-0106",
+    "text": "overall experience behtareen raha, booking ekdam aasaan rahi aur kamra chhota aur ghutan bhara tha aur safai roz hoti thi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "positive",
+    "aspect_labels": {
+      "Booking_Experience": "positive",
+      "Room": "negative",
+      "Housekeeping": "positive"
+    }
+  },
+  {
+    "id": "hinglish-0107",
+    "text": "stay sukhad raha, safai bilkul nahi hui aur booking ekdam aasaan rahi aur jagah thodi door thi aur seva turant aur tezz thi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "positive",
+    "aspect_labels": {
+      "Housekeeping": "negative",
+      "Booking_Experience": "positive",
+      "Location": "neutral",
+      "Service": "positive"
+    }
+  },
+  {
+    "id": "hinglish-0108",
+    "text": "stay sukhad raha, khana thanda aur bekaar tha aur seva turant aur tezz thi aur daam ke hisaab se faydemand raha.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "positive",
+    "aspect_labels": {
+      "Food": "negative",
+      "Service": "positive",
+      "Value_for_Money": "positive"
+    }
+  },
+  {
+    "id": "hinglish-0109",
+    "text": "overall experience theek-thaak raha, jagah mall road ke ekdam paas thi aur safai bilkul nahi hui aur poora kamra chamkata hua tha aur staff ruhkha aur anmana tha.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "neutral",
+    "aspect_labels": {
+      "Location": "positive",
+      "Housekeeping": "negative",
+      "Cleanliness": "positive",
+      "Staff": "negative"
+    }
+  },
+  {
+    "id": "hinglish-0110",
+    "text": "poora trip yaadgaar tha, poora kamra chamkata hua tha aur safai roz hoti thi aur seva turant aur tezz thi aur kamra chhota aur ghutan bhara tha.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "positive",
+    "aspect_labels": {
+      "Cleanliness": "positive",
+      "Housekeeping": "positive",
+      "Service": "positive",
+      "Room": "negative"
+    }
+  },
+  {
+    "id": "hinglish-0111",
+    "text": "overall experience theek-thaak raha, seva aam thi aur safai roz hoti thi aur booking mein kaafi dikkat aayi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "neutral",
+    "aspect_labels": {
+      "Service": "neutral",
+      "Housekeeping": "positive",
+      "Booking_Experience": "negative"
+    }
+  },
+  {
+    "id": "hinglish-0112",
+    "text": "stay aam raha, booking mein kaafi dikkat aayi aur seva turant aur tezz thi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "neutral",
+    "aspect_labels": {
+      "Booking_Experience": "negative",
+      "Service": "positive"
+    }
+  },
+  {
+    "id": "hinglish-0113",
+    "text": "overall experience theek-thaak raha, safai average thi aur khana lajawab tha aur staff ruhkha aur anmana tha aur booking normal rahi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "neutral",
+    "aspect_labels": {
+      "Housekeeping": "neutral",
+      "Food": "positive",
+      "Staff": "negative",
+      "Booking_Experience": "neutral"
+    }
+  },
+  {
+    "id": "hinglish-0114",
+    "text": "poora trip pareshan karne wala raha, daam zyada tha faayda kam aur booking normal rahi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "negative",
+    "aspect_labels": {
+      "Value_for_Money": "negative",
+      "Booking_Experience": "neutral"
+    }
+  },
+  {
+    "id": "hinglish-0115",
+    "text": "poora trip yaadgaar tha, seva bahut sust thi aur khana lajawab tha aur daam ke hisaab se faydemand raha aur safai average thi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "positive",
+    "aspect_labels": {
+      "Service": "negative",
+      "Food": "positive",
+      "Value_for_Money": "positive",
+      "Housekeeping": "neutral"
+    }
+  },
+  {
+    "id": "hinglish-0116",
+    "text": "overall experience behtareen raha, kamra khula aur aaramdayak tha aur booking ekdam aasaan rahi aur kamra mein dhool aur badboo thi aur safai average thi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "positive",
+    "aspect_labels": {
+      "Room": "positive",
+      "Booking_Experience": "positive",
+      "Cleanliness": "negative",
+      "Housekeeping": "neutral"
+    }
+  },
+  {
+    "id": "hinglish-0117",
+    "text": "stay sukhad raha, khana lajawab tha aur daam theek tha aur booking ekdam aasaan rahi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "positive",
+    "aspect_labels": {
+      "Food": "positive",
+      "Value_for_Money": "neutral",
+      "Booking_Experience": "positive"
+    }
+  },
+  {
+    "id": "hinglish-0118",
+    "text": "poora trip pareshan karne wala raha, seva aam thi aur daam zyada tha faayda kam.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "negative",
+    "aspect_labels": {
+      "Service": "neutral",
+      "Value_for_Money": "negative"
+    }
+  },
+  {
+    "id": "hinglish-0119",
+    "text": "poora trip yaadgaar tha, jagah thodi door thi aur seva aam thi aur staff bada vinamra tha.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "positive",
+    "aspect_labels": {
+      "Location": "neutral",
+      "Service": "neutral",
+      "Staff": "positive"
+    }
+  },
+  {
+    "id": "hinglish-0120",
+    "text": "overall experience nirash karne wala tha, staff ruhkha aur anmana tha aur safai average thi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "negative",
+    "aspect_labels": {
+      "Staff": "negative",
+      "Housekeeping": "neutral"
+    }
+  },
+  {
+    "id": "hinglish-0121",
+    "text": "poora trip saadharan tha, safai aam thi aur seva aam thi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "neutral",
+    "aspect_labels": {
+      "Cleanliness": "neutral",
+      "Service": "neutral"
+    }
+  },
+  {
+    "id": "hinglish-0122",
+    "text": "stay aam raha, jagah thodi door thi aur staff theek tha.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "neutral",
+    "aspect_labels": {
+      "Location": "neutral",
+      "Staff": "neutral"
+    }
+  },
+  {
+    "id": "hinglish-0123",
+    "text": "stay kaafi niraashajanak raha, jagah bahut door aur pahunchna mushkil tha aur booking ekdam aasaan rahi aur daam zyada tha faayda kam aur seva bahut sust thi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "negative",
+    "aspect_labels": {
+      "Location": "negative",
+      "Booking_Experience": "positive",
+      "Value_for_Money": "negative",
+      "Service": "negative"
+    }
+  },
+  {
+    "id": "hinglish-0124",
+    "text": "poora trip saadharan tha, kamra theek-thaak tha aur staff theek tha.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "neutral",
+    "aspect_labels": {
+      "Room": "neutral",
+      "Staff": "neutral"
+    }
+  },
+  {
+    "id": "hinglish-0125",
+    "text": "stay kaafi niraashajanak raha, daam theek tha aur jagah thodi door thi aur khana normal tha aur kamra chhota aur ghutan bhara tha.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "negative",
+    "aspect_labels": {
+      "Value_for_Money": "neutral",
+      "Location": "neutral",
+      "Food": "neutral",
+      "Room": "negative"
+    }
+  },
+  {
+    "id": "hinglish-0126",
+    "text": "stay sukhad raha, safai roz hoti thi aur booking ekdam aasaan rahi aur poora kamra chamkata hua tha.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "positive",
+    "aspect_labels": {
+      "Housekeeping": "positive",
+      "Booking_Experience": "positive",
+      "Cleanliness": "positive"
+    }
+  },
+  {
+    "id": "hinglish-0127",
+    "text": "poora trip pareshan karne wala raha, kamra chhota aur ghutan bhara tha aur khana normal tha.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "negative",
+    "aspect_labels": {
+      "Room": "negative",
+      "Food": "neutral"
+    }
+  },
+  {
+    "id": "hinglish-0128",
+    "text": "poora trip yaadgaar tha, khana thanda aur bekaar tha aur staff bada vinamra tha aur seva aam thi aur booking ekdam aasaan rahi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "positive",
+    "aspect_labels": {
+      "Food": "negative",
+      "Staff": "positive",
+      "Service": "neutral",
+      "Booking_Experience": "positive"
+    }
+  },
+  {
+    "id": "hinglish-0129",
+    "text": "poora trip pareshan karne wala raha, khana normal tha aur kamra mein dhool aur badboo thi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "negative",
+    "aspect_labels": {
+      "Food": "neutral",
+      "Cleanliness": "negative"
+    }
+  },
+  {
+    "id": "hinglish-0130",
+    "text": "poora trip saadharan tha, khana normal tha aur staff theek tha.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "neutral",
+    "aspect_labels": {
+      "Food": "neutral",
+      "Staff": "neutral"
+    }
+  },
+  {
+    "id": "hinglish-0131",
+    "text": "poora trip yaadgaar tha, safai aam thi aur jagah mall road ke ekdam paas thi aur staff theek tha.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "positive",
+    "aspect_labels": {
+      "Cleanliness": "neutral",
+      "Location": "positive",
+      "Staff": "neutral"
+    }
+  },
+  {
+    "id": "hinglish-0132",
+    "text": "overall experience nirash karne wala tha, seva bahut sust thi aur safai bilkul nahi hui aur daam theek tha.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "negative",
+    "aspect_labels": {
+      "Service": "negative",
+      "Housekeeping": "negative",
+      "Value_for_Money": "neutral"
+    }
+  },
+  {
+    "id": "hinglish-0133",
+    "text": "overall experience nirash karne wala tha, safai bilkul nahi hui aur khana normal tha.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "negative",
+    "aspect_labels": {
+      "Housekeeping": "negative",
+      "Food": "neutral"
+    }
+  },
+  {
+    "id": "hinglish-0134",
+    "text": "poora trip yaadgaar tha, poora kamra chamkata hua tha aur staff theek tha.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "positive",
+    "aspect_labels": {
+      "Cleanliness": "positive",
+      "Staff": "neutral"
+    }
+  },
+  {
+    "id": "hinglish-0135",
+    "text": "overall experience theek-thaak raha, safai roz hoti thi aur staff ruhkha aur anmana tha aur kamra theek-thaak tha aur jagah thodi door thi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "neutral",
+    "aspect_labels": {
+      "Housekeeping": "positive",
+      "Staff": "negative",
+      "Room": "neutral",
+      "Location": "neutral"
+    }
+  },
+  {
+    "id": "hinglish-0136",
+    "text": "poora trip pareshan karne wala raha, booking mein kaafi dikkat aayi aur seva bahut sust thi aur daam ke hisaab se faydemand raha.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "negative",
+    "aspect_labels": {
+      "Booking_Experience": "negative",
+      "Service": "negative",
+      "Value_for_Money": "positive"
+    }
+  },
+  {
+    "id": "hinglish-0137",
+    "text": "stay aam raha, khana thanda aur bekaar tha aur seva bahut sust thi aur poora kamra chamkata hua tha aur staff bada vinamra tha.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "neutral",
+    "aspect_labels": {
+      "Food": "negative",
+      "Service": "negative",
+      "Cleanliness": "positive",
+      "Staff": "positive"
+    }
+  },
+  {
+    "id": "hinglish-0138",
+    "text": "overall experience nirash karne wala tha, booking mein kaafi dikkat aayi aur daam theek tha aur khana lajawab tha aur seva bahut sust thi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "negative",
+    "aspect_labels": {
+      "Booking_Experience": "negative",
+      "Value_for_Money": "neutral",
+      "Food": "positive",
+      "Service": "negative"
+    }
+  },
+  {
+    "id": "hinglish-0139",
+    "text": "stay sukhad raha, staff bada vinamra tha aur daam theek tha.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "positive",
+    "aspect_labels": {
+      "Staff": "positive",
+      "Value_for_Money": "neutral"
+    }
+  },
+  {
+    "id": "hinglish-0140",
+    "text": "overall experience behtareen raha, booking ekdam aasaan rahi aur daam theek tha aur jagah thodi door thi aur poora kamra chamkata hua tha.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "positive",
+    "aspect_labels": {
+      "Booking_Experience": "positive",
+      "Value_for_Money": "neutral",
+      "Location": "neutral",
+      "Cleanliness": "positive"
+    }
+  },
+  {
+    "id": "hinglish-0141",
+    "text": "overall experience behtareen raha, kamra khula aur aaramdayak tha aur staff bada vinamra tha.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "positive",
+    "aspect_labels": {
+      "Room": "positive",
+      "Staff": "positive"
+    }
+  },
+  {
+    "id": "hinglish-0142",
+    "text": "overall experience nirash karne wala tha, jagah bahut door aur pahunchna mushkil tha aur daam theek tha aur booking normal rahi aur seva aam thi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "negative",
+    "aspect_labels": {
+      "Location": "negative",
+      "Value_for_Money": "neutral",
+      "Booking_Experience": "neutral",
+      "Service": "neutral"
+    }
+  },
+  {
+    "id": "hinglish-0143",
+    "text": "overall experience theek-thaak raha, khana lajawab tha aur staff ruhkha aur anmana tha.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "neutral",
+    "aspect_labels": {
+      "Food": "positive",
+      "Staff": "negative"
+    }
+  },
+  {
+    "id": "hinglish-0144",
+    "text": "overall experience theek-thaak raha, booking ekdam aasaan rahi aur seva bahut sust thi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "neutral",
+    "aspect_labels": {
+      "Booking_Experience": "positive",
+      "Service": "negative"
+    }
+  },
+  {
+    "id": "hinglish-0145",
+    "text": "poora trip yaadgaar tha, jagah mall road ke ekdam paas thi aur daam ke hisaab se faydemand raha aur staff ruhkha aur anmana tha.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "positive",
+    "aspect_labels": {
+      "Location": "positive",
+      "Value_for_Money": "positive",
+      "Staff": "negative"
+    }
+  },
+  {
+    "id": "hinglish-0146",
+    "text": "overall experience nirash karne wala tha, safai bilkul nahi hui aur staff ruhkha aur anmana tha aur kamra khula aur aaramdayak tha.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "negative",
+    "aspect_labels": {
+      "Housekeeping": "negative",
+      "Staff": "negative",
+      "Room": "positive"
+    }
+  },
+  {
+    "id": "hinglish-0147",
+    "text": "poora trip pareshan karne wala raha, daam ke hisaab se faydemand raha aur kamra chhota aur ghutan bhara tha aur jagah bahut door aur pahunchna mushkil tha aur staff ruhkha aur anmana tha.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "negative",
+    "aspect_labels": {
+      "Value_for_Money": "positive",
+      "Room": "negative",
+      "Location": "negative",
+      "Staff": "negative"
+    }
+  },
+  {
+    "id": "hinglish-0148",
+    "text": "overall experience behtareen raha, safai aam thi aur jagah thodi door thi aur seva turant aur tezz thi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "positive",
+    "aspect_labels": {
+      "Cleanliness": "neutral",
+      "Location": "neutral",
+      "Service": "positive"
+    }
+  },
+  {
+    "id": "hinglish-0149",
+    "text": "overall experience behtareen raha, kamra khula aur aaramdayak tha aur daam ke hisaab se faydemand raha aur khana normal tha.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "positive",
+    "aspect_labels": {
+      "Room": "positive",
+      "Value_for_Money": "positive",
+      "Food": "neutral"
+    }
+  },
+  {
+    "id": "hinglish-0150",
+    "text": "stay sukhad raha, khana lajawab tha aur seva turant aur tezz thi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "positive",
+    "aspect_labels": {
+      "Food": "positive",
+      "Service": "positive"
+    }
+  },
+  {
+    "id": "hinglish-0151",
+    "text": "overall experience nirash karne wala tha, daam zyada tha faayda kam aur booking mein kaafi dikkat aayi aur kamra chhota aur ghutan bhara tha aur staff theek tha.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "negative",
+    "aspect_labels": {
+      "Value_for_Money": "negative",
+      "Booking_Experience": "negative",
+      "Room": "negative",
+      "Staff": "neutral"
+    }
+  },
+  {
+    "id": "hinglish-0152",
+    "text": "overall experience nirash karne wala tha, kamra mein dhool aur badboo thi aur jagah thodi door thi aur khana normal tha.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "negative",
+    "aspect_labels": {
+      "Cleanliness": "negative",
+      "Location": "neutral",
+      "Food": "neutral"
+    }
+  },
+  {
+    "id": "hinglish-0153",
+    "text": "overall experience nirash karne wala tha, jagah bahut door aur pahunchna mushkil tha aur daam theek tha.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "negative",
+    "aspect_labels": {
+      "Location": "negative",
+      "Value_for_Money": "neutral"
+    }
+  },
+  {
+    "id": "hinglish-0154",
+    "text": "poora trip saadharan tha, staff ruhkha aur anmana tha aur daam ke hisaab se faydemand raha.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "neutral",
+    "aspect_labels": {
+      "Staff": "negative",
+      "Value_for_Money": "positive"
+    }
+  },
+  {
+    "id": "hinglish-0155",
+    "text": "stay aam raha, staff theek tha aur poora kamra chamkata hua tha aur khana thanda aur bekaar tha.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "neutral",
+    "aspect_labels": {
+      "Staff": "neutral",
+      "Cleanliness": "positive",
+      "Food": "negative"
+    }
+  },
+  {
+    "id": "hinglish-0156",
+    "text": "poora trip saadharan tha, booking mein kaafi dikkat aayi aur safai aam thi aur jagah mall road ke ekdam paas thi aur safai average thi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "neutral",
+    "aspect_labels": {
+      "Booking_Experience": "negative",
+      "Cleanliness": "neutral",
+      "Location": "positive",
+      "Housekeeping": "neutral"
+    }
+  },
+  {
+    "id": "hinglish-0157",
+    "text": "stay kaafi niraashajanak raha, khana normal tha aur staff ruhkha aur anmana tha aur jagah thodi door thi aur seva bahut sust thi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "negative",
+    "aspect_labels": {
+      "Food": "neutral",
+      "Staff": "negative",
+      "Location": "neutral",
+      "Service": "negative"
+    }
+  },
+  {
+    "id": "hinglish-0158",
+    "text": "stay kaafi niraashajanak raha, seva bahut sust thi aur kamra chhota aur ghutan bhara tha aur safai bilkul nahi hui aur booking mein kaafi dikkat aayi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "negative",
+    "aspect_labels": {
+      "Service": "negative",
+      "Room": "negative",
+      "Housekeeping": "negative",
+      "Booking_Experience": "negative"
+    }
+  },
+  {
+    "id": "hinglish-0159",
+    "text": "stay aam raha, booking ekdam aasaan rahi aur kamra mein dhool aur badboo thi aur khana normal tha.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "neutral",
+    "aspect_labels": {
+      "Booking_Experience": "positive",
+      "Cleanliness": "negative",
+      "Food": "neutral"
+    }
+  },
+  {
+    "id": "hinglish-0160",
+    "text": "poora trip yaadgaar tha, daam ke hisaab se faydemand raha aur safai average thi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "positive",
+    "aspect_labels": {
+      "Value_for_Money": "positive",
+      "Housekeeping": "neutral"
+    }
+  },
+  {
+    "id": "hinglish-0161",
+    "text": "stay sukhad raha, safai roz hoti thi aur jagah mall road ke ekdam paas thi aur booking mein kaafi dikkat aayi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "positive",
+    "aspect_labels": {
+      "Housekeeping": "positive",
+      "Location": "positive",
+      "Booking_Experience": "negative"
+    }
+  },
+  {
+    "id": "hinglish-0162",
+    "text": "poora trip pareshan karne wala raha, booking mein kaafi dikkat aayi aur daam ke hisaab se faydemand raha aur khana thanda aur bekaar tha.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "negative",
+    "aspect_labels": {
+      "Booking_Experience": "negative",
+      "Value_for_Money": "positive",
+      "Food": "negative"
+    }
+  },
+  {
+    "id": "hinglish-0163",
+    "text": "poora trip saadharan tha, khana thanda aur bekaar tha aur safai roz hoti thi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "neutral",
+    "aspect_labels": {
+      "Food": "negative",
+      "Housekeeping": "positive"
+    }
+  },
+  {
+    "id": "hinglish-0164",
+    "text": "poora trip saadharan tha, kamra chhota aur ghutan bhara tha aur daam theek tha aur staff bada vinamra tha.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "neutral",
+    "aspect_labels": {
+      "Room": "negative",
+      "Value_for_Money": "neutral",
+      "Staff": "positive"
+    }
+  },
+  {
+    "id": "hinglish-0165",
+    "text": "stay kaafi niraashajanak raha, khana normal tha aur booking normal rahi aur kamra mein dhool aur badboo thi aur jagah thodi door thi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "negative",
+    "aspect_labels": {
+      "Food": "neutral",
+      "Booking_Experience": "neutral",
+      "Cleanliness": "negative",
+      "Location": "neutral"
+    }
+  },
+  {
+    "id": "hinglish-0166",
+    "text": "stay sukhad raha, kamra khula aur aaramdayak tha aur staff theek tha.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "positive",
+    "aspect_labels": {
+      "Room": "positive",
+      "Staff": "neutral"
+    }
+  },
+  {
+    "id": "hinglish-0167",
+    "text": "poora trip pareshan karne wala raha, seva bahut sust thi aur kamra mein dhool aur badboo thi aur daam zyada tha faayda kam.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "negative",
+    "aspect_labels": {
+      "Service": "negative",
+      "Cleanliness": "negative",
+      "Value_for_Money": "negative"
+    }
+  },
+  {
+    "id": "hinglish-0168",
+    "text": "overall experience nirash karne wala tha, khana thanda aur bekaar tha aur booking normal rahi aur safai bilkul nahi hui aur safai aam thi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "negative",
+    "aspect_labels": {
+      "Food": "negative",
+      "Booking_Experience": "neutral",
+      "Housekeeping": "negative",
+      "Cleanliness": "neutral"
+    }
+  },
+  {
+    "id": "hinglish-0169",
+    "text": "stay aam raha, seva bahut sust thi aur khana lajawab tha.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "neutral",
+    "aspect_labels": {
+      "Service": "negative",
+      "Food": "positive"
+    }
+  },
+  {
+    "id": "hinglish-0170",
+    "text": "poora trip yaadgaar tha, jagah mall road ke ekdam paas thi aur seva turant aur tezz thi aur safai roz hoti thi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "positive",
+    "aspect_labels": {
+      "Location": "positive",
+      "Service": "positive",
+      "Housekeeping": "positive"
+    }
+  },
+  {
+    "id": "hinglish-0171",
+    "text": "poora trip yaadgaar tha, staff theek tha aur booking ekdam aasaan rahi aur khana lajawab tha.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "positive",
+    "aspect_labels": {
+      "Staff": "neutral",
+      "Booking_Experience": "positive",
+      "Food": "positive"
+    }
+  },
+  {
+    "id": "hinglish-0172",
+    "text": "stay aam raha, safai aam thi aur khana normal tha.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "neutral",
+    "aspect_labels": {
+      "Cleanliness": "neutral",
+      "Food": "neutral"
+    }
+  },
+  {
+    "id": "hinglish-0173",
+    "text": "overall experience nirash karne wala tha, seva aam thi aur kamra mein dhool aur badboo thi aur daam zyada tha faayda kam aur khana lajawab tha.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "negative",
+    "aspect_labels": {
+      "Service": "neutral",
+      "Cleanliness": "negative",
+      "Value_for_Money": "negative",
+      "Food": "positive"
+    }
+  },
+  {
+    "id": "hinglish-0174",
+    "text": "poora trip yaadgaar tha, daam ke hisaab se faydemand raha aur khana normal tha aur kamra khula aur aaramdayak tha aur booking normal rahi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "positive",
+    "aspect_labels": {
+      "Value_for_Money": "positive",
+      "Food": "neutral",
+      "Room": "positive",
+      "Booking_Experience": "neutral"
+    }
+  },
+  {
+    "id": "hinglish-0175",
+    "text": "overall experience nirash karne wala tha, safai aam thi aur daam zyada tha faayda kam aur booking ekdam aasaan rahi aur khana thanda aur bekaar tha.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "negative",
+    "aspect_labels": {
+      "Cleanliness": "neutral",
+      "Value_for_Money": "negative",
+      "Booking_Experience": "positive",
+      "Food": "negative"
+    }
+  },
+  {
+    "id": "hinglish-0176",
+    "text": "poora trip saadharan tha, seva turant aur tezz thi aur kamra chhota aur ghutan bhara tha aur kamra mein dhool aur badboo thi aur khana lajawab tha.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "neutral",
+    "aspect_labels": {
+      "Service": "positive",
+      "Room": "negative",
+      "Cleanliness": "negative",
+      "Food": "positive"
+    }
+  },
+  {
+    "id": "hinglish-0177",
+    "text": "overall experience theek-thaak raha, khana thanda aur bekaar tha aur poora kamra chamkata hua tha aur booking normal rahi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "neutral",
+    "aspect_labels": {
+      "Food": "negative",
+      "Cleanliness": "positive",
+      "Booking_Experience": "neutral"
+    }
+  },
+  {
+    "id": "hinglish-0178",
+    "text": "stay kaafi niraashajanak raha, booking mein kaafi dikkat aayi aur seva bahut sust thi aur safai average thi aur jagah bahut door aur pahunchna mushkil tha.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "negative",
+    "aspect_labels": {
+      "Booking_Experience": "negative",
+      "Service": "negative",
+      "Housekeeping": "neutral",
+      "Location": "negative"
+    }
+  },
+  {
+    "id": "hinglish-0179",
+    "text": "overall experience nirash karne wala tha, kamra chhota aur ghutan bhara tha aur khana thanda aur bekaar tha aur safai aam thi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "negative",
+    "aspect_labels": {
+      "Room": "negative",
+      "Food": "negative",
+      "Cleanliness": "neutral"
+    }
+  },
+  {
+    "id": "hinglish-0180",
+    "text": "overall experience behtareen raha, staff theek tha aur daam ke hisaab se faydemand raha.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "positive",
+    "aspect_labels": {
+      "Staff": "neutral",
+      "Value_for_Money": "positive"
+    }
+  },
+  {
+    "id": "hinglish-0181",
+    "text": "overall experience behtareen raha, safai average thi aur poora kamra chamkata hua tha.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "positive",
+    "aspect_labels": {
+      "Housekeeping": "neutral",
+      "Cleanliness": "positive"
+    }
+  },
+  {
+    "id": "hinglish-0182",
+    "text": "overall experience theek-thaak raha, safai bilkul nahi hui aur jagah mall road ke ekdam paas thi aur booking ekdam aasaan rahi aur kamra chhota aur ghutan bhara tha.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "neutral",
+    "aspect_labels": {
+      "Housekeeping": "negative",
+      "Location": "positive",
+      "Booking_Experience": "positive",
+      "Room": "negative"
+    }
+  },
+  {
+    "id": "hinglish-0183",
+    "text": "poora trip yaadgaar tha, daam ke hisaab se faydemand raha aur kamra khula aur aaramdayak tha aur khana normal tha aur safai average thi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "positive",
+    "aspect_labels": {
+      "Value_for_Money": "positive",
+      "Room": "positive",
+      "Food": "neutral",
+      "Housekeeping": "neutral"
+    }
+  },
+  {
+    "id": "hinglish-0184",
+    "text": "poora trip saadharan tha, kamra mein dhool aur badboo thi aur booking ekdam aasaan rahi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "neutral",
+    "aspect_labels": {
+      "Cleanliness": "negative",
+      "Booking_Experience": "positive"
+    }
+  },
+  {
+    "id": "hinglish-0185",
+    "text": "overall experience behtareen raha, staff bada vinamra tha aur poora kamra chamkata hua tha aur daam theek tha aur jagah thodi door thi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "positive",
+    "aspect_labels": {
+      "Staff": "positive",
+      "Cleanliness": "positive",
+      "Value_for_Money": "neutral",
+      "Location": "neutral"
+    }
+  },
+  {
+    "id": "hinglish-0186",
+    "text": "overall experience theek-thaak raha, kamra khula aur aaramdayak tha aur daam zyada tha faayda kam aur poora kamra chamkata hua tha aur seva bahut sust thi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "neutral",
+    "aspect_labels": {
+      "Room": "positive",
+      "Value_for_Money": "negative",
+      "Cleanliness": "positive",
+      "Service": "negative"
+    }
+  },
+  {
+    "id": "hinglish-0187",
+    "text": "stay kaafi niraashajanak raha, daam zyada tha faayda kam aur khana thanda aur bekaar tha.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "negative",
+    "aspect_labels": {
+      "Value_for_Money": "negative",
+      "Food": "negative"
+    }
+  },
+  {
+    "id": "hinglish-0188",
+    "text": "overall experience behtareen raha, khana lajawab tha aur daam zyada tha faayda kam aur booking ekdam aasaan rahi aur safai aam thi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "positive",
+    "aspect_labels": {
+      "Food": "positive",
+      "Value_for_Money": "negative",
+      "Booking_Experience": "positive",
+      "Cleanliness": "neutral"
+    }
+  },
+  {
+    "id": "hinglish-0189",
+    "text": "stay sukhad raha, staff bada vinamra tha aur safai aam thi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "positive",
+    "aspect_labels": {
+      "Staff": "positive",
+      "Cleanliness": "neutral"
+    }
+  },
+  {
+    "id": "hinglish-0190",
+    "text": "stay aam raha, staff bada vinamra tha aur kamra mein dhool aur badboo thi aur seva aam thi aur safai average thi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "neutral",
+    "aspect_labels": {
+      "Staff": "positive",
+      "Cleanliness": "negative",
+      "Service": "neutral",
+      "Housekeeping": "neutral"
+    }
+  },
+  {
+    "id": "hinglish-0191",
+    "text": "stay kaafi niraashajanak raha, seva bahut sust thi aur safai aam thi aur booking mein kaafi dikkat aayi aur kamra theek-thaak tha.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "negative",
+    "aspect_labels": {
+      "Service": "negative",
+      "Cleanliness": "neutral",
+      "Booking_Experience": "negative",
+      "Room": "neutral"
+    }
+  },
+  {
+    "id": "hinglish-0192",
+    "text": "stay kaafi niraashajanak raha, jagah bahut door aur pahunchna mushkil tha aur staff ruhkha aur anmana tha.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "negative",
+    "aspect_labels": {
+      "Location": "negative",
+      "Staff": "negative"
+    }
+  },
+  {
+    "id": "hinglish-0193",
+    "text": "poora trip yaadgaar tha, safai average thi aur jagah mall road ke ekdam paas thi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "positive",
+    "aspect_labels": {
+      "Housekeeping": "neutral",
+      "Location": "positive"
+    }
+  },
+  {
+    "id": "hinglish-0194",
+    "text": "overall experience nirash karne wala tha, kamra mein dhool aur badboo thi aur seva bahut sust thi aur booking normal rahi aur daam ke hisaab se faydemand raha.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "negative",
+    "aspect_labels": {
+      "Cleanliness": "negative",
+      "Service": "negative",
+      "Booking_Experience": "neutral",
+      "Value_for_Money": "positive"
+    }
+  },
+  {
+    "id": "hinglish-0195",
+    "text": "overall experience nirash karne wala tha, khana thanda aur bekaar tha aur safai bilkul nahi hui aur booking ekdam aasaan rahi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "negative",
+    "aspect_labels": {
+      "Food": "negative",
+      "Housekeeping": "negative",
+      "Booking_Experience": "positive"
+    }
+  },
+  {
+    "id": "hinglish-0196",
+    "text": "stay sukhad raha, khana lajawab tha aur staff ruhkha aur anmana tha aur kamra khula aur aaramdayak tha aur booking normal rahi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "positive",
+    "aspect_labels": {
+      "Food": "positive",
+      "Staff": "negative",
+      "Room": "positive",
+      "Booking_Experience": "neutral"
+    }
+  },
+  {
+    "id": "hinglish-0197",
+    "text": "poora trip saadharan tha, poora kamra chamkata hua tha aur daam zyada tha faayda kam.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "neutral",
+    "aspect_labels": {
+      "Cleanliness": "positive",
+      "Value_for_Money": "negative"
+    }
+  },
+  {
+    "id": "hinglish-0198",
+    "text": "overall experience nirash karne wala tha, kamra chhota aur ghutan bhara tha aur booking normal rahi aur seva bahut sust thi aur staff bada vinamra tha.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "negative",
+    "aspect_labels": {
+      "Room": "negative",
+      "Booking_Experience": "neutral",
+      "Service": "negative",
+      "Staff": "positive"
+    }
+  },
+  {
+    "id": "hinglish-0199",
+    "text": "poora trip yaadgaar tha, khana lajawab tha aur safai roz hoti thi aur kamra mein dhool aur badboo thi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "positive",
+    "aspect_labels": {
+      "Food": "positive",
+      "Housekeeping": "positive",
+      "Cleanliness": "negative"
+    }
+  },
+  {
+    "id": "hinglish-0200",
+    "text": "overall experience nirash karne wala tha, staff bada vinamra tha aur seva bahut sust thi aur kamra theek-thaak tha aur jagah bahut door aur pahunchna mushkil tha.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "negative",
+    "aspect_labels": {
+      "Staff": "positive",
+      "Service": "negative",
+      "Room": "neutral",
+      "Location": "negative"
+    }
+  },
+  {
+    "id": "hinglish-0201",
+    "text": "stay kaafi niraashajanak raha, booking mein kaafi dikkat aayi aur jagah bahut door aur pahunchna mushkil tha aur staff theek tha aur safai aam thi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "negative",
+    "aspect_labels": {
+      "Booking_Experience": "negative",
+      "Location": "negative",
+      "Staff": "neutral",
+      "Cleanliness": "neutral"
+    }
+  },
+  {
+    "id": "hinglish-0202",
+    "text": "overall experience behtareen raha, jagah thodi door thi aur seva turant aur tezz thi aur khana normal tha.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "positive",
+    "aspect_labels": {
+      "Location": "neutral",
+      "Service": "positive",
+      "Food": "neutral"
+    }
+  },
+  {
+    "id": "hinglish-0203",
+    "text": "overall experience theek-thaak raha, kamra theek-thaak tha aur khana lajawab tha aur safai bilkul nahi hui.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "neutral",
+    "aspect_labels": {
+      "Room": "neutral",
+      "Food": "positive",
+      "Housekeeping": "negative"
+    }
+  },
+  {
+    "id": "hinglish-0204",
+    "text": "poora trip saadharan tha, seva bahut sust thi aur poora kamra chamkata hua tha aur kamra theek-thaak tha aur jagah thodi door thi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "neutral",
+    "aspect_labels": {
+      "Service": "negative",
+      "Cleanliness": "positive",
+      "Room": "neutral",
+      "Location": "neutral"
+    }
+  },
+  {
+    "id": "hinglish-0205",
+    "text": "overall experience behtareen raha, khana normal tha aur jagah mall road ke ekdam paas thi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "positive",
+    "aspect_labels": {
+      "Food": "neutral",
+      "Location": "positive"
+    }
+  },
+  {
+    "id": "hinglish-0206",
+    "text": "poora trip pareshan karne wala raha, khana thanda aur bekaar tha aur booking normal rahi aur jagah thodi door thi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "negative",
+    "aspect_labels": {
+      "Food": "negative",
+      "Booking_Experience": "neutral",
+      "Location": "neutral"
+    }
+  },
+  {
+    "id": "hinglish-0207",
+    "text": "overall experience behtareen raha, kamra khula aur aaramdayak tha aur daam ke hisaab se faydemand raha.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "positive",
+    "aspect_labels": {
+      "Room": "positive",
+      "Value_for_Money": "positive"
+    }
+  },
+  {
+    "id": "hinglish-0208",
+    "text": "stay kaafi niraashajanak raha, staff ruhkha aur anmana tha aur jagah bahut door aur pahunchna mushkil tha aur booking ekdam aasaan rahi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "negative",
+    "aspect_labels": {
+      "Staff": "negative",
+      "Location": "negative",
+      "Booking_Experience": "positive"
+    }
+  },
+  {
+    "id": "hinglish-0209",
+    "text": "overall experience nirash karne wala tha, seva aam thi aur kamra theek-thaak tha aur kamra mein dhool aur badboo thi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "negative",
+    "aspect_labels": {
+      "Service": "neutral",
+      "Room": "neutral",
+      "Cleanliness": "negative"
+    }
+  },
+  {
+    "id": "hinglish-0210",
+    "text": "stay kaafi niraashajanak raha, khana normal tha aur daam theek tha aur kamra chhota aur ghutan bhara tha aur jagah bahut door aur pahunchna mushkil tha.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "negative",
+    "aspect_labels": {
+      "Food": "neutral",
+      "Value_for_Money": "neutral",
+      "Room": "negative",
+      "Location": "negative"
+    }
+  },
+  {
+    "id": "hinglish-0211",
+    "text": "stay sukhad raha, seva aam thi aur safai roz hoti thi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "positive",
+    "aspect_labels": {
+      "Service": "neutral",
+      "Housekeeping": "positive"
+    }
+  },
+  {
+    "id": "hinglish-0212",
+    "text": "stay kaafi niraashajanak raha, khana thanda aur bekaar tha aur seva turant aur tezz thi aur jagah bahut door aur pahunchna mushkil tha.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "negative",
+    "aspect_labels": {
+      "Food": "negative",
+      "Service": "positive",
+      "Location": "negative"
+    }
+  },
+  {
+    "id": "hinglish-0213",
+    "text": "overall experience nirash karne wala tha, safai aam thi aur kamra theek-thaak tha aur safai bilkul nahi hui.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "negative",
+    "aspect_labels": {
+      "Cleanliness": "neutral",
+      "Room": "neutral",
+      "Housekeeping": "negative"
+    }
+  },
+  {
+    "id": "hinglish-0214",
+    "text": "overall experience theek-thaak raha, jagah bahut door aur pahunchna mushkil tha aur daam theek tha aur staff bada vinamra tha.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "neutral",
+    "aspect_labels": {
+      "Location": "negative",
+      "Value_for_Money": "neutral",
+      "Staff": "positive"
+    }
+  },
+  {
+    "id": "hinglish-0215",
+    "text": "overall experience behtareen raha, safai roz hoti thi aur seva bahut sust thi aur booking ekdam aasaan rahi aur staff bada vinamra tha.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "positive",
+    "aspect_labels": {
+      "Housekeeping": "positive",
+      "Service": "negative",
+      "Booking_Experience": "positive",
+      "Staff": "positive"
+    }
+  },
+  {
+    "id": "hinglish-0216",
+    "text": "overall experience behtareen raha, seva turant aur tezz thi aur khana thanda aur bekaar tha aur safai roz hoti thi aur booking ekdam aasaan rahi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "positive",
+    "aspect_labels": {
+      "Service": "positive",
+      "Food": "negative",
+      "Housekeeping": "positive",
+      "Booking_Experience": "positive"
+    }
+  },
+  {
+    "id": "hinglish-0217",
+    "text": "overall experience nirash karne wala tha, khana thanda aur bekaar tha aur safai bilkul nahi hui aur kamra mein dhool aur badboo thi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "negative",
+    "aspect_labels": {
+      "Food": "negative",
+      "Housekeeping": "negative",
+      "Cleanliness": "negative"
+    }
+  },
+  {
+    "id": "hinglish-0218",
+    "text": "stay aam raha, staff theek tha aur khana normal tha aur jagah thodi door thi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "neutral",
+    "aspect_labels": {
+      "Staff": "neutral",
+      "Food": "neutral",
+      "Location": "neutral"
+    }
+  },
+  {
+    "id": "hinglish-0219",
+    "text": "poora trip yaadgaar tha, daam ke hisaab se faydemand raha aur jagah mall road ke ekdam paas thi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "positive",
+    "aspect_labels": {
+      "Value_for_Money": "positive",
+      "Location": "positive"
+    }
+  },
+  {
+    "id": "hinglish-0220",
+    "text": "stay sukhad raha, jagah mall road ke ekdam paas thi aur seva aam thi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "positive",
+    "aspect_labels": {
+      "Location": "positive",
+      "Service": "neutral"
+    }
+  },
+  {
+    "id": "hinglish-0221",
+    "text": "poora trip saadharan tha, kamra khula aur aaramdayak tha aur safai bilkul nahi hui aur daam theek tha.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "neutral",
+    "aspect_labels": {
+      "Room": "positive",
+      "Housekeeping": "negative",
+      "Value_for_Money": "neutral"
+    }
+  },
+  {
+    "id": "hinglish-0222",
+    "text": "poora trip yaadgaar tha, staff ruhkha aur anmana tha aur kamra khula aur aaramdayak tha aur booking ekdam aasaan rahi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "positive",
+    "aspect_labels": {
+      "Staff": "negative",
+      "Room": "positive",
+      "Booking_Experience": "positive"
+    }
+  },
+  {
+    "id": "hinglish-0223",
+    "text": "stay sukhad raha, safai roz hoti thi aur kamra theek-thaak tha aur khana normal tha aur jagah thodi door thi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "positive",
+    "aspect_labels": {
+      "Housekeeping": "positive",
+      "Room": "neutral",
+      "Food": "neutral",
+      "Location": "neutral"
+    }
+  },
+  {
+    "id": "hinglish-0224",
+    "text": "poora trip pareshan karne wala raha, jagah thodi door thi aur khana thanda aur bekaar tha aur kamra mein dhool aur badboo thi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "negative",
+    "aspect_labels": {
+      "Location": "neutral",
+      "Food": "negative",
+      "Cleanliness": "negative"
+    }
+  },
+  {
+    "id": "hinglish-0225",
+    "text": "overall experience nirash karne wala tha, kamra chhota aur ghutan bhara tha aur safai roz hoti thi aur daam zyada tha faayda kam aur booking normal rahi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "negative",
+    "aspect_labels": {
+      "Room": "negative",
+      "Housekeeping": "positive",
+      "Value_for_Money": "negative",
+      "Booking_Experience": "neutral"
+    }
+  },
+  {
+    "id": "hinglish-0226",
+    "text": "overall experience nirash karne wala tha, seva bahut sust thi aur daam zyada tha faayda kam aur khana thanda aur bekaar tha.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "negative",
+    "aspect_labels": {
+      "Service": "negative",
+      "Value_for_Money": "negative",
+      "Food": "negative"
+    }
+  },
+  {
+    "id": "hinglish-0227",
+    "text": "poora trip pareshan karne wala raha, daam zyada tha faayda kam aur booking mein kaafi dikkat aayi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "negative",
+    "aspect_labels": {
+      "Value_for_Money": "negative",
+      "Booking_Experience": "negative"
+    }
+  },
+  {
+    "id": "hinglish-0228",
+    "text": "overall experience behtareen raha, booking ekdam aasaan rahi aur safai roz hoti thi aur jagah bahut door aur pahunchna mushkil tha.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "positive",
+    "aspect_labels": {
+      "Booking_Experience": "positive",
+      "Housekeeping": "positive",
+      "Location": "negative"
+    }
+  },
+  {
+    "id": "hinglish-0229",
+    "text": "overall experience theek-thaak raha, daam theek tha aur booking normal rahi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "neutral",
+    "aspect_labels": {
+      "Value_for_Money": "neutral",
+      "Booking_Experience": "neutral"
+    }
+  },
+  {
+    "id": "hinglish-0230",
+    "text": "stay kaafi niraashajanak raha, khana thanda aur bekaar tha aur poora kamra chamkata hua tha aur daam zyada tha faayda kam.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "negative",
+    "aspect_labels": {
+      "Food": "negative",
+      "Cleanliness": "positive",
+      "Value_for_Money": "negative"
+    }
+  },
+  {
+    "id": "hinglish-0231",
+    "text": "poora trip yaadgaar tha, khana lajawab tha aur staff bada vinamra tha aur safai roz hoti thi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "positive",
+    "aspect_labels": {
+      "Food": "positive",
+      "Staff": "positive",
+      "Housekeeping": "positive"
+    }
+  },
+  {
+    "id": "hinglish-0232",
+    "text": "poora trip pareshan karne wala raha, safai aam thi aur staff ruhkha aur anmana tha.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "negative",
+    "aspect_labels": {
+      "Cleanliness": "neutral",
+      "Staff": "negative"
+    }
+  },
+  {
+    "id": "hinglish-0233",
+    "text": "stay sukhad raha, kamra chhota aur ghutan bhara tha aur daam ke hisaab se faydemand raha aur khana lajawab tha aur jagah mall road ke ekdam paas thi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "positive",
+    "aspect_labels": {
+      "Room": "negative",
+      "Value_for_Money": "positive",
+      "Food": "positive",
+      "Location": "positive"
+    }
+  },
+  {
+    "id": "hinglish-0234",
+    "text": "overall experience behtareen raha, khana normal tha aur seva turant aur tezz thi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "positive",
+    "aspect_labels": {
+      "Food": "neutral",
+      "Service": "positive"
+    }
+  },
+  {
+    "id": "hinglish-0235",
+    "text": "stay sukhad raha, booking normal rahi aur jagah mall road ke ekdam paas thi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "positive",
+    "aspect_labels": {
+      "Booking_Experience": "neutral",
+      "Location": "positive"
+    }
+  },
+  {
+    "id": "hinglish-0236",
+    "text": "overall experience theek-thaak raha, khana normal tha aur jagah thodi door thi aur safai average thi aur seva aam thi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "neutral",
+    "aspect_labels": {
+      "Food": "neutral",
+      "Location": "neutral",
+      "Housekeeping": "neutral",
+      "Service": "neutral"
+    }
+  },
+  {
+    "id": "hinglish-0237",
+    "text": "poora trip yaadgaar tha, khana normal tha aur staff bada vinamra tha.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "positive",
+    "aspect_labels": {
+      "Food": "neutral",
+      "Staff": "positive"
+    }
+  },
+  {
+    "id": "hinglish-0238",
+    "text": "stay sukhad raha, jagah thodi door thi aur poora kamra chamkata hua tha aur seva turant aur tezz thi aur daam zyada tha faayda kam.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "positive",
+    "aspect_labels": {
+      "Location": "neutral",
+      "Cleanliness": "positive",
+      "Service": "positive",
+      "Value_for_Money": "negative"
+    }
+  },
+  {
+    "id": "hinglish-0239",
+    "text": "poora trip pareshan karne wala raha, jagah bahut door aur pahunchna mushkil tha aur khana thanda aur bekaar tha aur safai roz hoti thi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "negative",
+    "aspect_labels": {
+      "Location": "negative",
+      "Food": "negative",
+      "Housekeeping": "positive"
+    }
+  },
+  {
+    "id": "hinglish-0240",
+    "text": "overall experience theek-thaak raha, safai aam thi aur jagah mall road ke ekdam paas thi aur seva bahut sust thi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "neutral",
+    "aspect_labels": {
+      "Cleanliness": "neutral",
+      "Location": "positive",
+      "Service": "negative"
+    }
+  },
+  {
+    "id": "hinglish-0241",
+    "text": "stay sukhad raha, daam theek tha aur seva aam thi aur kamra khula aur aaramdayak tha.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "positive",
+    "aspect_labels": {
+      "Value_for_Money": "neutral",
+      "Service": "neutral",
+      "Room": "positive"
+    }
+  },
+  {
+    "id": "hinglish-0242",
+    "text": "poora trip yaadgaar tha, poora kamra chamkata hua tha aur seva bahut sust thi aur safai roz hoti thi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "positive",
+    "aspect_labels": {
+      "Cleanliness": "positive",
+      "Service": "negative",
+      "Housekeeping": "positive"
+    }
+  },
+  {
+    "id": "hinglish-0243",
+    "text": "poora trip saadharan tha, staff theek tha aur jagah thodi door thi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "neutral",
+    "aspect_labels": {
+      "Staff": "neutral",
+      "Location": "neutral"
+    }
+  },
+  {
+    "id": "hinglish-0244",
+    "text": "stay aam raha, jagah mall road ke ekdam paas thi aur khana thanda aur bekaar tha aur kamra khula aur aaramdayak tha aur seva bahut sust thi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "neutral",
+    "aspect_labels": {
+      "Location": "positive",
+      "Food": "negative",
+      "Room": "positive",
+      "Service": "negative"
+    }
+  },
+  {
+    "id": "hinglish-0245",
+    "text": "overall experience behtareen raha, seva turant aur tezz thi aur jagah mall road ke ekdam paas thi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "positive",
+    "aspect_labels": {
+      "Service": "positive",
+      "Location": "positive"
+    }
+  },
+  {
+    "id": "hinglish-0246",
+    "text": "stay aam raha, seva aam thi aur jagah mall road ke ekdam paas thi aur khana normal tha aur kamra chhota aur ghutan bhara tha.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "neutral",
+    "aspect_labels": {
+      "Service": "neutral",
+      "Location": "positive",
+      "Food": "neutral",
+      "Room": "negative"
+    }
+  },
+  {
+    "id": "hinglish-0247",
+    "text": "stay aam raha, safai average thi aur daam theek tha aur staff bada vinamra tha aur booking mein kaafi dikkat aayi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "neutral",
+    "aspect_labels": {
+      "Housekeeping": "neutral",
+      "Value_for_Money": "neutral",
+      "Staff": "positive",
+      "Booking_Experience": "negative"
+    }
+  },
+  {
+    "id": "hinglish-0248",
+    "text": "stay sukhad raha, kamra theek-thaak tha aur staff theek tha aur safai aam thi aur safai roz hoti thi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "positive",
+    "aspect_labels": {
+      "Room": "neutral",
+      "Staff": "neutral",
+      "Cleanliness": "neutral",
+      "Housekeeping": "positive"
+    }
+  },
+  {
+    "id": "hinglish-0249",
+    "text": "poora trip pareshan karne wala raha, safai bilkul nahi hui aur safai aam thi aur seva aam thi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "negative",
+    "aspect_labels": {
+      "Housekeeping": "negative",
+      "Cleanliness": "neutral",
+      "Service": "neutral"
+    }
+  },
+  {
+    "id": "hinglish-0250",
+    "text": "overall experience nirash karne wala tha, staff theek tha aur khana thanda aur bekaar tha aur kamra chhota aur ghutan bhara tha aur safai average thi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "negative",
+    "aspect_labels": {
+      "Staff": "neutral",
+      "Food": "negative",
+      "Room": "negative",
+      "Housekeeping": "neutral"
+    }
+  },
+  {
+    "id": "hinglish-0251",
+    "text": "stay kaafi niraashajanak raha, khana normal tha aur daam theek tha aur jagah bahut door aur pahunchna mushkil tha.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "negative",
+    "aspect_labels": {
+      "Food": "neutral",
+      "Value_for_Money": "neutral",
+      "Location": "negative"
+    }
+  },
+  {
+    "id": "hinglish-0252",
+    "text": "stay aam raha, seva aam thi aur daam theek tha.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "neutral",
+    "aspect_labels": {
+      "Service": "neutral",
+      "Value_for_Money": "neutral"
+    }
+  },
+  {
+    "id": "hinglish-0253",
+    "text": "overall experience behtareen raha, staff bada vinamra tha aur daam ke hisaab se faydemand raha.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "positive",
+    "aspect_labels": {
+      "Staff": "positive",
+      "Value_for_Money": "positive"
+    }
+  },
+  {
+    "id": "hinglish-0254",
+    "text": "overall experience theek-thaak raha, safai roz hoti thi aur jagah bahut door aur pahunchna mushkil tha aur daam zyada tha faayda kam aur khana lajawab tha.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "neutral",
+    "aspect_labels": {
+      "Housekeeping": "positive",
+      "Location": "negative",
+      "Value_for_Money": "negative",
+      "Food": "positive"
+    }
+  },
+  {
+    "id": "hinglish-0255",
+    "text": "stay sukhad raha, booking ekdam aasaan rahi aur khana normal tha aur jagah thodi door thi aur staff theek tha.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "positive",
+    "aspect_labels": {
+      "Booking_Experience": "positive",
+      "Food": "neutral",
+      "Location": "neutral",
+      "Staff": "neutral"
+    }
+  },
+  {
+    "id": "hinglish-0256",
+    "text": "poora trip pareshan karne wala raha, jagah thodi door thi aur kamra chhota aur ghutan bhara tha.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "negative",
+    "aspect_labels": {
+      "Location": "neutral",
+      "Room": "negative"
+    }
+  },
+  {
+    "id": "hinglish-0257",
+    "text": "poora trip yaadgaar tha, daam ke hisaab se faydemand raha aur safai roz hoti thi aur kamra khula aur aaramdayak tha.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "positive",
+    "aspect_labels": {
+      "Value_for_Money": "positive",
+      "Housekeeping": "positive",
+      "Room": "positive"
+    }
+  },
+  {
+    "id": "hinglish-0258",
+    "text": "poora trip saadharan tha, daam theek tha aur kamra theek-thaak tha aur safai aam thi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "neutral",
+    "aspect_labels": {
+      "Value_for_Money": "neutral",
+      "Room": "neutral",
+      "Cleanliness": "neutral"
+    }
+  },
+  {
+    "id": "hinglish-0259",
+    "text": "poora trip saadharan tha, staff bada vinamra tha aur jagah bahut door aur pahunchna mushkil tha.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "neutral",
+    "aspect_labels": {
+      "Staff": "positive",
+      "Location": "negative"
+    }
+  },
+  {
+    "id": "hinglish-0260",
+    "text": "stay kaafi niraashajanak raha, booking mein kaafi dikkat aayi aur seva bahut sust thi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "negative",
+    "aspect_labels": {
+      "Booking_Experience": "negative",
+      "Service": "negative"
+    }
+  },
+  {
+    "id": "hinglish-0261",
+    "text": "stay sukhad raha, safai roz hoti thi aur booking normal rahi aur daam ke hisaab se faydemand raha.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "positive",
+    "aspect_labels": {
+      "Housekeeping": "positive",
+      "Booking_Experience": "neutral",
+      "Value_for_Money": "positive"
+    }
+  },
+  {
+    "id": "hinglish-0262",
+    "text": "poora trip yaadgaar tha, safai aam thi aur safai average thi aur khana lajawab tha aur staff bada vinamra tha.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "positive",
+    "aspect_labels": {
+      "Cleanliness": "neutral",
+      "Housekeeping": "neutral",
+      "Food": "positive",
+      "Staff": "positive"
+    }
+  },
+  {
+    "id": "hinglish-0263",
+    "text": "poora trip pareshan karne wala raha, kamra chhota aur ghutan bhara tha aur safai bilkul nahi hui aur khana normal tha.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "negative",
+    "aspect_labels": {
+      "Room": "negative",
+      "Housekeeping": "negative",
+      "Food": "neutral"
+    }
+  },
+  {
+    "id": "hinglish-0264",
+    "text": "overall experience nirash karne wala tha, kamra chhota aur ghutan bhara tha aur staff theek tha.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "negative",
+    "aspect_labels": {
+      "Room": "negative",
+      "Staff": "neutral"
+    }
+  },
+  {
+    "id": "hinglish-0265",
+    "text": "overall experience nirash karne wala tha, daam theek tha aur jagah bahut door aur pahunchna mushkil tha.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "negative",
+    "aspect_labels": {
+      "Value_for_Money": "neutral",
+      "Location": "negative"
+    }
+  },
+  {
+    "id": "hinglish-0266",
+    "text": "stay kaafi niraashajanak raha, staff ruhkha aur anmana tha aur booking mein kaafi dikkat aayi aur safai roz hoti thi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "negative",
+    "aspect_labels": {
+      "Staff": "negative",
+      "Booking_Experience": "negative",
+      "Housekeeping": "positive"
+    }
+  },
+  {
+    "id": "hinglish-0267",
+    "text": "stay sukhad raha, daam ke hisaab se faydemand raha aur booking normal rahi aur seva turant aur tezz thi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "positive",
+    "aspect_labels": {
+      "Value_for_Money": "positive",
+      "Booking_Experience": "neutral",
+      "Service": "positive"
+    }
+  },
+  {
+    "id": "hinglish-0268",
+    "text": "poora trip pareshan karne wala raha, staff theek tha aur safai average thi aur seva bahut sust thi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "negative",
+    "aspect_labels": {
+      "Staff": "neutral",
+      "Housekeeping": "neutral",
+      "Service": "negative"
+    }
+  },
+  {
+    "id": "hinglish-0269",
+    "text": "poora trip pareshan karne wala raha, jagah bahut door aur pahunchna mushkil tha aur seva aam thi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "negative",
+    "aspect_labels": {
+      "Location": "negative",
+      "Service": "neutral"
+    }
+  },
+  {
+    "id": "hinglish-0270",
+    "text": "stay kaafi niraashajanak raha, staff ruhkha aur anmana tha aur safai aam thi aur booking mein kaafi dikkat aayi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "negative",
+    "aspect_labels": {
+      "Staff": "negative",
+      "Cleanliness": "neutral",
+      "Booking_Experience": "negative"
+    }
+  },
+  {
+    "id": "hinglish-0271",
+    "text": "poora trip pareshan karne wala raha, seva aam thi aur kamra mein dhool aur badboo thi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "negative",
+    "aspect_labels": {
+      "Service": "neutral",
+      "Cleanliness": "negative"
+    }
+  },
+  {
+    "id": "hinglish-0272",
+    "text": "poora trip pareshan karne wala raha, kamra chhota aur ghutan bhara tha aur seva aam thi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "negative",
+    "aspect_labels": {
+      "Room": "negative",
+      "Service": "neutral"
+    }
+  },
+  {
+    "id": "hinglish-0273",
+    "text": "stay sukhad raha, safai roz hoti thi aur jagah bahut door aur pahunchna mushkil tha aur khana normal tha aur daam ke hisaab se faydemand raha.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "positive",
+    "aspect_labels": {
+      "Housekeeping": "positive",
+      "Location": "negative",
+      "Food": "neutral",
+      "Value_for_Money": "positive"
+    }
+  },
+  {
+    "id": "hinglish-0274",
+    "text": "stay aam raha, seva aam thi aur booking ekdam aasaan rahi aur daam theek tha aur khana thanda aur bekaar tha.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "neutral",
+    "aspect_labels": {
+      "Service": "neutral",
+      "Booking_Experience": "positive",
+      "Value_for_Money": "neutral",
+      "Food": "negative"
+    }
+  },
+  {
+    "id": "hinglish-0275",
+    "text": "poora trip saadharan tha, kamra khula aur aaramdayak tha aur daam theek tha aur seva bahut sust thi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "neutral",
+    "aspect_labels": {
+      "Room": "positive",
+      "Value_for_Money": "neutral",
+      "Service": "negative"
+    }
+  },
+  {
+    "id": "hinglish-0276",
+    "text": "poora trip pareshan karne wala raha, safai average thi aur jagah bahut door aur pahunchna mushkil tha aur seva bahut sust thi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "negative",
+    "aspect_labels": {
+      "Housekeeping": "neutral",
+      "Location": "negative",
+      "Service": "negative"
+    }
+  },
+  {
+    "id": "hinglish-0277",
+    "text": "stay sukhad raha, khana lajawab tha aur jagah mall road ke ekdam paas thi aur daam ke hisaab se faydemand raha aur seva bahut sust thi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "positive",
+    "aspect_labels": {
+      "Food": "positive",
+      "Location": "positive",
+      "Value_for_Money": "positive",
+      "Service": "negative"
+    }
+  },
+  {
+    "id": "hinglish-0278",
+    "text": "overall experience behtareen raha, jagah thodi door thi aur daam ke hisaab se faydemand raha.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "positive",
+    "aspect_labels": {
+      "Location": "neutral",
+      "Value_for_Money": "positive"
+    }
+  },
+  {
+    "id": "hinglish-0279",
+    "text": "poora trip yaadgaar tha, khana thanda aur bekaar tha aur seva turant aur tezz thi aur staff bada vinamra tha.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "positive",
+    "aspect_labels": {
+      "Food": "negative",
+      "Service": "positive",
+      "Staff": "positive"
+    }
+  },
+  {
+    "id": "hinglish-0280",
+    "text": "overall experience nirash karne wala tha, jagah thodi door thi aur kamra mein dhool aur badboo thi aur khana thanda aur bekaar tha aur kamra theek-thaak tha.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "negative",
+    "aspect_labels": {
+      "Location": "neutral",
+      "Cleanliness": "negative",
+      "Food": "negative",
+      "Room": "neutral"
+    }
+  },
+  {
+    "id": "hinglish-0281",
+    "text": "overall experience nirash karne wala tha, daam zyada tha faayda kam aur safai bilkul nahi hui aur staff bada vinamra tha aur seva aam thi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "negative",
+    "aspect_labels": {
+      "Value_for_Money": "negative",
+      "Housekeeping": "negative",
+      "Staff": "positive",
+      "Service": "neutral"
+    }
+  },
+  {
+    "id": "hinglish-0282",
+    "text": "poora trip yaadgaar tha, safai average thi aur daam ke hisaab se faydemand raha aur jagah mall road ke ekdam paas thi aur khana normal tha.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "positive",
+    "aspect_labels": {
+      "Housekeeping": "neutral",
+      "Value_for_Money": "positive",
+      "Location": "positive",
+      "Food": "neutral"
+    }
+  },
+  {
+    "id": "hinglish-0283",
+    "text": "overall experience theek-thaak raha, kamra chhota aur ghutan bhara tha aur booking ekdam aasaan rahi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "neutral",
+    "aspect_labels": {
+      "Room": "negative",
+      "Booking_Experience": "positive"
+    }
+  },
+  {
+    "id": "hinglish-0284",
+    "text": "stay aam raha, safai average thi aur jagah mall road ke ekdam paas thi aur khana normal tha aur kamra mein dhool aur badboo thi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "neutral",
+    "aspect_labels": {
+      "Housekeeping": "neutral",
+      "Location": "positive",
+      "Food": "neutral",
+      "Cleanliness": "negative"
+    }
+  },
+  {
+    "id": "hinglish-0285",
+    "text": "overall experience behtareen raha, khana lajawab tha aur booking ekdam aasaan rahi aur seva turant aur tezz thi aur jagah mall road ke ekdam paas thi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "positive",
+    "aspect_labels": {
+      "Food": "positive",
+      "Booking_Experience": "positive",
+      "Service": "positive",
+      "Location": "positive"
+    }
+  },
+  {
+    "id": "hinglish-0286",
+    "text": "poora trip pareshan karne wala raha, staff theek tha aur daam zyada tha faayda kam.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "negative",
+    "aspect_labels": {
+      "Staff": "neutral",
+      "Value_for_Money": "negative"
+    }
+  },
+  {
+    "id": "hinglish-0287",
+    "text": "overall experience theek-thaak raha, safai average thi aur khana thanda aur bekaar tha aur poora kamra chamkata hua tha aur staff theek tha.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "neutral",
+    "aspect_labels": {
+      "Housekeeping": "neutral",
+      "Food": "negative",
+      "Cleanliness": "positive",
+      "Staff": "neutral"
+    }
+  },
+  {
+    "id": "hinglish-0288",
+    "text": "overall experience theek-thaak raha, jagah thodi door thi aur kamra theek-thaak tha.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "neutral",
+    "aspect_labels": {
+      "Location": "neutral",
+      "Room": "neutral"
+    }
+  },
+  {
+    "id": "hinglish-0289",
+    "text": "stay sukhad raha, seva aam thi aur jagah mall road ke ekdam paas thi aur booking ekdam aasaan rahi aur daam ke hisaab se faydemand raha.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "positive",
+    "aspect_labels": {
+      "Service": "neutral",
+      "Location": "positive",
+      "Booking_Experience": "positive",
+      "Value_for_Money": "positive"
+    }
+  },
+  {
+    "id": "hinglish-0290",
+    "text": "poora trip saadharan tha, kamra khula aur aaramdayak tha aur kamra mein dhool aur badboo thi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "neutral",
+    "aspect_labels": {
+      "Room": "positive",
+      "Cleanliness": "negative"
+    }
+  },
+  {
+    "id": "hinglish-0291",
+    "text": "poora trip pareshan karne wala raha, booking mein kaafi dikkat aayi aur jagah thodi door thi aur kamra chhota aur ghutan bhara tha.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "negative",
+    "aspect_labels": {
+      "Booking_Experience": "negative",
+      "Location": "neutral",
+      "Room": "negative"
+    }
+  },
+  {
+    "id": "hinglish-0292",
+    "text": "overall experience nirash karne wala tha, jagah thodi door thi aur khana lajawab tha aur seva bahut sust thi aur daam zyada tha faayda kam.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "negative",
+    "aspect_labels": {
+      "Location": "neutral",
+      "Food": "positive",
+      "Service": "negative",
+      "Value_for_Money": "negative"
+    }
+  },
+  {
+    "id": "hinglish-0293",
+    "text": "overall experience nirash karne wala tha, booking mein kaafi dikkat aayi aur kamra mein dhool aur badboo thi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "negative",
+    "aspect_labels": {
+      "Booking_Experience": "negative",
+      "Cleanliness": "negative"
+    }
+  },
+  {
+    "id": "hinglish-0294",
+    "text": "stay kaafi niraashajanak raha, daam theek tha aur seva bahut sust thi aur khana thanda aur bekaar tha aur safai roz hoti thi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "negative",
+    "aspect_labels": {
+      "Value_for_Money": "neutral",
+      "Service": "negative",
+      "Food": "negative",
+      "Housekeeping": "positive"
+    }
+  },
+  {
+    "id": "hinglish-0295",
+    "text": "poora trip yaadgaar tha, staff theek tha aur poora kamra chamkata hua tha.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "positive",
+    "aspect_labels": {
+      "Staff": "neutral",
+      "Cleanliness": "positive"
+    }
+  },
+  {
+    "id": "hinglish-0296",
+    "text": "poora trip yaadgaar tha, khana lajawab tha aur seva turant aur tezz thi aur daam zyada tha faayda kam aur staff bada vinamra tha.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "positive",
+    "aspect_labels": {
+      "Food": "positive",
+      "Service": "positive",
+      "Value_for_Money": "negative",
+      "Staff": "positive"
+    }
+  },
+  {
+    "id": "hinglish-0297",
+    "text": "stay kaafi niraashajanak raha, jagah bahut door aur pahunchna mushkil tha aur kamra mein dhool aur badboo thi aur seva aam thi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "negative",
+    "aspect_labels": {
+      "Location": "negative",
+      "Cleanliness": "negative",
+      "Service": "neutral"
+    }
+  },
+  {
+    "id": "hinglish-0298",
+    "text": "poora trip yaadgaar tha, daam theek tha aur poora kamra chamkata hua tha aur safai roz hoti thi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "positive",
+    "aspect_labels": {
+      "Value_for_Money": "neutral",
+      "Cleanliness": "positive",
+      "Housekeeping": "positive"
+    }
+  },
+  {
+    "id": "hinglish-0299",
+    "text": "poora trip pareshan karne wala raha, kamra khula aur aaramdayak tha aur khana thanda aur bekaar tha aur safai average thi aur kamra mein dhool aur badboo thi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "negative",
+    "aspect_labels": {
+      "Room": "positive",
+      "Food": "negative",
+      "Housekeeping": "neutral",
+      "Cleanliness": "negative"
+    }
+  },
+  {
+    "id": "hinglish-0300",
+    "text": "stay sukhad raha, poora kamra chamkata hua tha aur seva aam thi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "positive",
+    "aspect_labels": {
+      "Cleanliness": "positive",
+      "Service": "neutral"
+    }
+  },
+  {
+    "id": "hinglish-0301",
+    "text": "overall experience behtareen raha, kamra theek-thaak tha aur booking ekdam aasaan rahi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "positive",
+    "aspect_labels": {
+      "Room": "neutral",
+      "Booking_Experience": "positive"
+    }
+  },
+  {
+    "id": "hinglish-0302",
+    "text": "poora trip yaadgaar tha, daam theek tha aur safai roz hoti thi aur seva turant aur tezz thi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "positive",
+    "aspect_labels": {
+      "Value_for_Money": "neutral",
+      "Housekeeping": "positive",
+      "Service": "positive"
+    }
+  },
+  {
+    "id": "hinglish-0303",
+    "text": "poora trip saadharan tha, staff theek tha aur safai aam thi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "neutral",
+    "aspect_labels": {
+      "Staff": "neutral",
+      "Cleanliness": "neutral"
+    }
+  },
+  {
+    "id": "hinglish-0304",
+    "text": "overall experience behtareen raha, jagah mall road ke ekdam paas thi aur khana thanda aur bekaar tha aur safai roz hoti thi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "positive",
+    "aspect_labels": {
+      "Location": "positive",
+      "Food": "negative",
+      "Housekeeping": "positive"
+    }
+  },
+  {
+    "id": "hinglish-0305",
+    "text": "stay kaafi niraashajanak raha, staff ruhkha aur anmana tha aur jagah bahut door aur pahunchna mushkil tha aur kamra mein dhool aur badboo thi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "negative",
+    "aspect_labels": {
+      "Staff": "negative",
+      "Location": "negative",
+      "Cleanliness": "negative"
+    }
+  },
+  {
+    "id": "hinglish-0306",
+    "text": "stay sukhad raha, seva aam thi aur kamra khula aur aaramdayak tha.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "positive",
+    "aspect_labels": {
+      "Service": "neutral",
+      "Room": "positive"
+    }
+  },
+  {
+    "id": "hinglish-0307",
+    "text": "stay sukhad raha, safai roz hoti thi aur seva aam thi aur daam theek tha.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "positive",
+    "aspect_labels": {
+      "Housekeeping": "positive",
+      "Service": "neutral",
+      "Value_for_Money": "neutral"
+    }
+  },
+  {
+    "id": "hinglish-0308",
+    "text": "overall experience theek-thaak raha, seva aam thi aur safai average thi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "neutral",
+    "aspect_labels": {
+      "Service": "neutral",
+      "Housekeeping": "neutral"
+    }
+  },
+  {
+    "id": "hinglish-0309",
+    "text": "poora trip yaadgaar tha, safai average thi aur staff theek tha aur khana lajawab tha aur daam theek tha.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "positive",
+    "aspect_labels": {
+      "Housekeeping": "neutral",
+      "Staff": "neutral",
+      "Food": "positive",
+      "Value_for_Money": "neutral"
+    }
+  },
+  {
+    "id": "hinglish-0310",
+    "text": "overall experience nirash karne wala tha, khana thanda aur bekaar tha aur seva bahut sust thi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "negative",
+    "aspect_labels": {
+      "Food": "negative",
+      "Service": "negative"
+    }
+  },
+  {
+    "id": "hinglish-0311",
+    "text": "overall experience nirash karne wala tha, kamra mein dhool aur badboo thi aur khana thanda aur bekaar tha.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "negative",
+    "aspect_labels": {
+      "Cleanliness": "negative",
+      "Food": "negative"
+    }
+  },
+  {
+    "id": "hinglish-0312",
+    "text": "stay aam raha, daam theek tha aur kamra khula aur aaramdayak tha aur jagah bahut door aur pahunchna mushkil tha.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "neutral",
+    "aspect_labels": {
+      "Value_for_Money": "neutral",
+      "Room": "positive",
+      "Location": "negative"
+    }
+  },
+  {
+    "id": "hinglish-0313",
+    "text": "poora trip saadharan tha, kamra mein dhool aur badboo thi aur staff bada vinamra tha.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "neutral",
+    "aspect_labels": {
+      "Cleanliness": "negative",
+      "Staff": "positive"
+    }
+  },
+  {
+    "id": "hinglish-0314",
+    "text": "stay aam raha, seva bahut sust thi aur khana lajawab tha.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "neutral",
+    "aspect_labels": {
+      "Service": "negative",
+      "Food": "positive"
+    }
+  },
+  {
+    "id": "hinglish-0315",
+    "text": "overall experience behtareen raha, kamra mein dhool aur badboo thi aur safai roz hoti thi aur staff bada vinamra tha aur daam ke hisaab se faydemand raha.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "positive",
+    "aspect_labels": {
+      "Cleanliness": "negative",
+      "Housekeeping": "positive",
+      "Staff": "positive",
+      "Value_for_Money": "positive"
+    }
+  },
+  {
+    "id": "hinglish-0316",
+    "text": "stay kaafi niraashajanak raha, jagah thodi door thi aur staff ruhkha aur anmana tha.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "negative",
+    "aspect_labels": {
+      "Location": "neutral",
+      "Staff": "negative"
+    }
+  },
+  {
+    "id": "hinglish-0317",
+    "text": "overall experience nirash karne wala tha, seva bahut sust thi aur daam theek tha.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "negative",
+    "aspect_labels": {
+      "Service": "negative",
+      "Value_for_Money": "neutral"
+    }
+  },
+  {
+    "id": "hinglish-0318",
+    "text": "stay kaafi niraashajanak raha, jagah bahut door aur pahunchna mushkil tha aur khana normal tha.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "negative",
+    "aspect_labels": {
+      "Location": "negative",
+      "Food": "neutral"
+    }
+  },
+  {
+    "id": "hinglish-0319",
+    "text": "stay sukhad raha, poora kamra chamkata hua tha aur safai average thi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "positive",
+    "aspect_labels": {
+      "Cleanliness": "positive",
+      "Housekeeping": "neutral"
+    }
+  },
+  {
+    "id": "hinglish-0320",
+    "text": "stay sukhad raha, kamra theek-thaak tha aur jagah mall road ke ekdam paas thi aur seva turant aur tezz thi aur booking ekdam aasaan rahi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "positive",
+    "aspect_labels": {
+      "Room": "neutral",
+      "Location": "positive",
+      "Service": "positive",
+      "Booking_Experience": "positive"
+    }
+  },
+  {
+    "id": "hinglish-0321",
+    "text": "stay sukhad raha, staff bada vinamra tha aur safai bilkul nahi hui aur booking ekdam aasaan rahi aur daam theek tha.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "positive",
+    "aspect_labels": {
+      "Staff": "positive",
+      "Housekeeping": "negative",
+      "Booking_Experience": "positive",
+      "Value_for_Money": "neutral"
+    }
+  },
+  {
+    "id": "hinglish-0322",
+    "text": "stay aam raha, jagah thodi door thi aur safai average thi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "neutral",
+    "aspect_labels": {
+      "Location": "neutral",
+      "Housekeeping": "neutral"
+    }
+  },
+  {
+    "id": "hinglish-0323",
+    "text": "stay sukhad raha, seva turant aur tezz thi aur kamra khula aur aaramdayak tha aur daam ke hisaab se faydemand raha.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "positive",
+    "aspect_labels": {
+      "Service": "positive",
+      "Room": "positive",
+      "Value_for_Money": "positive"
+    }
+  },
+  {
+    "id": "hinglish-0324",
+    "text": "overall experience nirash karne wala tha, kamra theek-thaak tha aur staff ruhkha aur anmana tha aur seva aam thi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "negative",
+    "aspect_labels": {
+      "Room": "neutral",
+      "Staff": "negative",
+      "Service": "neutral"
+    }
+  },
+  {
+    "id": "hinglish-0325",
+    "text": "poora trip pareshan karne wala raha, seva bahut sust thi aur safai average thi aur jagah thodi door thi aur booking normal rahi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "negative",
+    "aspect_labels": {
+      "Service": "negative",
+      "Housekeeping": "neutral",
+      "Location": "neutral",
+      "Booking_Experience": "neutral"
+    }
+  },
+  {
+    "id": "hinglish-0326",
+    "text": "overall experience theek-thaak raha, booking ekdam aasaan rahi aur jagah bahut door aur pahunchna mushkil tha.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "neutral",
+    "aspect_labels": {
+      "Booking_Experience": "positive",
+      "Location": "negative"
+    }
+  },
+  {
+    "id": "hinglish-0327",
+    "text": "poora trip pareshan karne wala raha, kamra chhota aur ghutan bhara tha aur staff ruhkha aur anmana tha.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "negative",
+    "aspect_labels": {
+      "Room": "negative",
+      "Staff": "negative"
+    }
+  },
+  {
+    "id": "hinglish-0328",
+    "text": "overall experience behtareen raha, booking ekdam aasaan rahi aur seva turant aur tezz thi aur khana lajawab tha.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "positive",
+    "aspect_labels": {
+      "Booking_Experience": "positive",
+      "Service": "positive",
+      "Food": "positive"
+    }
+  },
+  {
+    "id": "hinglish-0329",
+    "text": "poora trip pareshan karne wala raha, safai bilkul nahi hui aur jagah bahut door aur pahunchna mushkil tha aur khana lajawab tha aur kamra chhota aur ghutan bhara tha.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "negative",
+    "aspect_labels": {
+      "Housekeeping": "negative",
+      "Location": "negative",
+      "Food": "positive",
+      "Room": "negative"
+    }
+  },
+  {
+    "id": "hinglish-0330",
+    "text": "overall experience nirash karne wala tha, seva bahut sust thi aur khana normal tha aur booking ekdam aasaan rahi aur kamra mein dhool aur badboo thi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "negative",
+    "aspect_labels": {
+      "Service": "negative",
+      "Food": "neutral",
+      "Booking_Experience": "positive",
+      "Cleanliness": "negative"
+    }
+  },
+  {
+    "id": "hinglish-0331",
+    "text": "overall experience behtareen raha, jagah thodi door thi aur khana lajawab tha aur booking ekdam aasaan rahi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "positive",
+    "aspect_labels": {
+      "Location": "neutral",
+      "Food": "positive",
+      "Booking_Experience": "positive"
+    }
+  },
+  {
+    "id": "hinglish-0332",
+    "text": "poora trip yaadgaar tha, booking normal rahi aur khana lajawab tha aur poora kamra chamkata hua tha.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "positive",
+    "aspect_labels": {
+      "Booking_Experience": "neutral",
+      "Food": "positive",
+      "Cleanliness": "positive"
+    }
+  },
+  {
+    "id": "hinglish-0333",
+    "text": "stay aam raha, jagah mall road ke ekdam paas thi aur seva bahut sust thi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "neutral",
+    "aspect_labels": {
+      "Location": "positive",
+      "Service": "negative"
+    }
+  },
+  {
+    "id": "hinglish-0334",
+    "text": "poora trip saadharan tha, kamra theek-thaak tha aur daam theek tha.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "neutral",
+    "aspect_labels": {
+      "Room": "neutral",
+      "Value_for_Money": "neutral"
+    }
+  },
+  {
+    "id": "hinglish-0335",
+    "text": "overall experience nirash karne wala tha, daam zyada tha faayda kam aur kamra mein dhool aur badboo thi aur seva bahut sust thi aur booking mein kaafi dikkat aayi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "negative",
+    "aspect_labels": {
+      "Value_for_Money": "negative",
+      "Cleanliness": "negative",
+      "Service": "negative",
+      "Booking_Experience": "negative"
+    }
+  },
+  {
+    "id": "hinglish-0336",
+    "text": "overall experience nirash karne wala tha, daam theek tha aur safai bilkul nahi hui.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "negative",
+    "aspect_labels": {
+      "Value_for_Money": "neutral",
+      "Housekeeping": "negative"
+    }
+  },
+  {
+    "id": "hinglish-0337",
+    "text": "poora trip yaadgaar tha, booking normal rahi aur jagah mall road ke ekdam paas thi aur daam ke hisaab se faydemand raha.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "positive",
+    "aspect_labels": {
+      "Booking_Experience": "neutral",
+      "Location": "positive",
+      "Value_for_Money": "positive"
+    }
+  },
+  {
+    "id": "hinglish-0338",
+    "text": "poora trip pareshan karne wala raha, safai bilkul nahi hui aur seva bahut sust thi aur khana normal tha aur daam ke hisaab se faydemand raha.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "negative",
+    "aspect_labels": {
+      "Housekeeping": "negative",
+      "Service": "negative",
+      "Food": "neutral",
+      "Value_for_Money": "positive"
+    }
+  },
+  {
+    "id": "hinglish-0339",
+    "text": "stay sukhad raha, poora kamra chamkata hua tha aur staff theek tha.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "positive",
+    "aspect_labels": {
+      "Cleanliness": "positive",
+      "Staff": "neutral"
+    }
+  },
+  {
+    "id": "hinglish-0340",
+    "text": "stay sukhad raha, kamra khula aur aaramdayak tha aur safai average thi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "positive",
+    "aspect_labels": {
+      "Room": "positive",
+      "Housekeeping": "neutral"
+    }
+  },
+  {
+    "id": "hinglish-0341",
+    "text": "stay aam raha, safai aam thi aur booking ekdam aasaan rahi aur staff ruhkha aur anmana tha aur safai average thi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "neutral",
+    "aspect_labels": {
+      "Cleanliness": "neutral",
+      "Booking_Experience": "positive",
+      "Staff": "negative",
+      "Housekeeping": "neutral"
+    }
+  },
+  {
+    "id": "hinglish-0342",
+    "text": "poora trip yaadgaar tha, daam ke hisaab se faydemand raha aur booking normal rahi aur kamra khula aur aaramdayak tha aur safai average thi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "positive",
+    "aspect_labels": {
+      "Value_for_Money": "positive",
+      "Booking_Experience": "neutral",
+      "Room": "positive",
+      "Housekeeping": "neutral"
+    }
+  },
+  {
+    "id": "hinglish-0343",
+    "text": "overall experience nirash karne wala tha, daam zyada tha faayda kam aur booking ekdam aasaan rahi aur staff ruhkha aur anmana tha aur safai average thi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "negative",
+    "aspect_labels": {
+      "Value_for_Money": "negative",
+      "Booking_Experience": "positive",
+      "Staff": "negative",
+      "Housekeeping": "neutral"
+    }
+  },
+  {
+    "id": "hinglish-0344",
+    "text": "stay sukhad raha, seva turant aur tezz thi aur jagah thodi door thi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "positive",
+    "aspect_labels": {
+      "Service": "positive",
+      "Location": "neutral"
+    }
+  },
+  {
+    "id": "hinglish-0345",
+    "text": "overall experience nirash karne wala tha, booking mein kaafi dikkat aayi aur khana thanda aur bekaar tha aur daam zyada tha faayda kam.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "negative",
+    "aspect_labels": {
+      "Booking_Experience": "negative",
+      "Food": "negative",
+      "Value_for_Money": "negative"
+    }
+  },
+  {
+    "id": "hinglish-0346",
+    "text": "poora trip pareshan karne wala raha, kamra chhota aur ghutan bhara tha aur staff theek tha.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "negative",
+    "aspect_labels": {
+      "Room": "negative",
+      "Staff": "neutral"
+    }
+  },
+  {
+    "id": "hinglish-0347",
+    "text": "stay sukhad raha, jagah thodi door thi aur seva turant aur tezz thi aur staff theek tha.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "positive",
+    "aspect_labels": {
+      "Location": "neutral",
+      "Service": "positive",
+      "Staff": "neutral"
+    }
+  },
+  {
+    "id": "hinglish-0348",
+    "text": "poora trip pareshan karne wala raha, booking normal rahi aur seva bahut sust thi aur safai bilkul nahi hui.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "negative",
+    "aspect_labels": {
+      "Booking_Experience": "neutral",
+      "Service": "negative",
+      "Housekeeping": "negative"
+    }
+  },
+  {
+    "id": "hinglish-0349",
+    "text": "poora trip pareshan karne wala raha, jagah bahut door aur pahunchna mushkil tha aur safai bilkul nahi hui.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "negative",
+    "aspect_labels": {
+      "Location": "negative",
+      "Housekeeping": "negative"
+    }
+  },
+  {
+    "id": "hinglish-0350",
+    "text": "poora trip saadharan tha, jagah thodi door thi aur poora kamra chamkata hua tha aur staff ruhkha aur anmana tha.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "neutral",
+    "aspect_labels": {
+      "Location": "neutral",
+      "Cleanliness": "positive",
+      "Staff": "negative"
+    }
+  },
+  {
+    "id": "hinglish-0351",
+    "text": "stay sukhad raha, safai roz hoti thi aur khana lajawab tha aur seva aam thi aur jagah mall road ke ekdam paas thi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "positive",
+    "aspect_labels": {
+      "Housekeeping": "positive",
+      "Food": "positive",
+      "Service": "neutral",
+      "Location": "positive"
+    }
+  },
+  {
+    "id": "hinglish-0352",
+    "text": "overall experience nirash karne wala tha, seva aam thi aur jagah thodi door thi aur kamra chhota aur ghutan bhara tha aur daam zyada tha faayda kam.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "negative",
+    "aspect_labels": {
+      "Service": "neutral",
+      "Location": "neutral",
+      "Room": "negative",
+      "Value_for_Money": "negative"
+    }
+  },
+  {
+    "id": "hinglish-0353",
+    "text": "stay aam raha, staff theek tha aur booking normal rahi aur khana normal tha.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "neutral",
+    "aspect_labels": {
+      "Staff": "neutral",
+      "Booking_Experience": "neutral",
+      "Food": "neutral"
+    }
+  },
+  {
+    "id": "hinglish-0354",
+    "text": "overall experience theek-thaak raha, staff theek tha aur poora kamra chamkata hua tha aur kamra chhota aur ghutan bhara tha aur booking normal rahi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "neutral",
+    "aspect_labels": {
+      "Staff": "neutral",
+      "Cleanliness": "positive",
+      "Room": "negative",
+      "Booking_Experience": "neutral"
+    }
+  },
+  {
+    "id": "hinglish-0355",
+    "text": "stay sukhad raha, seva turant aur tezz thi aur safai average thi aur daam zyada tha faayda kam aur khana lajawab tha.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "positive",
+    "aspect_labels": {
+      "Service": "positive",
+      "Housekeeping": "neutral",
+      "Value_for_Money": "negative",
+      "Food": "positive"
+    }
+  },
+  {
+    "id": "hinglish-0356",
+    "text": "poora trip pareshan karne wala raha, safai aam thi aur jagah bahut door aur pahunchna mushkil tha.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "negative",
+    "aspect_labels": {
+      "Cleanliness": "neutral",
+      "Location": "negative"
+    }
+  },
+  {
+    "id": "hinglish-0357",
+    "text": "overall experience theek-thaak raha, safai bilkul nahi hui aur staff bada vinamra tha aur jagah thodi door thi.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "neutral",
+    "aspect_labels": {
+      "Housekeeping": "negative",
+      "Staff": "positive",
+      "Location": "neutral"
+    }
+  },
+  {
+    "id": "hinglish-0358",
+    "text": "overall experience nirash karne wala tha, seva bahut sust thi aur jagah bahut door aur pahunchna mushkil tha.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "negative",
+    "aspect_labels": {
+      "Service": "negative",
+      "Location": "negative"
+    }
+  },
+  {
+    "id": "hinglish-0359",
+    "text": "overall experience behtareen raha, safai average thi aur kamra khula aur aaramdayak tha.",
+    "script": "Latin",
+    "language": "hi-Latn",
+    "overall_label": "positive",
+    "aspect_labels": {
+      "Housekeeping": "neutral",
+      "Room": "positive"
+    }
+  }
+]

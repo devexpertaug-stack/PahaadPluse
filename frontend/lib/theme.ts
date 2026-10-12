@@ -62,6 +62,12 @@ export const navItems: NavItem[] = [
     description: "Competitor and cluster signal tracking",
   },
   {
+    label: "Unmapped Categories",
+    href: "/market-radar/unmapped-categories",
+    group: "Market Radar",
+    description: "Admin: cross-platform categories needing a canonical aspect",
+  },
+  {
     label: "Time Machine",
     href: "/time-machine",
     group: "Market Radar",

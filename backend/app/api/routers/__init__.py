@@ -8,6 +8,7 @@ from __future__ import annotations
 
 from fastapi import APIRouter
 
+from app.api.routers.analytics import router as analytics_router
 from app.api.routers.collection import router as collection_router
 from app.api.routers.reviews import router as market_radar_router
 
@@ -19,6 +20,7 @@ concierge_router = APIRouter(prefix="/concierge", tags=["bhasha-concierge"])
 ALL_ROUTERS = [
     market_radar_router,
     collection_router,
+    analytics_router,
     destination_router,
     sentinel_router,
     guest_compass_router,
@@ -28,6 +30,7 @@ ALL_ROUTERS = [
 __all__ = [
     "market_radar_router",
     "collection_router",
+    "analytics_router",
     "destination_router",
     "sentinel_router",
     "guest_compass_router",

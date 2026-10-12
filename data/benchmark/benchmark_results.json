@@ -1,0 +1,729 @@
+{
+  "seed": 20240601,
+  "test_set_size": 360,
+  "systems": [
+    {
+      "name": "PahadPulse Sentiment_Engine",
+      "overall_sentiment": {
+        "macro_f1": 0.1404,
+        "ci_95": [
+          0.1212,
+          0.1614
+        ]
+      },
+      "aspect_detection": {
+        "macro_f1": 0.6316,
+        "ci_95": [
+          0.6058,
+          0.6555
+        ]
+      },
+      "aspect_sentiment": {
+        "macro_f1": 0.1608,
+        "ci_95": [
+          0.1473,
+          0.1743
+        ]
+      },
+      "confusion_matrix": {
+        "positive": {
+          "positive": 0,
+          "neutral": 130,
+          "negative": 0
+        },
+        "neutral": {
+          "positive": 0,
+          "neutral": 96,
+          "negative": 0
+        },
+        "negative": {
+          "positive": 0,
+          "neutral": 134,
+          "negative": 0
+        }
+      },
+      "aspect_confusion": {
+        "Booking_Experience": {
+          "matrix": {
+            "positive": {
+              "positive": 0,
+              "neutral": 48,
+              "negative": 0
+            },
+            "neutral": {
+              "positive": 0,
+              "neutral": 38,
+              "negative": 0
+            },
+            "negative": {
+              "positive": 0,
+              "neutral": 30,
+              "negative": 0
+            }
+          },
+          "support": {
+            "n": 116
+          }
+        },
+        "Cleanliness": {
+          "matrix": {
+            "positive": {
+              "positive": 0,
+              "neutral": 0,
+              "negative": 0
+            },
+            "neutral": {
+              "positive": 0,
+              "neutral": 0,
+              "negative": 0
+            },
+            "negative": {
+              "positive": 0,
+              "neutral": 0,
+              "negative": 0
+            }
+          },
+          "support": {
+            "n": 0
+          }
+        },
+        "Food": {
+          "matrix": {
+            "positive": {
+              "positive": 0,
+              "neutral": 36,
+              "negative": 0
+            },
+            "neutral": {
+              "positive": 0,
+              "neutral": 37,
+              "negative": 0
+            },
+            "negative": {
+              "positive": 0,
+              "neutral": 40,
+              "negative": 0
+            }
+          },
+          "support": {
+            "n": 113
+          }
+        },
+        "Housekeeping": {
+          "matrix": {
+            "positive": {
+              "positive": 0,
+              "neutral": 0,
+              "negative": 0
+            },
+            "neutral": {
+              "positive": 0,
+              "neutral": 0,
+              "negative": 0
+            },
+            "negative": {
+              "positive": 0,
+              "neutral": 0,
+              "negative": 0
+            }
+          },
+          "support": {
+            "n": 0
+          }
+        },
+        "Location": {
+          "matrix": {
+            "positive": {
+              "positive": 0,
+              "neutral": 39,
+              "negative": 0
+            },
+            "neutral": {
+              "positive": 0,
+              "neutral": 51,
+              "negative": 0
+            },
+            "negative": {
+              "positive": 0,
+              "neutral": 45,
+              "negative": 0
+            }
+          },
+          "support": {
+            "n": 135
+          }
+        },
+        "Room": {
+          "matrix": {
+            "positive": {
+              "positive": 0,
+              "neutral": 39,
+              "negative": 0
+            },
+            "neutral": {
+              "positive": 0,
+              "neutral": 26,
+              "negative": 0
+            },
+            "negative": {
+              "positive": 0,
+              "neutral": 42,
+              "negative": 0
+            }
+          },
+          "support": {
+            "n": 107
+          }
+        },
+        "Service": {
+          "matrix": {
+            "positive": {
+              "positive": 0,
+              "neutral": 0,
+              "negative": 0
+            },
+            "neutral": {
+              "positive": 0,
+              "neutral": 0,
+              "negative": 0
+            },
+            "negative": {
+              "positive": 0,
+              "neutral": 0,
+              "negative": 0
+            }
+          },
+          "support": {
+            "n": 0
+          }
+        },
+        "Staff": {
+          "matrix": {
+            "positive": {
+              "positive": 0,
+              "neutral": 39,
+              "negative": 0
+            },
+            "neutral": {
+              "positive": 0,
+              "neutral": 33,
+              "negative": 0
+            },
+            "negative": {
+              "positive": 0,
+              "neutral": 39,
+              "negative": 0
+            }
+          },
+          "support": {
+            "n": 111
+          }
+        },
+        "Value_for_Money": {
+          "matrix": {
+            "positive": {
+              "positive": 0,
+              "neutral": 0,
+              "negative": 0
+            },
+            "neutral": {
+              "positive": 0,
+              "neutral": 0,
+              "negative": 0
+            },
+            "negative": {
+              "positive": 0,
+              "neutral": 0,
+              "negative": 0
+            }
+          },
+          "support": {
+            "n": 0
+          }
+        }
+      }
+    },
+    {
+      "name": "Generic English lexicon (off-the-shelf)",
+      "overall_sentiment": {
+        "macro_f1": 0.1404,
+        "ci_95": [
+          0.1212,
+          0.1614
+        ]
+      },
+      "aspect_detection": {
+        "macro_f1": 0.9154,
+        "ci_95": [
+          0.9034,
+          0.9272
+        ]
+      },
+      "aspect_sentiment": {
+        "macro_f1": 0.163,
+        "ci_95": [
+          0.1524,
+          0.1725
+        ]
+      },
+      "confusion_matrix": {
+        "positive": {
+          "positive": 0,
+          "neutral": 130,
+          "negative": 0
+        },
+        "neutral": {
+          "positive": 0,
+          "neutral": 96,
+          "negative": 0
+        },
+        "negative": {
+          "positive": 0,
+          "neutral": 134,
+          "negative": 0
+        }
+      },
+      "aspect_confusion": {
+        "Booking_Experience": {
+          "matrix": {
+            "positive": {
+              "positive": 0,
+              "neutral": 48,
+              "negative": 0
+            },
+            "neutral": {
+              "positive": 0,
+              "neutral": 38,
+              "negative": 0
+            },
+            "negative": {
+              "positive": 0,
+              "neutral": 30,
+              "negative": 0
+            }
+          },
+          "support": {
+            "n": 116
+          }
+        },
+        "Cleanliness": {
+          "matrix": {
+            "positive": {
+              "positive": 0,
+              "neutral": 17,
+              "negative": 0
+            },
+            "neutral": {
+              "positive": 0,
+              "neutral": 32,
+              "negative": 0
+            },
+            "negative": {
+              "positive": 0,
+              "neutral": 36,
+              "negative": 0
+            }
+          },
+          "support": {
+            "n": 85
+          }
+        },
+        "Food": {
+          "matrix": {
+            "positive": {
+              "positive": 0,
+              "neutral": 36,
+              "negative": 0
+            },
+            "neutral": {
+              "positive": 0,
+              "neutral": 37,
+              "negative": 0
+            },
+            "negative": {
+              "positive": 0,
+              "neutral": 40,
+              "negative": 0
+            }
+          },
+          "support": {
+            "n": 113
+          }
+        },
+        "Housekeeping": {
+          "matrix": {
+            "positive": {
+              "positive": 0,
+              "neutral": 47,
+              "negative": 0
+            },
+            "neutral": {
+              "positive": 0,
+              "neutral": 43,
+              "negative": 0
+            },
+            "negative": {
+              "positive": 0,
+              "neutral": 38,
+              "negative": 0
+            }
+          },
+          "support": {
+            "n": 128
+          }
+        },
+        "Location": {
+          "matrix": {
+            "positive": {
+              "positive": 0,
+              "neutral": 39,
+              "negative": 0
+            },
+            "neutral": {
+              "positive": 0,
+              "neutral": 51,
+              "negative": 0
+            },
+            "negative": {
+              "positive": 0,
+              "neutral": 45,
+              "negative": 0
+            }
+          },
+          "support": {
+            "n": 135
+          }
+        },
+        "Room": {
+          "matrix": {
+            "positive": {
+              "positive": 0,
+              "neutral": 39,
+              "negative": 0
+            },
+            "neutral": {
+              "positive": 0,
+              "neutral": 26,
+              "negative": 0
+            },
+            "negative": {
+              "positive": 0,
+              "neutral": 42,
+              "negative": 0
+            }
+          },
+          "support": {
+            "n": 107
+          }
+        },
+        "Service": {
+          "matrix": {
+            "positive": {
+              "positive": 0,
+              "neutral": 37,
+              "negative": 0
+            },
+            "neutral": {
+              "positive": 0,
+              "neutral": 44,
+              "negative": 0
+            },
+            "negative": {
+              "positive": 0,
+              "neutral": 62,
+              "negative": 0
+            }
+          },
+          "support": {
+            "n": 143
+          }
+        },
+        "Staff": {
+          "matrix": {
+            "positive": {
+              "positive": 0,
+              "neutral": 39,
+              "negative": 0
+            },
+            "neutral": {
+              "positive": 0,
+              "neutral": 33,
+              "negative": 0
+            },
+            "negative": {
+              "positive": 0,
+              "neutral": 39,
+              "negative": 0
+            }
+          },
+          "support": {
+            "n": 111
+          }
+        },
+        "Value_for_Money": {
+          "matrix": {
+            "positive": {
+              "positive": 0,
+              "neutral": 41,
+              "negative": 0
+            },
+            "neutral": {
+              "positive": 0,
+              "neutral": 39,
+              "negative": 0
+            },
+            "negative": {
+              "positive": 0,
+              "neutral": 42,
+              "negative": 0
+            }
+          },
+          "support": {
+            "n": 122
+          }
+        }
+      }
+    },
+    {
+      "name": "Plain-LLM zero-shot (mock)",
+      "overall_sentiment": {
+        "macro_f1": 0.6987,
+        "ci_95": [
+          0.6511,
+          0.742
+        ]
+      },
+      "aspect_detection": {
+        "macro_f1": 0.9154,
+        "ci_95": [
+          0.9034,
+          0.9272
+        ]
+      },
+      "aspect_sentiment": {
+        "macro_f1": 0.5272,
+        "ci_95": [
+          0.5004,
+          0.5571
+        ]
+      },
+      "confusion_matrix": {
+        "positive": {
+          "positive": 90,
+          "neutral": 35,
+          "negative": 5
+        },
+        "neutral": {
+          "positive": 8,
+          "neutral": 50,
+          "negative": 38
+        },
+        "negative": {
+          "positive": 1,
+          "neutral": 15,
+          "negative": 118
+        }
+      },
+      "aspect_confusion": {
+        "Booking_Experience": {
+          "matrix": {
+            "positive": {
+              "positive": 14,
+              "neutral": 16,
+              "negative": 18
+            },
+            "neutral": {
+              "positive": 12,
+              "neutral": 13,
+              "negative": 13
+            },
+            "negative": {
+              "positive": 2,
+              "neutral": 4,
+              "negative": 24
+            }
+          },
+          "support": {
+            "n": 116
+          }
+        },
+        "Cleanliness": {
+          "matrix": {
+            "positive": {
+              "positive": 8,
+              "neutral": 7,
+              "negative": 2
+            },
+            "neutral": {
+              "positive": 9,
+              "neutral": 9,
+              "negative": 14
+            },
+            "negative": {
+              "positive": 0,
+              "neutral": 3,
+              "negative": 33
+            }
+          },
+          "support": {
+            "n": 85
+          }
+        },
+        "Food": {
+          "matrix": {
+            "positive": {
+              "positive": 14,
+              "neutral": 11,
+              "negative": 11
+            },
+            "neutral": {
+              "positive": 10,
+              "neutral": 9,
+              "negative": 18
+            },
+            "negative": {
+              "positive": 9,
+              "neutral": 9,
+              "negative": 22
+            }
+          },
+          "support": {
+            "n": 113
+          }
+        },
+        "Housekeeping": {
+          "matrix": {
+            "positive": {
+              "positive": 28,
+              "neutral": 9,
+              "negative": 10
+            },
+            "neutral": {
+              "positive": 13,
+              "neutral": 14,
+              "negative": 16
+            },
+            "negative": {
+              "positive": 5,
+              "neutral": 15,
+              "negative": 18
+            }
+          },
+          "support": {
+            "n": 128
+          }
+        },
+        "Location": {
+          "matrix": {
+            "positive": {
+              "positive": 21,
+              "neutral": 8,
+              "negative": 10
+            },
+            "neutral": {
+              "positive": 15,
+              "neutral": 16,
+              "negative": 20
+            },
+            "negative": {
+              "positive": 5,
+              "neutral": 11,
+              "negative": 29
+            }
+          },
+          "support": {
+            "n": 135
+          }
+        },
+        "Room": {
+          "matrix": {
+            "positive": {
+              "positive": 12,
+              "neutral": 15,
+              "negative": 12
+            },
+            "neutral": {
+              "positive": 9,
+              "neutral": 11,
+              "negative": 6
+            },
+            "negative": {
+              "positive": 1,
+              "neutral": 0,
+              "negative": 41
+            }
+          },
+          "support": {
+            "n": 107
+          }
+        },
+        "Service": {
+          "matrix": {
+            "positive": {
+              "positive": 31,
+              "neutral": 3,
+              "negative": 3
+            },
+            "neutral": {
+              "positive": 9,
+              "neutral": 18,
+              "negative": 17
+            },
+            "negative": {
+              "positive": 3,
+              "neutral": 4,
+              "negative": 55
+            }
+          },
+          "support": {
+            "n": 143
+          }
+        },
+        "Staff": {
+          "matrix": {
+            "positive": {
+              "positive": 16,
+              "neutral": 13,
+              "negative": 10
+            },
+            "neutral": {
+              "positive": 10,
+              "neutral": 13,
+              "negative": 10
+            },
+            "negative": {
+              "positive": 5,
+              "neutral": 16,
+              "negative": 18
+            }
+          },
+          "support": {
+            "n": 111
+          }
+        },
+        "Value_for_Money": {
+          "matrix": {
+            "positive": {
+              "positive": 30,
+              "neutral": 3,
+              "negative": 8
+            },
+            "neutral": {
+              "positive": 6,
+              "neutral": 20,
+              "negative": 13
+            },
+            "negative": {
+              "positive": 4,
+              "neutral": 2,
+              "negative": 36
+            }
+          },
+          "support": {
+            "n": 122
+          }
+        }
+      }
+    }
+  ]
+}

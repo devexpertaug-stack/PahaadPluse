@@ -3,13 +3,26 @@
 import { useEffect, useState } from "react";
 import { PageHeader, Card, Badge, StatTile } from "@/components/ui";
 import { ReviewCountsTable } from "@/components/market-radar/ReviewCountsTable";
-import { api, type PropertyCounts } from "@/lib/api";
+import { TrendsPanel } from "@/components/market-radar/TrendsPanel";
+import { DecompositionPanel } from "@/components/market-radar/DecompositionPanel";
+import {
+  api,
+  type PropertyCounts,
+  type TrendsResponse,
+  type DecompositionResponse,
+} from "@/lib/api";
 import snapshot from "@/lib/marketRadarSnapshot.json";
+import analytics from "@/lib/analyticsSnapshot.json";
 
 const SNAPSHOT = snapshot.properties as PropertyCounts[];
+const TRENDS = analytics.trends as unknown as TrendsResponse;
+const DECOMP = analytics.decomposition as unknown as DecompositionResponse;
+const HOME_ID = (analytics.homeProperty as { id: string }).id;
 
 export default function MarketRadarPage() {
   const [properties, setProperties] = useState<PropertyCounts[]>(SNAPSHOT);
+  const [trends, setTrends] = useState<TrendsResponse>(TRENDS);
+  const [decomp, setDecomp] = useState<DecompositionResponse>(DECOMP);
   const [live, setLive] = useState(false);
 
   useEffect(() => {
@@ -25,6 +38,11 @@ export default function MarketRadarPage() {
       .catch(() => {
         /* keep the bundled snapshot when the API is unreachable */
       });
+    api.trends().then((t) => active && setTrends(t)).catch(() => {});
+    api
+      .decomposition()
+      .then((d) => active && setDecomp(d))
+      .catch(() => {});
     return () => {
       active = false;
     };
@@ -72,6 +90,14 @@ export default function MarketRadarPage() {
       >
         <ReviewCountsTable properties={properties} />
       </Card>
+
+      <div className="mb-6">
+        <TrendsPanel data={trends} />
+      </div>
+
+      <div className="mb-6">
+        <DecompositionPanel data={decomp} homePropertyId={HOME_ID} />
+      </div>
 
       <Card
         title="Responsible collection"

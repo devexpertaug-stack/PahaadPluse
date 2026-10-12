@@ -24,7 +24,7 @@ const config: Config = {
           300: "#54d79a",
           400: "#28c483",
           500: "#17b47f",
-          600: "#1f8a5b",
+          600: "#1b956a",
           700: "#1f8a5b",
           800: "#166b4a",
           900: "#0f5f44",
@@ -73,6 +73,18 @@ const config: Config = {
           600: "#39505c",
           700: "#2b3f4a",
           800: "#1d2d35",
+        },
+        // Vivid sunset-red alert accent — the "this is the bad line" warning
+        // hue for negative/complaint signals.
+        alert: {
+          50: "#fdeeea",
+          100: "#fbd6cd",
+          200: "#f5a393",
+          300: "#f5745a",
+          400: "#ea6147",
+          500: "#e2563b",
+          600: "#b23a26",
+          700: "#8a2c1c",
         },
       },
       fontFamily: {

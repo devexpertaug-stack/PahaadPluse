@@ -16,6 +16,9 @@
   --color-sky: #1d9bd1;
   --color-sky-bright: #38bdf8;
   --color-slate: #4b6472;
+  /* Vivid sunset-red alert accent — the "bad line" warning hue. */
+  --color-alert: #e2563b;
+  --color-alert-bright: #f5745a;
 }
 
 @layer base {

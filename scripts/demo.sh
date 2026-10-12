@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 # PahadPulse demo launcher (Req 34.1).
-# Starts the FastAPI backend and the Next.js website concurrently and prints
-# the dashboard URL. Later features extend this to seed data and run the
-# scripted scenario (Req 34.2).
+# Seeds and initialises the backend, then starts the FastAPI backend and the
+# Next.js website concurrently and prints the dashboard URL, so a fresh clone
+# yields a populated, working dashboard end to end from this single command.
 set -euo pipefail
 
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"

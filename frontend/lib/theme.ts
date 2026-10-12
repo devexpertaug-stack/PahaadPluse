@@ -38,6 +38,14 @@ export const palette = {
     deep: "#2b3f4a",
     bright: "#7a94a3",
   },
+  // Vivid sunset-red alert accent — the "this is the bad line" warning hue.
+  // Used for negative sentiment / complaint chart series so trouble reads at
+  // a glance against the vivid alpine palette.
+  alert: {
+    DEFAULT: "#e2563b",
+    deep: "#b23a26",
+    bright: "#f5745a",
+  },
 } as const;
 
 export const brand = {

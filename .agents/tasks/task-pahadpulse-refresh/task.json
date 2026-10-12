@@ -1,7 +1,14 @@
 {
   "task_id": "task-pahadpulse-refresh",
   "task_description": "Follow-up on the already-built PahadPulse platform (branch main). Two goals from the user: (1) FRONTEND VISUAL OVERHAUL — the UI looks lame/dull; redesign the design system to a vibrant, lively, professional multi-hue MOUNTAIN palette with a real typography pairing (next/font) and more life/polish, replacing the dull forest green while keeping the Uttarakhand/Mussoorie identity; centralise in the three theme files + shared primitives so all 18 pages inherit it. (2) BACKEND 'DOESN'T WORK' — the backend logic is actually fine (in-process endpoints return 200 with data, 232 tests pass); the real failure is the run path: no startup DB-init/seed and scripts/demo.sh never seeds, so a fresh clone can look empty/broken. Add a startup lifespan + eager seed and make `make demo` (Req 34.1 single command) yield a populated working stack; verify in-process with TestClient (live dev servers are blocked by the sandbox guard). Keep all four quality gates green (FE lint+vitest+build, BE ruff+pytest). Do NOT push or open PRs.",
-  "status": "in_progress",
+  "status": "completed",
   "feature_order": ["FEAT-001", "FEAT-002", "FEAT-003"],
-  "blocked_reason": null
+  "blocked_reason": null,
+  "verification": {
+    "build": "pass",
+    "tests": "pass",
+    "test_quality": "pass",
+    "docker_build": "skipped",
+    "summary": "Frontend: npm run lint clean, npx vitest run 14/14 pass, npm run build compiled all 21 routes. Backend: uv run ruff check clean, uv run pytest 236/236 pass (+4 new FEAT-003 seed/startup tests). Cold-start end-to-end verified in-process (live servers blocked by sandbox dev-server guard): removed backend/data/pahadpulse.sqlite, ran `uv run python -m app.seed` twice (idempotent), then TestClient(app) via lifespan returned HTTP 200 with non-empty data for all 11 data endpoints (/health, /market-radar/review-counts, /sentinel/board, /sentinel/metrics, /destination/heatmap, /guest-compass/stays, /guest-compass/metrics, /concierge/metrics, /market-radar/analytics/trends, /minimal/impact, property reviews). Test quality: the new test_lifespan_warms_data_endpoints exercises the real startup lifespan + endpoints and would fail if the seed/lifespan were reverted. No Dockerfile in repo, so docker_build skipped."
+  }
 }

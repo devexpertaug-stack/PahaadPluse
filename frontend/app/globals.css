@@ -3,21 +3,26 @@
 @tailwind utilities;
 
 :root {
-  /* Hill-town palette as CSS variables (mirrors lib/theme.ts). */
-  --color-forest: #275233;
-  --color-forest-deep: #1c3725;
-  --color-forest-bright: #3f8150;
-  --color-mist: #f4f8f4;
-  --color-mist-white: #fbfdfb;
-  --color-pine: #4f8a63;
-  --color-dawn: #dca24c;
-  --color-ink: #21422b;
+  /* Vibrant alpine palette as CSS variables (mirrors lib/theme.ts). */
+  --color-forest: #1f8a5b;
+  --color-forest-deep: #0f5f44;
+  --color-forest-bright: #28c483;
+  --color-mist: #f1f7f6;
+  --color-mist-white: #fbfdfd;
+  --color-pine: #17b47f;
+  --color-dawn: #f6a623;
+  --color-ink: #123b2f;
+  /* New multi-hue accents. */
+  --color-sky: #1d9bd1;
+  --color-sky-bright: #38bdf8;
+  --color-slate: #4b6472;
 }
 
 @layer base {
   html,
   body {
-    @apply bg-mist-100 text-forest-900 antialiased;
+    @apply bg-mist-100 text-slate-700 antialiased;
+    font-family: var(--font-sans), system-ui, sans-serif;
   }
 
   body {
@@ -30,6 +35,7 @@
   h2,
   h3 {
     @apply font-semibold tracking-tight text-forest-800;
+    font-family: var(--font-display), var(--font-sans), sans-serif;
   }
 
   a {
@@ -38,14 +44,16 @@
 }
 
 @layer components {
-  /* Thin ridge divider motif reused across cards and the shell. */
+  /* Vivid ridge divider motif reused across cards and the shell:
+     a sky-to-green-to-sunrise sweep that signals the multi-hue system. */
   .ridge-divider {
-    height: 2px;
+    height: 3px;
+    border-radius: 9999px;
     background: linear-gradient(
       90deg,
-      transparent 0%,
+      var(--color-sky) 0%,
       var(--color-pine) 50%,
-      transparent 100%
+      var(--color-dawn) 100%
     );
   }
 }

@@ -2,6 +2,8 @@
  * A tiny two-series line chart used by the Proof-of-Impact and Forecast panels.
  * Pure SVG so it renders in tests without a chart library.
  */
+import { palette } from "@/lib/theme";
+
 export interface Series {
   label: string;
   color: string;
@@ -50,7 +52,7 @@ export function MiniTrend({
           y1={height - pad}
           x2={width - pad}
           y2={height - pad}
-          stroke="#cbd9cd"
+          stroke={palette.mist.haze}
         />
         {series.map((s) => (
           <path

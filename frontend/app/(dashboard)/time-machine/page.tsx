@@ -121,7 +121,7 @@ export default function TimeMachinePage() {
                 <span
                   className={
                     cp.direction === "decline"
-                      ? "text-[#c0563b]"
+                      ? "text-dawn-600"
                       : "text-forest-700"
                   }
                 >

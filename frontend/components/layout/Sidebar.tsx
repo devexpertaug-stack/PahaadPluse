@@ -28,7 +28,7 @@ export function Sidebar() {
             🏔️
           </span>
           <span>
-            <span className="block text-lg font-semibold leading-tight">
+            <span className="block font-display text-lg font-bold leading-tight tracking-tight">
               {brand.name}
             </span>
             <span className="block text-xs text-mist-200/80">
@@ -59,9 +59,9 @@ export function Sidebar() {
                         href={item.href}
                         aria-current={active ? "page" : undefined}
                         className={cn(
-                          "block rounded-lg px-3 py-2 text-sm font-medium",
+                          "block rounded-lg px-3 py-2 text-sm font-medium transition-all duration-150",
                           active
-                            ? "bg-mist-50/15 text-mist-50"
+                            ? "bg-mist-50/20 text-mist-50 shadow-sm ring-1 ring-inset ring-dawn-400/40"
                             : "text-mist-200/85 hover:bg-mist-50/10 hover:text-mist-50",
                         )}
                       >

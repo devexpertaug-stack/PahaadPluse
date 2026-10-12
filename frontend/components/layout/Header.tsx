@@ -12,18 +12,18 @@ export function Header() {
     ) ?? navItems[0];
 
   return (
-    <header className="sticky top-0 z-10 flex items-center justify-between border-b border-mist-300 bg-mist-50/90 px-6 py-4 backdrop-blur">
+    <header className="sticky top-0 z-10 flex items-center justify-between border-b border-mist-300 bg-mist-white/85 px-6 py-4 backdrop-blur-md">
       <div>
-        <p className="text-xs font-medium uppercase tracking-widest text-pine-500">
+        <p className="text-xs font-semibold uppercase tracking-widest text-sky-600">
           {active.group}
         </p>
-        <h2 className="text-lg font-semibold text-forest-800">
+        <h2 className="font-display text-lg font-semibold text-forest-800">
           {active.label}
         </h2>
       </div>
       <div className="flex items-center gap-3">
-        <Badge tone="pine">Demo mode</Badge>
-        <span className="hidden text-sm text-forest-600/80 sm:inline">
+        <Badge tone="sky">Demo mode</Badge>
+        <span className="hidden text-sm text-slate-500 sm:inline">
           Local fallbacks active
         </span>
       </div>

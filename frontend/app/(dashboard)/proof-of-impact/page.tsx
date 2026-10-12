@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { PageHeader, Card, Badge, StatTile, Button } from "@/components/ui";
 import { MiniTrend } from "@/components/common/MiniTrend";
 import { api, type ImpactResult, ASPECTS } from "@/lib/api";
+import { palette } from "@/lib/theme";
 import snapshot from "@/lib/impactSnapshot.json";
 
 const RESULTS = snapshot.results as unknown as ImpactResult[];
@@ -163,12 +164,12 @@ export default function ProofOfImpactPage() {
                   series={[
                     {
                       label: "Home (Pine View Inn)",
-                      color: "#275233",
+                      color: palette.forest.DEFAULT,
                       points: r.home_trend.map((p) => ({ x: p.week, y: p.score })),
                     },
                     {
                       label: "Cluster control",
-                      color: "#dca24c",
+                      color: palette.sky.DEFAULT,
                       points: r.control_trend.map((p) => ({
                         x: p.week,
                         y: p.score,

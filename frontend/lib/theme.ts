@@ -7,20 +7,37 @@
  */
 
 export const palette = {
+  // Crisp, fresh alpine green — the primary brand hue (teal-leaning,
+  // higher saturation than the old muted forest).
   forest: {
-    DEFAULT: "#275233",
-    deep: "#1c3725",
-    mid: "#2f663e",
-    bright: "#3f8150",
+    DEFAULT: "#1f8a5b",
+    deep: "#0f5f44",
+    mid: "#179467",
+    bright: "#28c483",
   },
+  // Cool glacier off-whites — the hill-town morning haze.
   mist: {
-    DEFAULT: "#f4f8f4",
-    white: "#fbfdfb",
-    haze: "#e8f0e9",
+    DEFAULT: "#f1f7f6",
+    white: "#fbfdfd",
+    haze: "#e2efed",
   },
-  pine: "#4f8a63",
-  dawn: "#dca24c",
-  ink: "#21422b",
+  // Livelier accent green.
+  pine: "#17b47f",
+  // Warm, vivid sunrise / golden-hour amber.
+  dawn: "#f6a623",
+  ink: "#123b2f",
+  // New multi-hue accents — a vivid glacier/sky blue and a cool slate
+  // for depth. Used across cards/badges/charts/stat tiles.
+  sky: {
+    DEFAULT: "#1d9bd1",
+    deep: "#0c6fa0",
+    bright: "#38bdf8",
+  },
+  slate: {
+    DEFAULT: "#4b6472",
+    deep: "#2b3f4a",
+    bright: "#7a94a3",
+  },
 } as const;
 
 export const brand = {

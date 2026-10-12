@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { PageHeader, Card, Badge, StatTile } from "@/components/ui";
 import { MiniTrend } from "@/components/common/MiniTrend";
 import { api, type ForecastResponse, type AspectForecast } from "@/lib/api";
+import { palette } from "@/lib/theme";
 import snapshot from "@/lib/forecastSnapshot.json";
 
 const SNAPSHOT = snapshot as unknown as ForecastResponse;
@@ -100,10 +101,10 @@ function ForecastCard({ forecast: f }: { forecast: AspectForecast }) {
       </div>
       <MiniTrend
         series={[
-          { label: "History", color: "#275233", points: historyPoints },
-          { label: "Forecast", color: "#dca24c", points: forecastPoints },
-          { label: "80% upper", color: "#9cc3a5", points: upperPoints },
-          { label: "80% lower", color: "#9cc3a5", points: lowerPoints },
+          { label: "History", color: palette.forest.DEFAULT, points: historyPoints },
+          { label: "Forecast", color: palette.dawn, points: forecastPoints },
+          { label: "80% upper", color: palette.sky.bright, points: upperPoints },
+          { label: "80% lower", color: palette.sky.bright, points: lowerPoints },
         ]}
       />
     </Card>

@@ -11,9 +11,9 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 
 const variantClasses: Record<Variant, string> = {
   primary:
-    "bg-forest-700 text-mist-50 hover:bg-forest-600 focus-visible:ring-forest-500",
+    "bg-forest-600 text-mist-50 shadow-sm hover:bg-forest-500 hover:shadow-glow focus-visible:ring-forest-500",
   secondary:
-    "bg-mist-100 text-forest-800 border border-forest-200 hover:bg-mist-200 focus-visible:ring-forest-400",
+    "bg-mist-50 text-forest-800 border border-forest-200 hover:border-sky-300 hover:bg-sky-50 focus-visible:ring-sky-400",
   ghost:
     "bg-transparent text-forest-700 hover:bg-mist-200 focus-visible:ring-forest-400",
 };
@@ -34,7 +34,8 @@ export function Button({
     <button
       type={type}
       className={cn(
-        "inline-flex items-center justify-center gap-2 rounded-xl font-medium",
+        "inline-flex items-center justify-center gap-2 rounded-xl font-semibold",
+        "transition-all duration-150",
         "focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2",
         "disabled:cursor-not-allowed disabled:opacity-50",
         variantClasses[variant],

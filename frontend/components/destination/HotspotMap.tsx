@@ -81,7 +81,7 @@ export function HotspotMap({ hotspots, selected, onSelect }: HotspotMapProps) {
         const isSel = h.canonical === selected;
         const circle = L.circleMarker([h.latitude, h.longitude], {
           radius,
-          color: isSel ? "#1c3725" : "#b3261e",
+          color: isSel ? "#0f5f44" : "#b3261e",
           weight: isSel ? 3 : 1,
           fillColor: "#b3261e",
           fillOpacity: 0.45,
@@ -138,7 +138,7 @@ export function HotspotMap({ hotspots, selected, onSelect }: HotspotMapProps) {
       role="application"
       aria-label="Destination hotspot heatmap"
       className="h-[420px] w-full overflow-hidden rounded-2xl border border-mist-300"
-      style={{ background: "#e8f0e9" }}
+      style={{ background: "#e2efed" }}
     />
   );
 }

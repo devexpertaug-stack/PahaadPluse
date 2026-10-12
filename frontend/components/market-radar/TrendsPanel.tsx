@@ -29,7 +29,7 @@ export function TrendsPanel({ data }: { data: TrendsResponse }) {
     },
     {
       label: "Negative",
-      color: "#c0563b",
+      color: palette.sky.DEFAULT,
       points: trend.buckets.map((b) => b.negative),
     },
   ];
@@ -37,7 +37,7 @@ export function TrendsPanel({ data }: { data: TrendsResponse }) {
   const complaintSeries: Series[] = [
     {
       label: "Complaint %",
-      color: "#c0563b",
+      color: palette.slate.DEFAULT,
       points: trend.buckets.map((b) => b.complaint_percentage),
     },
   ];

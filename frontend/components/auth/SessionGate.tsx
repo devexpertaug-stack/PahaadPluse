@@ -9,8 +9,11 @@ import { isAuthenticated } from "@/lib/auth";
  * session token; if none exists it redirects to `/login`. While the check runs
  * (and on the server, where `localStorage` is unavailable) it renders nothing
  * so there is no hard crash on first paint. Demo-grade: the token is not
- * re-validated against the backend here (the API calls themselves 401 on an
- * expired token), it simply gates the UI.
+ * re-validated against the backend here, it simply gates the UI on the presence
+ * of a stored token. If the token is actually expired, the first authenticated
+ * API call returns `401`, and `lib/api.ts` then clears the session and
+ * redirects back to `/login` (so an expired session bounces to login rather
+ * than lingering on error panels).
  */
 export function SessionGate({ children }: { children: ReactNode }) {
   const router = useRouter();

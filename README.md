@@ -134,6 +134,16 @@ The auth API: `POST /auth/login` → `{ token, user }`; `GET /auth/me` →
 the current resort-scoped user (send `Authorization: Bearer <token>`). Only
 `GET /health` and the WhatsApp webhook stay public (Req 30.1).
 
+**Known limitation (demo-grade auth).** The login is a **UI gate, not a
+multi-tenant authorization boundary**. Only `/auth/*` enforces the token today;
+the data endpoints (market-radar / sentinel / concierge / destination / minimal)
+are intentionally left open and no route checks the token's `property_id` scope,
+so this is a single-property demo and must not be read as tenant isolation. The
+lockout state also lives on a single process-wide auth singleton, so a locked
+demo account stays locked for ~15 minutes **for everyone** on that process — if
+you fat-finger the password five times before a live presentation, restart the
+backend (or wait out the lockout) to clear it.
+
 The `/login` screen is a full-bleed branded page: a vibrant alpine gradient with
 layered mountain/forest silhouettes, built entirely from the theme and inline
 SVG so it stays free and self-contained (no external or copyrighted image). To
@@ -206,6 +216,14 @@ done automatically.
    URL you can share for the demo. (Port 8000 is forwarded too; the frontend in
    the Codespace reaches the API over `localhost`, so you usually only make 3000
    public.)
+
+> **Set a strong `SESSION_SECRET` before you make the port public.** `make demo`
+> otherwise signs session tokens with the committed default
+> (`dev-only-session-secret-change-me`), which anyone can read from this repo and
+> use to forge tokens on a public URL. Export a strong secret (and
+> `PSEUDONYM_SALT` / `PII_ENCRYPTION_KEY`) in the Codespace terminal **before**
+> `make demo`, e.g. `export SESSION_SECRET="$(openssl rand -hex 32)"`, or set
+> them as Codespaces secrets.
 
 Codespaces includes a monthly free usage allowance; stop the codespace when
 you are done. **Free, nothing provisioned in your cloud account.**

@@ -5,10 +5,25 @@
  * defaults to the local API port.
  */
 
-import { getToken, type SessionUser } from "@/lib/auth";
+import { clearSession, getToken, type SessionUser } from "@/lib/auth";
 
 export const API_BASE_URL =
   process.env.NEXT_PUBLIC_API_BASE_URL ?? "http://127.0.0.1:8000";
+
+/**
+ * Handle an expired/invalid session centrally: when any authenticated call
+ * comes back `401`, drop the stored session and bounce to `/login` so an
+ * expired token leaves the dashboard cleanly instead of showing error panels
+ * forever. Guarded for SSR (no `window` on the server). The thrown error below
+ * still propagates so in-flight callers unwind.
+ */
+function handleUnauthorized(): void {
+  if (typeof window === "undefined") return;
+  clearSession();
+  if (window.location.pathname !== "/login") {
+    window.location.assign("/login");
+  }
+}
 
 export interface HealthResponse {
   status: string;
@@ -30,6 +45,9 @@ async function request<T>(path: string, init?: RequestInit): Promise<T> {
     ...init,
   });
   if (!res.ok) {
+    if (res.status === 401) {
+      handleUnauthorized();
+    }
     throw new Error(`API ${path} failed with ${res.status}`);
   }
   return (await res.json()) as T;

@@ -172,5 +172,15 @@ class AuthService:
 
 @lru_cache
 def get_auth_service() -> AuthService:
-    """Return the process-wide cached :class:`AuthService` (seeds on first use)."""
+    """Return the process-wide cached :class:`AuthService` (seeds on first use).
+
+    Demo-grade caveat: because this singleton is cached for the life of the
+    process, the mutable lockout counters (``failed_attempts`` / ``locked_until``
+    on the seeded users) are shared across every request. A locked demo account
+    therefore stays locked for ``LOCKOUT_DURATION`` (~15 min) for everyone on
+    that process until it expires or the backend restarts; the test suite calls
+    ``_reset_demo_owner`` to stay order-independent. Acceptable for a
+    single-tenant demo, but a real deployment would key lockout per-user in
+    durable storage.
+    """
     return AuthService()

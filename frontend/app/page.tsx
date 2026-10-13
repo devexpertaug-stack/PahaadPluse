@@ -4,18 +4,18 @@ import type { Metadata } from "next";
  * Immersive landing homepage.
  *
  * Routing flow for the whole site:
- *   '/'          -> this cinematic PahaadPulse landing (NOT SessionGate-gated).
- *                   It embeds the fully self-contained experience served from
+ *   '/'          -> this cinematic PahaadPulse landing. It embeds the fully
+ *                   self-contained experience served from
  *                   /public/pahaadpulse.html in a full-viewport iframe. The
  *                   experience's own CSS + JS stay inline inside that single
  *                   file (zero external JS/CSS libraries), even though it is
  *                   served inside the Next.js app.
- *   '/login'     -> auth. The landing's "Book Now" button and "Stays" nav
- *                   navigate the TOP window here via a tiny inline handler
- *                   (window.top/parent), so no external dependency is needed.
- *   '/dashboard' -> gated product home (Metrics Overview) plus every subsystem
- *                   route, all still wrapped by SessionGate + AppShell. After a
- *                   successful sign-in LoginForm redirects here.
+ *   '/dashboard' -> product home (Metrics Overview) plus every subsystem route,
+ *                   wrapped by AppShell. There is no sign-in gate: the landing's
+ *                   "Enter dashboard" affordance, the "Book Now" button and the
+ *                   "Stays" nav all navigate the TOP window straight here via a
+ *                   tiny inline handler (window.top/parent), so no external
+ *                   dependency is needed.
  */
 export const metadata: Metadata = {
   title: "PahaadPulse — Mountain & Forest Retreats",
@@ -39,8 +39,8 @@ export default function LandingPage() {
       />
       {/*
         Resilient entry affordances rendered by Next ITSELF (outside the iframe).
-        These are real <a href="/login"> anchors, so clicking them navigates the
-        TOP window — they work even if the iframe's inline JS or the remote
+        These are real <a href="/dashboard"> anchors, so clicking them navigate
+        the TOP window - they work even if the iframe's inline JS or the remote
         cinematic media never load. Both sit ABOVE the iframe (high zIndex,
         pointer-events auto) and are visible from first paint so a visitor is
         never trapped on a dark/loading screen with no way into the product.
@@ -48,7 +48,7 @@ export default function LandingPage() {
         Top-right frosted pill: the primary, always-present entry button.
       */}
       <a
-        href="/login"
+        href="/dashboard"
         aria-label="Enter the PahaadPulse dashboard"
         style={{
           position: "fixed",

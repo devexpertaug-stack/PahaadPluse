@@ -10,9 +10,10 @@
   Internal element ids keep the original mars/earth/venus naming so the JS state keys
   line up; the VISIBLE copy is the PahaadPulse mountain-and-forest hotel theme.
   Routing note (also documented in the Next.js app/page.tsx comment):
-    '/'          -> this immersive landing (embedded full-viewport via iframe, not gated)
-    '/login'     -> auth (the "Book Now" button / "Stays" nav navigate the TOP window here)
-    '/dashboard' -> gated product home (+ all subsystem routes), reached after sign-in.
+    '/'          -> this immersive landing (embedded full-viewport via iframe)
+    '/dashboard' -> product home (+ all subsystem routes). The "Book Now" button and
+                    "Stays"/"Explore"/"Retreats" nav navigate the TOP window straight here;
+                    there is no sign-in gate.
   The remote media are CORS-enabled (access-control-allow-origin: *) so the canvas can
   sample their pixels without tainting. The logo is an inline data:image/svg+xml URI.
 -->
@@ -180,7 +181,7 @@ body:not(.intro-ready) .planet-content .fact{opacity:0}
 <noscript>
   <div style="position:fixed;inset:0;z-index:9999;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;padding:32px;text-align:center;background:#06100a;color:#f3f7f1;font-family:Arial,sans-serif">
     <p style="margin:0;max-width:34rem;font-size:1.05rem;line-height:1.5">The PahaadPulse immersive landing needs JavaScript. You can still enter the dashboard directly.</p>
-    <a href="/login" style="display:inline-block;padding:12px 26px;border-radius:999px;background:#7fb069;color:#0c1410;text-decoration:none;font-weight:700;border:1px solid rgba(207,227,212,.45)">Enter dashboard</a>
+    <a href="/dashboard" style="display:inline-block;padding:12px 26px;border-radius:999px;background:#7fb069;color:#0c1410;text-decoration:none;font-weight:700;border:1px solid rgba(207,227,212,.45)">Enter dashboard</a>
   </div>
 </noscript>
 <main class="experience" data-planet="pinecrest">
@@ -754,23 +755,25 @@ body:not(.intro-ready) .planet-content .fact{opacity:0}
   portalButton.addEventListener('pointerenter', function(){ cursorEl.classList.add('is-enter'); });
   portalButton.addEventListener('pointerleave', function(){ cursorEl.classList.remove('is-enter'); });
 
-  // "Book Now" and the nav links lead into the product login (top-window nav
-  // so this works whether the file is opened directly or embedded in an iframe).
-  function goToLogin(ev){
+  // "Book Now" and the nav links lead straight into the product dashboard
+  // (top-window nav so this works whether the file is opened directly or
+  // embedded in an iframe).
+  function goToDashboard(ev){
     if(ev) ev.preventDefault();
-    // Navigate the TOP window to the same-origin /login route. The experience
-    // is same-origin with its Next.js host (served from /pahaadpulse.html), so
-    // window.top is reachable; the try/catch is a defensive fallback that still
-    // routes this frame to /login if top-window access is ever blocked.
-    try { (window.top || window.parent || window).location.href = '/login'; }
-    catch(e){ window.location.href = '/login'; }
+    // Navigate the TOP window to the same-origin /dashboard route. The
+    // experience is same-origin with its Next.js host (served from
+    // /pahaadpulse.html), so window.top is reachable; the try/catch is a
+    // defensive fallback that still routes this frame to /dashboard if
+    // top-window access is ever blocked.
+    try { (window.top || window.parent || window).location.href = '/dashboard'; }
+    catch(e){ window.location.href = '/dashboard'; }
   }
-  if(menuButton) menuButton.addEventListener('click', goToLogin);
-  // Every nav link ("Stays"/"Explore"/"Retreats") leads into the product login
-  // so none of them are inert in-page anchors.
+  if(menuButton) menuButton.addEventListener('click', goToDashboard);
+  // Every nav link ("Stays"/"Explore"/"Retreats") leads straight into the
+  // product dashboard so none of them are inert in-page anchors.
   var navLinks = document.querySelectorAll('.nav a');
   for(var n = 0; n < navLinks.length; n++){
-    navLinks[n].addEventListener('click', goToLogin);
+    navLinks[n].addEventListener('click', goToDashboard);
   }
 
   // ---- Boot order (section 12) ----

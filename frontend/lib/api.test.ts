@@ -76,7 +76,7 @@ describe("api.login", () => {
     expect(init.headers.Authorization).toBe("Bearer tok-xyz");
   });
 
-  it("clears the session on a 401 so an expired token bounces to /login", async () => {
+  it("clears any stored session on a 401 but does NOT redirect (no login page)", async () => {
     storedToken = "tok-expired";
     mockFetchOnce({ detail: "unauthorized" }, false, 401);
     const assign = vi.fn();
@@ -84,13 +84,14 @@ describe("api.login", () => {
     // jsdom's location is non-configurable, so replace it wholesale for this test.
     Object.defineProperty(window, "location", {
       configurable: true,
-      value: { pathname: "/checkout-shield", assign },
+      value: { pathname: "/dashboard", assign },
     });
 
     try {
       await expect(api.me()).rejects.toThrow("401");
       expect(clearSession).toHaveBeenCalledTimes(1);
-      expect(assign).toHaveBeenCalledWith("/login");
+      // Login has been removed: a stray 401 must not bounce the user anywhere.
+      expect(assign).not.toHaveBeenCalled();
     } finally {
       Object.defineProperty(window, "location", {
         configurable: true,

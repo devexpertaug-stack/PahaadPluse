@@ -177,6 +177,12 @@ body:not(.intro-ready) .planet-content .fact{opacity:0}
 </style>
 </head>
 <body>
+<noscript>
+  <div style="position:fixed;inset:0;z-index:9999;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;padding:32px;text-align:center;background:#06100a;color:#f3f7f1;font-family:Arial,sans-serif">
+    <p style="margin:0;max-width:34rem;font-size:1.05rem;line-height:1.5">The PahaadPulse immersive landing needs JavaScript. You can still enter the dashboard directly.</p>
+    <a href="/login" style="display:inline-block;padding:12px 26px;border-radius:999px;background:#7fb069;color:#0c1410;text-decoration:none;font-weight:700;border:1px solid rgba(207,227,212,.45)">Enter dashboard</a>
+  </div>
+</noscript>
 <main class="experience" data-planet="pinecrest">
   <div class="backgrounds" aria-hidden="true">
     <video id="mars-background" class="background is-visible" muted playsinline preload="auto" crossorigin="anonymous" src="https://assets.mixkit.co/videos/10086/10086-720.mp4"></video>
@@ -267,7 +273,6 @@ body:not(.intro-ready) .planet-content .fact{opacity:0}
   var cursorEl        = document.querySelector('.custom-cursor');
   var cursorOrbit     = document.querySelector('.cursor-orbit');
   var menuButton      = document.querySelector('.menu');
-  var stayLink        = document.querySelector('.nav a.active');
 
   var ctx      = portalCanvas.getContext('2d');
   var sceneCtx = sceneCanvas.getContext('2d');
@@ -734,7 +739,7 @@ body:not(.intro-ready) .planet-content .fact{opacity:0}
   portalButton.addEventListener('pointerenter', function(){ cursorEl.classList.add('is-enter'); });
   portalButton.addEventListener('pointerleave', function(){ cursorEl.classList.remove('is-enter'); });
 
-  // "Book Now" and the "Stays" nav lead into the product login (top-window nav
+  // "Book Now" and the nav links lead into the product login (top-window nav
   // so this works whether the file is opened directly or embedded in an iframe).
   function goToLogin(ev){
     if(ev) ev.preventDefault();
@@ -742,7 +747,12 @@ body:not(.intro-ready) .planet-content .fact{opacity:0}
     catch(e){ window.location.href = '/login'; }
   }
   if(menuButton) menuButton.addEventListener('click', goToLogin);
-  if(stayLink) stayLink.addEventListener('click', goToLogin);
+  // Every nav link ("Stays"/"Explore"/"Retreats") leads into the product login
+  // so none of them are inert in-page anchors.
+  var navLinks = document.querySelectorAll('.nav a');
+  for(var n = 0; n < navLinks.length; n++){
+    navLinks[n].addEventListener('click', goToLogin);
+  }
 
   // ---- Boot order (section 12) ----
   var bgVideos = document.querySelectorAll('.background');

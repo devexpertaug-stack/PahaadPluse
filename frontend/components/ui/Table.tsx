@@ -22,10 +22,10 @@ export function Table<Row>({
   emptyMessage = "No data yet.",
 }: TableProps<Row>) {
   return (
-    <div className="overflow-hidden rounded-2xl border border-mist-300 bg-mist-white shadow-tile">
+    <div className="glass-panel overflow-hidden bg-mist-white/60">
       <table className="w-full border-collapse text-sm">
         <thead>
-          <tr className="bg-forest-50 text-left text-forest-700">
+          <tr className="bg-forest-50/70 text-left text-forest-700 backdrop-blur-sm">
             {columns.map((col) => (
               <th
                 key={col.key}
@@ -53,7 +53,7 @@ export function Table<Row>({
             rows.map((row, index) => (
               <tr
                 key={getRowKey(row, index)}
-                className="border-t border-mist-200 transition-colors hover:bg-sky-50"
+                className="border-t border-mist-200/60 transition-colors hover:bg-pp-leaf/10"
               >
                 {columns.map((col) => (
                   <td

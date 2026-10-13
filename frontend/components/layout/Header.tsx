@@ -30,7 +30,7 @@ export function Header() {
   }
 
   return (
-    <header className="sticky top-0 z-10 flex items-center justify-between border-b border-mist-300 bg-mist-white/85 px-6 py-4 backdrop-blur-md">
+    <header className="sticky top-0 z-10 flex items-center justify-between border-b border-pp-mist/60 bg-mist-white/70 px-6 py-4 backdrop-blur-xl backdrop-saturate-150">
       <div>
         <p className="text-xs font-semibold uppercase tracking-widest text-sky-600">
           {active.group}

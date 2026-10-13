@@ -18,7 +18,14 @@ export function Sidebar() {
   const pathname = usePathname();
 
   return (
-    <aside className="flex h-full w-64 shrink-0 flex-col bg-forest-header text-mist-100">
+    <aside
+      className="glass-panel--dark relative z-20 flex min-h-screen w-64 shrink-0 flex-col rounded-none border-y-0 border-l-0 text-mist-100"
+      style={{
+        backgroundColor: "rgba(27, 59, 42, 0.72)",
+        backgroundImage:
+          "linear-gradient(165deg, rgba(36,59,53,0.92) 0%, rgba(27,59,42,0.9) 50%, rgba(12,20,16,0.95) 100%)",
+      }}
+    >
       <div className="px-5 py-6">
         <Link href="/dashboard" className="flex items-center gap-3">
           <span
@@ -61,8 +68,8 @@ export function Sidebar() {
                         className={cn(
                           "block rounded-lg px-3 py-2 text-sm font-medium transition-all duration-150",
                           active
-                            ? "bg-mist-50/20 text-mist-50 shadow-sm ring-1 ring-inset ring-dawn-400/40"
-                            : "text-mist-200/85 hover:bg-mist-50/10 hover:text-mist-50",
+                            ? "bg-pp-leaf/20 text-mist-50 shadow-sm ring-1 ring-inset ring-pp-leaf/50"
+                            : "text-mist-200/85 hover:bg-pp-leaf/10 hover:text-mist-50",
                         )}
                       >
                         {item.label}

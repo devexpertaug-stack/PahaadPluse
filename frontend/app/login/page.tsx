@@ -25,17 +25,17 @@ export default function LoginPage() {
       className="relative flex min-h-screen w-full items-center justify-center overflow-hidden px-4 py-10"
       style={{
         backgroundImage:
-          "linear-gradient(160deg, #0a567c 0%, #0f5f44 46%, #1f8a5b 78%, #f6a623 140%)",
+          "linear-gradient(160deg, #243b35 0%, #1b3b2a 44%, #4e7a3f 82%, #e5b25d 150%)",
       }}
     >
-      {/* Decorative glow blobs for depth. */}
+      {/* Decorative mountain/forest glow blobs for depth. */}
       <div
         aria-hidden
-        className="pointer-events-none absolute -left-24 top-10 h-72 w-72 rounded-full bg-sky-400/30 blur-3xl"
+        className="pointer-events-none absolute -left-24 top-10 h-72 w-72 rounded-full bg-pp-leaf/30 blur-3xl"
       />
       <div
         aria-hidden
-        className="pointer-events-none absolute -right-16 top-1/3 h-80 w-80 rounded-full bg-dawn-400/25 blur-3xl"
+        className="pointer-events-none absolute -right-16 top-1/3 h-80 w-80 rounded-full bg-pp-amber/25 blur-3xl"
       />
 
       {/* Layered mountain / forest silhouette along the bottom. */}
@@ -46,17 +46,17 @@ export default function LoginPage() {
         className="pointer-events-none absolute inset-x-0 bottom-0 h-56 w-full md:h-72"
       >
         <path
-          fill="#0f5f44"
+          fill="#4e7a3f"
           fillOpacity="0.55"
           d="M0,224L120,197.3C240,171,480,117,720,122.7C960,128,1200,192,1320,224L1440,256L1440,320L0,320Z"
         />
         <path
-          fill="#063b2b"
-          fillOpacity="0.85"
+          fill="#1b3b2a"
+          fillOpacity="0.9"
           d="M0,288L160,250.7C320,213,640,139,960,138.7C1120,139,1280,181,1360,202.7L1440,224L1440,320L0,320Z"
         />
         {/* Simple pine-tree silhouettes on the near ridge. */}
-        <g fill="#042019" fillOpacity="0.9">
+        <g fill="#0c1410" fillOpacity="0.9">
           <polygon points="180,300 200,250 220,300" />
           <polygon points="186,282 200,245 214,282" />
           <polygon points="300,305 316,262 332,305" />
@@ -66,9 +66,9 @@ export default function LoginPage() {
         </g>
       </svg>
 
-      {/* Centered elevated/glassy branded card. */}
+      {/* Centered elevated frosted-glass branded card. */}
       <div className="relative z-10 w-full max-w-md">
-        <div className="rounded-3xl border border-mist-white/40 bg-mist-white/90 p-8 shadow-ridge backdrop-blur-xl sm:p-10">
+        <div className="rounded-3xl border border-pp-mist/40 bg-mist-white/60 p-8 shadow-glass backdrop-blur-2xl backdrop-saturate-150 sm:p-10">
           <div className="mb-7 text-center">
             <span className="inline-flex items-center gap-2 rounded-full bg-forest-600/10 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-forest-700">
               {brand.region}

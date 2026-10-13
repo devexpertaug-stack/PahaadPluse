@@ -10,12 +10,14 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 const variantClasses: Record<Variant, string> = {
+  // Deep forest fill with a glassy highlight and a tactile lift on hover.
   primary:
-    "bg-forest-600 text-mist-50 shadow-sm hover:bg-forest-500 hover:shadow-glow focus-visible:ring-forest-500",
+    "bg-pp-forest text-mist-50 shadow-glass ring-1 ring-inset ring-white/10 hover:-translate-y-0.5 hover:bg-pp-slate hover:shadow-glow focus-visible:ring-pp-leaf",
+  // Frosted translucent surface that reads as glass over the scenery.
   secondary:
-    "bg-mist-50 text-forest-800 border border-forest-200 hover:border-sky-300 hover:bg-sky-50 focus-visible:ring-sky-400",
+    "border border-pp-mist/70 bg-mist-white/60 text-forest-800 backdrop-blur-md hover:-translate-y-0.5 hover:border-pp-leaf/70 hover:bg-mist-white/80 focus-visible:ring-pp-leaf",
   ghost:
-    "bg-transparent text-forest-700 hover:bg-mist-200 focus-visible:ring-forest-400",
+    "bg-transparent text-forest-700 hover:bg-pp-mist/40 focus-visible:ring-forest-400",
 };
 
 const sizeClasses: Record<Size, string> = {

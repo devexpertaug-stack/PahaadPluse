@@ -46,6 +46,20 @@ export const palette = {
     deep: "#b23a26",
     bright: "#f5745a",
   },
+  // Mountain / forest glassmorphism palette for the immersive landing
+  // experience. Mirrored by tailwind.config.ts (`pp` color group) and
+  // app/globals.css (--pp-* CSS variables). These three files are the single
+  // source of truth and must stay consistent. Additive — the alpine keys above
+  // are unchanged so existing components keep rendering identical classes.
+  pp: {
+    forest: "#1b3b2a",
+    moss: "#4e7a3f",
+    leaf: "#7fb069",
+    mist: "#cfe3d4",
+    slate: "#243b35",
+    stone: "#0c1410",
+    amber: "#e5b25d",
+  },
 } as const;
 
 export const brand = {
@@ -76,7 +90,7 @@ export interface NavItem {
 export const navItems: NavItem[] = [
   {
     label: "Metrics Overview",
-    href: "/",
+    href: "/dashboard",
     group: "Overview",
     description: "Platform-wide KPIs and health at a glance",
   },

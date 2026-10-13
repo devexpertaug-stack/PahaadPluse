@@ -20,7 +20,7 @@ export function Sidebar() {
   return (
     <aside className="flex h-full w-64 shrink-0 flex-col bg-forest-header text-mist-100">
       <div className="px-5 py-6">
-        <Link href="/" className="flex items-center gap-3">
+        <Link href="/dashboard" className="flex items-center gap-3">
           <span
             aria-hidden
             className="flex h-9 w-9 items-center justify-center rounded-xl bg-mist-50/10 text-lg"
@@ -50,8 +50,8 @@ export function Sidebar() {
               <ul className="space-y-0.5">
                 {items.map((item) => {
                   const active =
-                    item.href === "/"
-                      ? pathname === "/"
+                    item.href === "/dashboard"
+                      ? pathname === "/dashboard"
                       : pathname.startsWith(item.href);
                   return (
                     <li key={item.href}>

@@ -1,0 +1,7 @@
+{
+  "task_id": "task-immersive-landing-glassmorphism",
+  "task_description": "Redesign the PahadPulse frontend UI/UX to a modern mountain/forest glassmorphism + interactive-3D aesthetic. (1) Build the 'PahaadPulse' single-page immersive mountain & forest hotel-retreat portal EXACTLY per the attached spec as a single self-contained HTML file (inline style+script, zero external libraries): ~3s aerial-flyover video preloader with 0-100% counter + docking logo, a canvas rounded-window portal with fake-3D pointer tilt onto CORS-enabled mountain/forest footage, travel transitions across three retreats (Pinecrest -> Cedar Vale -> Mistfall), custom cursor, mountain/forest palette, entrance/switch animations, responsive + reduced-motion. Make it the site's cinematic landing/homepage within the Next.js app with routing landing -> login -> dashboard. (2) Apply the same glassmorphism (frosted translucent panels, backdrop-blur, subtle borders) + mountain/forest palette (--pp-forest/moss/leaf/mist/slate/stone/amber harmonized with the existing alpine theme) + tasteful interactive-3D/parallax/hover across the UI primitives, layout shell, login page, and all 16 dashboard pages. Keep every dashboard capability reachable, every page LIVE on backend data, the login/auth flow working, and all four gates green (frontend lint+vitest+build, backend ruff+pytest). Do NOT push or open PRs.",
+  "status": "in_progress",
+  "feature_order": ["FEAT-001", "FEAT-002", "FEAT-003"],
+  "blocked_reason": null
+}

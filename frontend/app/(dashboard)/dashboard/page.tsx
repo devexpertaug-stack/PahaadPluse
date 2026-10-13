@@ -13,7 +13,7 @@ import {
 } from "@/lib/api";
 
 export default function MetricsOverviewPage() {
-  const subsystemLinks = navItems.filter((item) => item.href !== "/");
+  const subsystemLinks = navItems.filter((item) => item.href !== "/dashboard");
 
   // The overview is driven by live backend aggregates — no baked placeholders.
   const counts = useLiveData<ReviewCountsResponse>(() => api.reviewCounts());

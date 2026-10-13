@@ -61,7 +61,7 @@ describe("LoginForm", () => {
         "ForestSeason@2024",
       );
       expect(setSession).toHaveBeenCalledWith("tok-123", user);
-      expect(push).toHaveBeenCalledWith("/");
+      expect(push).toHaveBeenCalledWith("/dashboard");
     });
   });
 

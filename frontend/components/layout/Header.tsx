@@ -19,7 +19,9 @@ export function Header() {
 
   const active =
     navItems.find((item) =>
-      item.href === "/" ? pathname === "/" : pathname.startsWith(item.href),
+      item.href === "/dashboard"
+        ? pathname === "/dashboard"
+        : pathname.startsWith(item.href),
     ) ?? navItems[0];
 
   function handleLogout() {

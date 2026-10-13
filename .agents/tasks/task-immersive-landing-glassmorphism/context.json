@@ -1,0 +1,30 @@
+{
+  "project_type": "Full-stack hospitality guest-intelligence platform. Frontend: Next.js 14 (app router) + Tailwind + TypeScript + Vitest. Backend: FastAPI (Python 3.11). This task is frontend-only (UI/UX redesign); backend is NOT touched but its test gate must stay green.",
+  "language": "TypeScript/React (frontend); Python (backend, untouched)",
+  "build_system": "npm (frontend) + uv (backend). Node is NOT on the default PATH in this sandbox: export PATH=\"/opt/toolchains/.nvm/versions/node/v22.23.3/bin:$PATH\" before running npm/npx. Node v22.23.3, npm 11.4.2.",
+  "test_framework": "Vitest (frontend, jsdom + @testing-library/react) in *.test.tsx; pytest (backend). ESLint via next lint.",
+  "build_command": "cd frontend && npm run build  (currently 22 routes incl /login; expect route count to change when a landing route is added)",
+  "test_command": "frontend: cd frontend && npx vitest run (24 passing) + npm run lint (clean). backend: cd backend && uv run pytest (255 passing) + uv run ruff check . (clean). ALL FOUR must stay green.",
+  "verification_instructions": "After each feature: run `npm run lint`, `npx vitest run`, and `npm run build` from frontend/ with node on PATH. Backend `uv run pytest` + `uv run ruff check .` must remain green (not expected to change since this is frontend-only, but run once at the end to confirm no regression). Dev servers (next dev / uvicorn) are BLOCKED by a sandbox guard — DO NOT launch them. The immersive landing relies on runtime browser APIs (canvas, <video>, requestAnimationFrame) + remote CORS media that only truly render in a real browser; here verify via static review against the spec acceptance checklist, HTML/JS validity, successful build, and clean lint. Call out browser-only items in the handback.",
+  "snapshot_or_generated_files": "None checked in. next build output (.next/) is gitignored.",
+  "setup_instructions": "Dependencies already installed in frontend/node_modules and backend venv. If node_modules is missing: cd frontend && npm ci. Backend: cd backend && uv sync.",
+  "environment_constraints": "OPEN_INTERNET at build time (remote mixkit/pexels asset URLs reachable), BUT no browser/display here so canvas/video/cursor cannot be visually verified — only static + build verification. Live dev servers blocked. The self-contained landing HTML must use ZERO external JS/CSS libraries per the spec.",
+  "contribution_requirements": "Keep all four gates green (frontend lint+vitest+build, backend ruff+pytest). Do NOT push or open PRs — orchestrator publishes. Preserve live-data wiring on all dashboard pages and the working login/auth flow. Never use em dashes in code comments or docs.",
+  "key_patterns": "Design tokens are the single source of truth across THREE files that must stay mutually consistent: frontend/tailwind.config.ts (color scales + boxShadow + backgroundImage), frontend/app/globals.css (CSS variables + @layer base/components), frontend/lib/theme.ts (palette export + navItems nav model + brand). Existing alpine palette: forest/mist/pine/dawn/sky/slate/alert scales. UI primitives in frontend/components/ui/{Card,Button,Badge,StatTile,Table,PageHeader}.tsx use cn() from lib/cn.ts and Tailwind classes. Layout in frontend/components/layout/{AppShell,Sidebar,Header}.tsx. Dashboard pages live in app/(dashboard)/ route group, gated by SessionGate (redirects to /login if no token) wrapping AppShell. Pages are LIVE-first via lib/api.ts (useLiveData hook) with LoadState load/empty/error states — do NOT regress this. Login page at app/login/page.tsx (server component shell) renders components/auth/LoginForm.tsx (client). Fonts wired in app/layout.tsx via next/font (Inter --font-sans, Poppins --font-display).",
+  "relevant_files": [
+    "frontend/public/ (does NOT exist yet — create it for the self-contained landing HTML)",
+    "frontend/app/layout.tsx (root layout; fonts + globals.css)",
+    "frontend/app/globals.css (Tailwind layers + CSS variable tokens — add --pp-* mountain/forest tokens here)",
+    "frontend/tailwind.config.ts (color scales + boxShadow + backgroundImage — add glass/pp tokens, keep consistent)",
+    "frontend/lib/theme.ts (palette + navItems + brand — nav labels/structure may be adjusted; keep every dashboard route reachable)",
+    "frontend/app/(dashboard)/page.tsx (Metrics Overview; currently route '/'; navItems entry href:'/')",
+    "frontend/app/(dashboard)/layout.tsx (SessionGate + AppShell wrapper)",
+    "frontend/app/login/page.tsx + frontend/components/auth/LoginForm.tsx (auth flow; LoginForm.test.tsx asserts labels, demo credentials text, redirect to '/')",
+    "frontend/components/layout/{AppShell,Sidebar,Header}.tsx (shell to restyle with glassmorphism)",
+    "frontend/components/ui/{Card,Button,Badge,StatTile,Table,PageHeader}.tsx (primitives to restyle)",
+    "frontend/components/ui/StatTile.test.tsx (asserts StatTile label/value/hint text + Badge default tone class 'text-forest-800' — keep forest default tone)",
+    "frontend/app/(dashboard)/deep-pages.test.tsx + sentinel-destination-pages.test.tsx (import page components directly, mock usePathname()=>'/', assert page titles/text — do not break these assertions)",
+    "frontend/components/common/LoadState.tsx (load/empty/error + liveBadgeProps — preserve)"
+  ],
+  "directory_structure": "frontend/app/ (app router: (dashboard) route group with 16 live pages + layout, login/, globals.css, layout.tsx). frontend/components/ (ui/ primitives, layout/ shell, auth/, charts/, common/, market-radar/, destination/). frontend/lib/ (api.ts, auth.ts, theme.ts, cn.ts, useLiveData.ts, demoCredentials.ts). frontend/public/ to be created. backend/ FastAPI (untouched)."
+}

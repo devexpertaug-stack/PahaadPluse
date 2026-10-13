@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>PahaadPulse — Mountain &amp; Forest Retreats</title>
+<!--
+  PahaadPulse immersive landing experience.
+  Single self-contained file: inline <style> + <script>, ZERO external JS/CSS libraries.
+  Internal element ids keep the original mars/earth/venus naming so the JS state keys
+  line up; the VISIBLE copy is the PahaadPulse mountain-and-forest hotel theme.
+  Routing note (also documented in the Next.js app/page.tsx comment):
+    '/'          -> this immersive landing (embedded full-viewport via iframe, not gated)
+    '/login'     -> auth (the "Book Now" button / "Stays" nav navigate the TOP window here)
+    '/dashboard' -> gated product home (+ all subsystem routes), reached after sign-in.
+  The remote media are CORS-enabled (access-control-allow-origin: *) so the canvas can
+  sample their pixels without tainting. The logo is an inline data:image/svg+xml URI.
+-->
+<style>
+/* ============================= FONTS (section 2) ============================= */
+@font-face{font-family:'SF Pro';font-weight:400;src:local('SF Pro Text'),local('SF Pro'),local('Arial')}
+@font-face{font-family:'SF Pro';font-weight:700;src:local('SF Pro Text Bold'),local('SF Pro'),local('Arial Bold')}
+@font-face{font-family:'SF Pro Thin';font-weight:100;src:local('SF Pro Thin'),local('SF Pro Text Thin'),local('Arial')}
+@font-face{font-family:'Aalto';font-weight:400;src:local('Aalto'),local('Arial Narrow')}
+
+:root{
+  font-family:'SF Pro',Arial,sans-serif;
+  color:#f3f7f1;
+  background:#0c1410;
+  font-synthesis:none;
+  /* PALETTE — mountain/forest recolor */
+  --pp-forest:#1b3b2a;
+  --pp-moss:#4e7a3f;
+  --pp-leaf:#7fb069;
+  --pp-mist:#cfe3d4;
+  --pp-slate:#243b35;
+  --pp-stone:#0c1410;
+  --pp-amber:#e5b25d;
+}
+
+/* ============================= LAYOUT (section 5) ============================ */
+*{box-sizing:border-box}
+html,body{margin:0;width:100%;height:100%;overflow:hidden}
+html,body,button,a,.portal{cursor:none!important}
+
+.experience{position:relative;width:100%;height:100%;min-height:540px;overflow:hidden;background:#0a140d}
+.backgrounds,.background,.shade,.transition-layer,.transition-layer video{position:absolute;inset:0;width:100%;height:100%}
+.background{object-fit:cover;opacity:0;transition:opacity .8s ease}
+.background.is-visible{opacity:1}
+.shade{z-index:1;background:linear-gradient(to bottom,transparent 52%,rgba(6,16,10,.9) 100%);pointer-events:none}
+.chrome{position:absolute;z-index:4;transition:opacity .45s ease,filter .45s ease}
+.experience.is-transitioning .chrome{opacity:0;filter:blur(8px);pointer-events:none}
+
+/* HEADER */
+.header{left:clamp(18px,1.95vw,28px);right:clamp(18px,1.95vw,28px);top:clamp(18px,3.1vh,28px);display:flex;justify-content:space-between;align-items:center}
+.header-actions{margin-left:auto;display:flex;align-items:center;gap:12px}
+.nav{display:flex;align-items:center;height:42px;padding:4px 5px;border:1px solid rgba(207,227,212,.45);background:rgba(27,59,42,.28);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-radius:999px}
+.nav a{color:#f3f7f1;text-decoration:none;padding:8px 19px;border-radius:999px;line-height:1}
+.nav a.active{background:var(--pp-leaf);color:#0c1410}
+.menu{height:42px;padding:0 20px;border:0;border-radius:999px;background:var(--pp-leaf);color:#0c1410;cursor:pointer;font-weight:700}
+
+/* SIDEBAR */
+.planet-list{left:clamp(18px,1.95vw,28px);top:50%;transform:translateY(-43%);display:flex;flex-direction:column;gap:6px;font-size:16px}
+.planet-item{display:flex;align-items:center;min-height:20px;color:#e4efe2}
+.planet-item.active{font-size:18px;font-weight:700;gap:8px;color:#fff}
+.planet-item.active:before{content:'';width:16px;height:16px;border-radius:50%;background:var(--pp-leaf);box-shadow:0 0 14px rgba(127,176,105,.8)}
+
+/* PORTAL */
+.portal-wrap{left:50%;top:50%;width:min(320px,31vw);transform:translate(-50%,-54%);perspective:none}
+.portal-heading{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;font-size:16px;opacity:0}
+.portal-heading strong{font-size:18px;margin-left:8px;color:var(--pp-amber)}
+.portal{position:relative;display:block;width:100%;aspect-ratio:320/350;padding:0;overflow:visible;border:0;border-radius:90px;background:transparent;cursor:pointer;box-shadow:none;transform:none!important}
+.portal video,.portal img{visibility:hidden;position:absolute;width:1px;height:1px;pointer-events:none}
+.portal-canvas{position:fixed;inset:0;z-index:3;width:100%;height:100%;pointer-events:none}
+
+/* CONTENT */
+.planet-content{left:clamp(28px,4vw,58px);right:clamp(28px,3vw,44px);bottom:clamp(24px,3vh,30px);display:flex;justify-content:space-between;align-items:flex-end;gap:40px}
+.planet-content h1{font-family:Aalto,'Arial Narrow',sans-serif;font-size:clamp(96px,15vw,230px);font-weight:400;line-height:.78;margin:0 0 -.04em;letter-spacing:0;transform:translateX(-32px);opacity:0;text-transform:uppercase}
+.planet-content dl{width:min(447px,34vw);margin:0;font-size:16px}
+.fact{display:grid;grid-template-columns:138px 1fr;gap:18px;padding:8px 0;border-bottom:1px solid rgba(207,227,212,.42);opacity:0}
+.fact:last-child{border-bottom:0}
+.fact dt{font-weight:700;color:var(--pp-leaf)}
+.fact dd{margin:0}
+
+/* MISC */
+.transition-layer{display:none}
+.scene-canvas{display:none}
+.loading{position:absolute;z-index:12;left:50%;bottom:30px;transform:translateX(-50%);opacity:0;font-size:12px;letter-spacing:.14em;text-transform:uppercase;transition:opacity .2s}
+.experience.is-loading .loading{opacity:.8}
+.experience.is-transitioning .header,.experience.is-transitioning .planet-list{opacity:1;filter:none;pointer-events:auto}
+.experience.is-transitioning .shade{opacity:1}
+.experience.is-committing .background{transition:none!important}
+
+/* ============================= PRELOADER (section 6) ========================= */
+.preloader{position:absolute;inset:0;z-index:20;background:#06100a;overflow:hidden}
+.preloader video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.preloader-shade{position:absolute;inset:auto 0 0;height:35%;background:linear-gradient(to bottom,transparent,#06100a)}
+.preloader.is-background{z-index:0}
+.preloader.is-background .preloader-shade{opacity:0}
+.floating-logo{position:fixed;z-index:22;left:50%;top:50%;width:120px;height:58px;transform:translate(-50%,-50%);will-change:left,top,width,height,transform;transition:left 2s cubic-bezier(.16,1,.3,1),top 2s cubic-bezier(.16,1,.3,1),width 2s cubic-bezier(.16,1,.3,1),height 2s cubic-bezier(.16,1,.3,1),transform 2s cubic-bezier(.16,1,.3,1)}
+.floating-logo.is-docked{left:clamp(18px,1.95vw,28px);top:clamp(18px,3.1vh,28px);width:84px;height:36px;transform:none}
+.floating-logo.is-settled{z-index:5}
+.preloader-count{position:fixed;z-index:22;left:50%;bottom:clamp(22px,3.1vh,28px);display:flex;align-items:flex-end;gap:4px;transform:translateX(-50%);font-family:'SF Pro',Arial,sans-serif;line-height:1}
+.preloader-count>span:first-child{font-family:'SF Pro Thin','SF Pro',Arial,sans-serif;font-size:64px;font-weight:100}
+.preloader-count .percent{font-size:24px;padding-bottom:4px}
+.preloader-count.is-leaving{animation:preload-count-out .75s cubic-bezier(.22,1,.36,1) both}
+@keyframes preload-count-out{to{opacity:0;filter:blur(7px);transform:translate(-50%,-34px)}}
+body:not(.preload-complete) .custom-cursor{opacity:0!important}
+
+/* ======================= CUSTOM CURSOR (section 9) =========================== */
+.custom-cursor{display:block;position:fixed;left:0;top:0;z-index:100;width:1px;height:1px;pointer-events:none;opacity:0;transition:opacity .2s ease}
+.custom-cursor.is-visible{opacity:1}
+.cursor-dot,.cursor-orbit{position:absolute;left:0;top:0;border-radius:50%;transform:translate(-50%,-50%)}
+.cursor-dot{width:12px;height:12px;background:var(--pp-leaf)}
+.cursor-orbit{width:36px;height:36px;border:1px solid var(--pp-leaf);background:rgba(127,176,105,.4);transition:transform .3s cubic-bezier(.22,1,.36,1)}
+.custom-cursor.is-enter .cursor-orbit{transform:translate(-50%,-50%) scale(1.16)}
+.cursor-label{position:absolute;top:26px;left:0;transform:translateX(-50%) translateY(-4px);font:16px/1.2 'SF Pro',Arial,sans-serif;white-space:nowrap;opacity:0;transition:opacity .2s ease,transform .3s cubic-bezier(.22,1,.36,1)}
+.custom-cursor.is-enter .cursor-label{opacity:1;transform:translateX(-50%) translateY(0)}
+
+/* ================= ENTRANCE / SWITCH ANIMATIONS (section 10) ================= */
+body:not(.intro-ready) .header,
+body:not(.intro-ready) .planet-list,
+body:not(.intro-ready) .planet-content h1,
+body:not(.intro-ready) .planet-content .fact{opacity:0}
+.intro-ready .header{animation:reveal-down .9s cubic-bezier(.22,1,.36,1) .1s both}
+.intro-ready .planet-list{animation:reveal-side .9s cubic-bezier(.22,1,.36,1) .65s both}
+.content-revealing h1{animation:title-rise 1.05s cubic-bezier(.16,1,.3,1) both}
+.content-revealing .fact{animation:fact-rise .72s cubic-bezier(.22,1,.36,1) both}
+.content-revealing .fact:nth-child(1){animation-delay:.52s}
+.content-revealing .fact:nth-child(2){animation-delay:.68s}
+.content-revealing .fact:nth-child(3){animation-delay:.84s}
+.content-revealing .fact:nth-child(4){animation-delay:1s}
+.mask-revealing .portal-heading{animation:portal-caption .85s cubic-bezier(.22,1,.36,1) both}
+.planet-list.is-switching .planet-item{animation:menu-row .58s cubic-bezier(.22,1,.36,1) both}
+.planet-list.is-switching .planet-item:nth-child(1){animation-delay:.02s}
+.planet-list.is-switching .planet-item:nth-child(2){animation-delay:.05s}
+.planet-list.is-switching .planet-item:nth-child(3){animation-delay:.08s}
+.planet-list.is-switching .planet-item:nth-child(4){animation-delay:.11s}
+.planet-list.is-switching .planet-item:nth-child(5){animation-delay:.14s}
+.planet-list.is-switching .planet-item:nth-child(6){animation-delay:.17s}
+.planet-list.is-switching .planet-item:nth-child(7){animation-delay:.2s}
+.planet-list.is-switching .planet-item:nth-child(8){animation-delay:.23s}
+.planet-list.is-switching .planet-item.active:before{animation:active-dot .55s cubic-bezier(.22,1,.36,1) .18s both}
+
+@keyframes reveal-down{from{opacity:0;filter:blur(8px);transform:translateY(-18px)}to{opacity:1;filter:blur(0);transform:translateY(0)}}
+@keyframes reveal-side{from{opacity:0;filter:blur(8px);transform:translate(-20px,-43%)}to{opacity:1;filter:blur(0);transform:translate(0,-43%)}}
+@keyframes title-rise{from{opacity:0;filter:blur(12px);transform:translate(-32px,42px)}to{opacity:1;filter:blur(0);transform:translate(-32px,0)}}
+@keyframes fact-rise{from{opacity:0;filter:blur(7px);transform:translateY(18px)}to{opacity:1;filter:blur(0);transform:translateY(0)}}
+@keyframes portal-caption{from{opacity:0;filter:blur(7px);transform:translateY(22px)}to{opacity:1;filter:blur(0);transform:translateY(0)}}
+@keyframes menu-row{from{opacity:.35;transform:translateX(-8px)}to{opacity:1;transform:translateX(0)}}
+@keyframes active-dot{from{opacity:0;transform:scale(0)}to{opacity:1;transform:scale(1)}}
+
+/* ============================ RESPONSIVE (section 11) ======================== */
+@media(max-width:900px){
+  .nav{display:none}
+  .portal-wrap{width:min(300px,48vw)}
+  .planet-content h1{font-size:clamp(90px,20vw,170px)}
+  .planet-content dl{width:43vw}
+  .fact{grid-template-columns:110px 1fr}
+  .planet-list{font-size:14px}
+  .planet-item.active{font-size:16px}
+}
+@media(max-width:640px){
+  .experience{min-height:600px}
+  .planet-list{display:none}
+  .portal-wrap{top:44%;width:min(260px,66vw)}
+  .planet-content{left:18px;right:18px;bottom:18px;display:block}
+  .planet-content h1{font-size:clamp(80px,26vw,150px);margin-bottom:20px}
+  .planet-content dl{width:100%;font-size:13px}
+  .fact{grid-template-columns:92px 1fr;padding:5px 0}
+  .portal-heading{font-size:14px}
+  .portal-heading strong{font-size:16px}
+  .menu{height:38px}
+  .portal{border-radius:70px}
+}
+@media(prefers-reduced-motion:reduce){*{transition-duration:.01ms!important}.portal{transform:none!important}}
+</style>
+</head>
+<body>
+<main class="experience" data-planet="pinecrest">
+  <div class="backgrounds" aria-hidden="true">
+    <video id="mars-background" class="background is-visible" muted playsinline preload="auto" crossorigin="anonymous" src="https://assets.mixkit.co/videos/10086/10086-720.mp4"></video>
+    <video id="earth-background" class="background" muted playsinline preload="auto" crossorigin="anonymous" src="https://assets.mixkit.co/videos/35452/35452-720.mp4"></video>
+    <video id="venus-background" class="background" muted playsinline preload="auto" crossorigin="anonymous" src="https://assets.mixkit.co/videos/3392/3392-720.mp4"></video>
+  </div>
+
+  <div class="preloader" id="preloader" aria-label="Loading PahaadPulse">
+    <video id="preloader-video" muted playsinline preload="auto" crossorigin="anonymous" src="https://assets.mixkit.co/videos/26101/26101-720.mp4"></video>
+    <div class="preloader-shade"></div>
+  </div>
+
+  <img class="floating-logo" id="floating-logo" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20240%20116'%3E%3Cg%20fill='none'%20stroke='%237fb069'%20stroke-width='6'%20stroke-linejoin='round'%20stroke-linecap='round'%3E%3Cpath%20d='M18%2070%20L48%2026%20L78%2070%20Z'/%3E%3Cpath%20d='M66%2070%20L96%2034%20L126%2070%20Z'/%3E%3C/g%3E%3Cpath%20d='M40%2039%20L48%2026%20L56%2039%20L48%2033%20Z'%20fill='%23cfe3d4'%20stroke='none'/%3E%3Cpath%20d='M89%2045%20L96%2034%20L103%2045%20L96%2040%20Z'%20fill='%23cfe3d4'%20stroke='none'/%3E%3Ctext%20x='150'%20y='60'%20font-family='Arial,sans-serif'%20font-size='52'%20font-weight='700'%20fill='%23f3f7f1'%3EPP%3C/text%3E%3Ctext%20x='18'%20y='100'%20font-family='Arial,sans-serif'%20font-size='18'%20font-weight='700'%20letter-spacing='4'%20fill='%23cfe3d4'%3EPAHAADPULSE%3C/text%3E%3C/svg%3E" alt="PahaadPulse">
+
+  <div class="preloader-count" id="preloader-count" aria-live="polite">
+    <span id="preloader-value">0</span><span class="percent">%</span>
+  </div>
+
+  <canvas id="scene-canvas" class="scene-canvas" aria-hidden="true"></canvas>
+  <div class="shade" aria-hidden="true"></div>
+
+  <header class="header chrome">
+    <div class="header-actions">
+      <nav class="nav" aria-label="Primary navigation">
+        <a class="active" href="#about">Stays</a><a href="#explore">Explore</a><a href="#planets">Retreats</a>
+      </nav>
+      <button class="menu" type="button">Book Now</button>
+    </div>
+  </header>
+
+  <aside class="planet-list chrome" aria-label="Retreats"></aside>
+
+  <canvas id="portal-canvas" class="portal-canvas" aria-hidden="true"></canvas>
+  <section class="portal-wrap chrome" aria-label="Next retreat">
+    <div class="portal-heading">
+      <span>Next:</span>
+      <span><span id="next-number">[03]</span> <strong id="next-name">Cedar Vale</strong></span>
+    </div>
+    <button class="portal" id="portal" type="button" aria-label="Travel to Cedar Vale">
+      <video id="portal-video" muted playsinline preload="auto" crossorigin="anonymous" src="https://assets.mixkit.co/videos/26570/26570-720.mp4"></video>
+      <img id="portal-image" crossorigin="anonymous" src="https://images.pexels.com/photos/167699/pexels-photo-167699.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="Misty forest retreat">
+    </button>
+  </section>
+
+  <section class="planet-content chrome" aria-live="polite">
+    <h1 id="planet-title">PINECREST</h1>
+    <dl id="facts"></dl>
+  </section>
+
+  <div class="transition-layer" aria-hidden="true"><video id="transition-video" muted playsinline preload="auto" crossorigin="anonymous"></video></div>
+  <div class="loading" aria-hidden="true">Preparing your escape…</div>
+  <div class="custom-cursor" aria-hidden="true">
+    <span class="cursor-orbit"></span><span class="cursor-dot"></span><span class="cursor-label">Enter</span>
+  </div>
+</main>
+
+<script>
+(function(){
+  "use strict";
+
+  // ---- Remote assets (exact URLs; CORS-enabled) ----
+  var FOG_FOREST    = "https://assets.mixkit.co/videos/10086/10086-720.mp4";
+  var LAKE_FOREST   = "https://assets.mixkit.co/videos/35452/35452-720.mp4";
+  var SNOWY_PINE    = "https://assets.mixkit.co/videos/3392/3392-720.mp4";
+  var RANGE_FLYOVER = "https://assets.mixkit.co/videos/26101/26101-720.mp4";
+  var TO_CEDARVALE  = "https://assets.mixkit.co/videos/26570/26570-720.mp4";
+  var TO_MISTFALL   = "https://assets.mixkit.co/videos/51683/51683-720.mp4";
+  var MISTFALL_STILL = "https://images.pexels.com/photos/167699/pexels-photo-167699.jpeg?auto=compress&cs=tinysrgb&w=1600";
+
+  // ---- DOM references ----
+  var experience      = document.querySelector('.experience');
+  var preloader       = document.getElementById('preloader');
+  var preloaderVideo  = document.getElementById('preloader-video');
+  var preloaderCount  = document.getElementById('preloader-count');
+  var preloaderValue  = document.getElementById('preloader-value');
+  var floatingLogo    = document.getElementById('floating-logo');
+  var portalCanvas    = document.getElementById('portal-canvas');
+  var sceneCanvas     = document.getElementById('scene-canvas');
+  var portalButton    = document.getElementById('portal');
+  var portalVideo     = document.getElementById('portal-video');
+  var portalImage     = document.getElementById('portal-image');
+  var transitionVideo = document.getElementById('transition-video');
+  var planetTitle     = document.getElementById('planet-title');
+  var factsEl         = document.getElementById('facts');
+  var planetList      = document.querySelector('.planet-list');
+  var nextName        = document.getElementById('next-name');
+  var nextNumber      = document.getElementById('next-number');
+  var cursorEl        = document.querySelector('.custom-cursor');
+  var cursorOrbit     = document.querySelector('.cursor-orbit');
+  var menuButton      = document.querySelector('.menu');
+  var stayLink        = document.querySelector('.nav a.active');
+
+  var ctx      = portalCanvas.getContext('2d');
+  var sceneCtx = sceneCanvas.getContext('2d');
+
+  // ---- Data model (section 4) ----
+  var planets = ['Pinecrest','Cedar Vale','Mistfall','Aspen Hollow','Granite Ridge',
+                 'Fernbrook','Larchwood','Summit Haven'];
+
+  var states = {
+    pinecrest: { name:'Pinecrest', next:'Cedar Vale', number:'[03]', portal:TO_CEDARVALE, background:'mars-background',
+      facts:[['Elevation:','Perched at 2,100 m amid old-growth pine and cedar.'],
+             ['Season:','Open year-round; peak foliage runs late September to October.'],
+             ['Climate:','Crisp alpine air, averaging 8 °C with cool, starlit nights.'],
+             ['Setting:','Timber-and-stone lodges wrapped in dense evergreen forest.']] },
+    earth: { name:'Cedar Vale', next:'Mistfall', number:'[02]', portal:TO_MISTFALL, background:'earth-background',
+      facts:[['Elevation:','A sheltered valley at 1,450 m beside a glacial river.'],
+             ['Season:','Spring to autumn, with wildflower meadows from May.'],
+             ['Climate:','Mild and green, averaging 15 °C with fresh forest mornings.'],
+             ['Setting:','Riverside cabins beneath towering cedar and fern canopy.']] },
+    venus: { name:'Mistfall', next:'Pinecrest', number:'[06]', image:MISTFALL_STILL, background:'venus-background',
+      facts:[['Elevation:','High ridge at 2,800 m, often above the cloud line.'],
+             ['Season:','Best in summer when the mist breaks over the peaks.'],
+             ['Climate:','Cool and ethereal, 4 °C with rolling morning fog.'],
+             ['Setting:','Glass-walled retreats overlooking a sea of misty forest.']] }
+  };
+
+  var activeIndexMap = { pinecrest:0, earth:1, venus:2 };
+
+  // ---- Mutable experience state ----
+  var current = 'pinecrest';
+  var busy = false;
+  var transitionActive = false;
+  var expansion = 0;       // 0..1 — portal window grows to full screen
+  var maskScale = 0;       // 0..1 — reveal scale for the window
+  var canvasOpacity = 1;
+  var hasFrozenScene = false;
+  var firstRender = true;
+
+  var rotX = 0, rotY = 0, targetX = 0, targetY = 0;
+  var lastFrame = 0;
+
+  var cursorX = 0, cursorY = 0, orbitX = 0, orbitY = 0, cursorSeen = false;
+
+  var dpr = 1;
+
+  // ---- Easing (easeInOutCubic) used everywhere in JS ----
+  function easeInOutCubic(t){ return t < .5 ? 4*t*t*t : 1 - Math.pow(-2*t+2,3)/2; }
+
+  function animateValue(setter, duration){
+    return new Promise(function(resolve){
+      var start = null;
+      function step(now){
+        if(start === null) start = now;
+        var p = Math.min(1, (now - start) / duration);
+        setter(easeInOutCubic(p));
+        if(p < 1) requestAnimationFrame(step);
+        else resolve();
+      }
+      requestAnimationFrame(step);
+    });
+  }
+
+  // ---- Canvas sizing (section 7) ----
+  function resizeCanvas(){
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    portalCanvas.width = window.innerWidth * dpr;
+    portalCanvas.height = window.innerHeight * dpr;
+    portalCanvas.style.width = window.innerWidth + 'px';
+    portalCanvas.style.height = window.innerHeight + 'px';
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    if(!hasFrozenScene){
+      sceneCanvas.width = window.innerWidth * dpr;
+      sceneCanvas.height = window.innerHeight * dpr;
+      sceneCanvas.style.width = window.innerWidth + 'px';
+      sceneCanvas.style.height = window.innerHeight + 'px';
+      sceneCtx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    }
+  }
+
+  // ---- drawCover: screen-locked cover-mode draw of a media element ----
+  function drawCover(context, media){
+    var mw = media.videoWidth || media.naturalWidth;
+    var mh = media.videoHeight || media.naturalHeight;
+    if(!mw || !mh) return;
+    var scale = Math.max(window.innerWidth / mw, window.innerHeight / mh);
+    var w = mw * scale, h = mh * scale;
+    context.drawImage(media, (window.innerWidth - w) / 2, (window.innerHeight - h) / 2, w, h);
+  }
+
+  // ---- Bottom shade gradient drawn into a context ----
+  function drawShade(context){
+    var g = context.createLinearGradient(0, window.innerHeight * .52, 0, window.innerHeight);
+    g.addColorStop(0, 'rgba(6,16,10,0)');
+    g.addColorStop(1, 'rgba(6,16,10,.88)');
+    context.fillStyle = g;
+    context.fillRect(0, window.innerHeight * .52, window.innerWidth, window.innerHeight * .48);
+  }
+
+  // ---- Rounded-rect point sampling (~44 points) in local origin-centred coords ----
+  function roundedRectPoints(w, h, r){
+    r = Math.min(r, w / 2, h / 2);
+    var pts = [];
+    var corners = [
+      [ w/2 - r, -h/2 + r, -Math.PI/2, 0 ],
+      [ w/2 - r,  h/2 - r, 0, Math.PI/2 ],
+      [-w/2 + r,  h/2 - r, Math.PI/2, Math.PI ],
+      [-w/2 + r, -h/2 + r, Math.PI, Math.PI * 1.5 ]
+    ];
+    for(var c = 0; c < corners.length; c++){
+      var cx = corners[c][0], cy = corners[c][1], a0 = corners[c][2], a1 = corners[c][3];
+      for(var s = 0; s <= 10; s++){
+        var a = a0 + (a1 - a0) * (s / 10);
+        pts.push([ cx + Math.cos(a) * r, cy + Math.sin(a) * r ]);
+      }
+    }
+    return pts;
+  }
+
+  // ---- Fake-perspective projection (focal 850) ----
+  function project(x, y, rx, ry, cx, cy){
+    var ax = rx * Math.PI / 180;
+    var ay = ry * Math.PI / 180;
+    var xx = x * Math.cos(ay);
+    var yy = y * Math.cos(ax);
+    var z = x * Math.sin(ay) - y * Math.sin(ax);
+    var p = 850 / (850 + z);
+    return [ cx + xx * p, cy + yy * p ];
+  }
+
+  // ---- Main frame loop ----
+  function draw(now){
+    var dt = lastFrame ? Math.min(40, now - lastFrame) : 16;
+    lastFrame = now;
+
+    // Smooth the tilt toward the target.
+    rotX += (targetX - rotX) * Math.min(1, dt * .009);
+    rotY += (targetY - rotY) * Math.min(1, dt * .009);
+
+    ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
+
+    if(hasFrozenScene){
+      ctx.drawImage(sceneCanvas, 0, 0, window.innerWidth, window.innerHeight);
+      drawShade(ctx);
+    }
+
+    var rect = portalButton.getBoundingClientRect();
+    var e = expansion;
+    var rectCx = rect.left + rect.width / 2;
+    var rectCy = rect.top + rect.height / 2;
+    var cx = rectCx + (window.innerWidth / 2 - rectCx) * e;
+    var cy = rectCy + (window.innerHeight / 2 - rectCy) * e;
+    var baseW = rect.width + (window.innerWidth - rect.width) * e;
+    var baseH = rect.height + (window.innerHeight - rect.height) * e;
+    var scale = e ? 1 : maskScale;
+    var w = baseW * scale;
+    var h = baseH * scale;
+    var r = 90 * (1 - e) * scale;
+    var rx = rotX * (1 - e);
+    var ry = rotY * (1 - e);
+
+    if(w > 1 && h > 1){
+      var localPts = roundedRectPoints(w, h, r);
+      ctx.save();
+      ctx.globalAlpha = canvasOpacity;
+      ctx.beginPath();
+      for(var i = 0; i < localPts.length; i++){
+        var sp = project(localPts[i][0], localPts[i][1], rx, ry, cx, cy);
+        if(i === 0) ctx.moveTo(sp[0], sp[1]);
+        else ctx.lineTo(sp[0], sp[1]);
+      }
+      ctx.closePath();
+      ctx.clip();
+      ctx.fillStyle = '#06100a';
+      ctx.fillRect(0, 0, window.innerWidth, window.innerHeight);
+      var media = transitionActive ? transitionVideo : (states[current].image ? portalImage : portalVideo);
+      drawCover(ctx, media);
+      if(transitionActive) drawShade(ctx);
+      ctx.restore();
+    }
+
+    requestAnimationFrame(draw);
+  }
+
+  // ---- Custom cursor loop ----
+  function cursorLoop(){
+    orbitX += (cursorX - orbitX) * .2;
+    orbitY += (cursorY - orbitY) * .2;
+    cursorOrbit.style.transform = 'translate3d(' + orbitX + 'px,' + orbitY + 'px,0) translate(-50%,-50%)';
+    var dot = document.querySelector('.cursor-dot');
+    var label = document.querySelector('.cursor-label');
+    dot.style.transform = 'translate3d(' + cursorX + 'px,' + cursorY + 'px,0) translate(-50%,-50%)';
+    label.style.transform = 'translate3d(' + cursorX + 'px,' + cursorY + 'px,0)';
+    requestAnimationFrame(cursorLoop);
+  }
+
+  // ---- render() (section 4) ----
+  function render(){
+    var state = states[current];
+    experience.setAttribute('data-planet', current);
+    planetTitle.textContent = state.name.toUpperCase();
+    nextName.textContent = state.next;
+    nextNumber.textContent = state.number;
+    portalButton.setAttribute('aria-label', 'Travel to ' + state.next);
+
+    // Facts.
+    factsEl.innerHTML = '';
+    for(var f = 0; f < state.facts.length; f++){
+      var div = document.createElement('div');
+      div.className = 'fact';
+      var dt = document.createElement('dt');
+      dt.textContent = state.facts[f][0];
+      var dd = document.createElement('dd');
+      dd.textContent = state.facts[f][1];
+      div.appendChild(dt);
+      div.appendChild(dd);
+      factsEl.appendChild(div);
+    }
+
+    // Sidebar — all 8 retreats, active = current.
+    var activeIndex = activeIndexMap[current];
+    planetList.innerHTML = '';
+    for(var p = 0; p < planets.length; p++){
+      var span = document.createElement('span');
+      span.className = 'planet-item' + (p === activeIndex ? ' active' : '');
+      span.textContent = planets[p];
+      planetList.appendChild(span);
+    }
+
+    // Retrigger the switch animation on every re-render after the first.
+    if(!firstRender){
+      planetList.classList.remove('is-switching');
+      void planetList.offsetWidth;
+      planetList.classList.add('is-switching');
+    }
+    firstRender = false;
+
+    // Toggle the matching background video.
+    var bgs = document.querySelectorAll('.background');
+    for(var b = 0; b < bgs.length; b++){
+      bgs[b].classList.toggle('is-visible', bgs[b].id === state.background);
+    }
+
+    // Portal media: image vs video.
+    if(state.image){
+      portalImage.style.display = '';
+      portalVideo.style.display = 'none';
+    } else {
+      portalImage.style.display = 'none';
+      portalVideo.style.display = '';
+      if(portalVideo.src !== state.portal){
+        portalVideo.src = state.portal;
+      }
+    }
+  }
+
+  // ---- Reveal helpers ----
+  function retrigger(el, cls){
+    el.classList.remove(cls);
+    void el.offsetWidth;
+    el.classList.add(cls);
+  }
+
+  function revealMask(){
+    retrigger(experience, 'mask-revealing');
+    maskScale = 0;
+    return animateValue(function(v){ maskScale = v; }, 1050);
+  }
+
+  function revealPlanetContent(){
+    retrigger(experience, 'content-revealing');
+  }
+
+  // ---- Media loadable helper ----
+  function waitLoadable(media, timeout){
+    return new Promise(function(resolve){
+      if(media.tagName === 'IMG'){
+        if(media.complete && media.naturalWidth) { resolve(); return; }
+        var okI = function(){ cleanupI(); resolve(); };
+        var cleanupI = function(){
+          media.removeEventListener('load', okI);
+          media.removeEventListener('error', okI);
+        };
+        media.addEventListener('load', okI);
+        media.addEventListener('error', okI);
+        setTimeout(okI, timeout || 1600);
+        return;
+      }
+      if(media.readyState >= 2){ resolve(); return; }
+      var done = false;
+      var ok = function(){ if(done) return; done = true; cleanup(); resolve(); };
+      var cleanup = function(){
+        media.removeEventListener('loadeddata', ok);
+        media.removeEventListener('canplay', ok);
+        media.removeEventListener('error', ok);
+      };
+      media.addEventListener('loadeddata', ok);
+      media.addEventListener('canplay', ok);
+      media.addEventListener('error', ok);
+      setTimeout(ok, timeout || 1600);
+    });
+  }
+
+  // ---- Travel transition (section 8) ----
+  function travel(){
+    if(busy || current === 'venus') return;
+    busy = true;
+    targetX = 0; targetY = 0;
+    var next = current === 'pinecrest' ? 'earth' : 'venus';
+
+    transitionVideo.src = states[current].portal;
+    transitionVideo.load();
+    experience.classList.add('is-loading');
+
+    var waitReady = new Promise(function(resolve){
+      var done = false;
+      var ok = function(){ if(done) return; done = true; cleanup(); resolve(); };
+      var cleanup = function(){
+        transitionVideo.removeEventListener('canplaythrough', ok);
+        transitionVideo.removeEventListener('error', ok);
+      };
+      transitionVideo.addEventListener('canplaythrough', ok);
+      transitionVideo.addEventListener('error', ok);
+      setTimeout(ok, 1600);
+    });
+
+    waitReady.then(function(){
+      experience.classList.remove('is-loading', 'content-revealing', 'mask-revealing');
+      experience.classList.add('is-transitioning');
+      transitionVideo.currentTime = 0;
+      transitionVideo.playbackRate = 1.3;
+      canvasOpacity = 1;
+      transitionActive = true;
+      return transitionVideo.play().catch(function(){});
+    }).then(function(){
+      return animateValue(function(v){ expansion = v; }, 1100);
+    }).then(function(){
+      return new Promise(function(resolve){
+        var done = false;
+        var ok = function(){ if(done) return; done = true; cleanup(); resolve(); };
+        var cleanup = function(){ transitionVideo.removeEventListener('ended', ok); };
+        transitionVideo.addEventListener('ended', ok);
+        setTimeout(ok, 4000);
+      });
+    }).then(function(){
+      // Freeze the final frame of the transition into the scene canvas.
+      hasFrozenScene = true;
+      sceneCanvas.width = window.innerWidth * dpr;
+      sceneCanvas.height = window.innerHeight * dpr;
+      sceneCanvas.style.width = window.innerWidth + 'px';
+      sceneCanvas.style.height = window.innerHeight + 'px';
+      sceneCtx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      sceneCtx.clearRect(0, 0, window.innerWidth, window.innerHeight);
+      drawCover(sceneCtx, transitionVideo);
+
+      current = next;
+      experience.classList.add('is-committing');
+      render();
+      return new Promise(function(resolve){
+        requestAnimationFrame(function(){ requestAnimationFrame(resolve); });
+      });
+    }).then(function(){
+      transitionActive = false;
+      expansion = 0;
+      maskScale = 0;
+      canvasOpacity = 1;
+      hasFrozenScene = false;
+      experience.classList.remove('is-transitioning', 'is-committing');
+
+      var maskReveal = revealMask();
+      setTimeout(revealPlanetContent, 100);
+      return maskReveal;
+    }).then(function(){
+      setTimeout(function(){
+        transitionVideo.removeAttribute('src');
+        transitionVideo.load();
+        busy = false;
+      }, 450);
+    }).catch(function(){
+      transitionActive = false;
+      expansion = 0;
+      maskScale = 1;
+      canvasOpacity = 1;
+      hasFrozenScene = false;
+      experience.classList.remove('is-transitioning', 'is-committing', 'is-loading');
+      busy = false;
+    });
+  }
+
+  // ---- Preloader (section 6) ----
+  function startExperience(){
+    var media = states[current].image ? portalImage : portalVideo;
+    waitLoadable(media, 2000).then(function(){
+      return revealMask();
+    }).then(function(){
+      document.body.classList.add('intro-ready');
+      setTimeout(revealPlanetContent, 850);
+    });
+  }
+
+  function runPreloader(){
+    var finished = false;
+    function finish(){
+      if(finished) return;
+      finished = true;
+      preloaderValue.textContent = '100';
+      preloaderCount.classList.add('is-leaving');
+      floatingLogo.classList.add('is-docked');
+      preloader.classList.add('is-background');
+      document.body.classList.add('preload-complete');
+      startExperience();
+      setTimeout(function(){
+        if(preloaderCount && preloaderCount.parentNode){
+          preloaderCount.parentNode.removeChild(preloaderCount);
+        }
+      }, 750);
+      setTimeout(function(){ floatingLogo.classList.add('is-settled'); }, 2000);
+    }
+
+    function onMeta(){
+      preloaderVideo.playbackRate = Math.max(.25, preloaderVideo.duration / 3);
+      preloaderVideo.play().catch(function(){ finish(); });
+    }
+
+    if(preloaderVideo.readyState >= 1){ onMeta(); }
+    else { preloaderVideo.addEventListener('loadedmetadata', onMeta); }
+
+    preloaderVideo.addEventListener('ended', finish);
+
+    function tick(){
+      if(finished) return;
+      if(preloaderVideo.duration){
+        preloaderValue.textContent = String(Math.round(preloaderVideo.currentTime / preloaderVideo.duration * 100));
+      }
+      requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+
+    // Safety timeout if metadata never arrives / playback never ends.
+    setTimeout(finish, 7000);
+  }
+
+  // ---- Event wiring ----
+  window.addEventListener('resize', resizeCanvas);
+
+  portalButton.addEventListener('click', travel);
+
+  window.addEventListener('pointermove', function(ev){
+    if(ev.pointerType === 'touch') return;
+    cursorX = ev.clientX; cursorY = ev.clientY;
+    if(!cursorSeen){ cursorSeen = true; cursorEl.classList.add('is-visible'); }
+    if(busy) return;
+    targetY = (ev.clientX / window.innerWidth - .5) * 37.4;
+    targetX = (ev.clientY / window.innerHeight - .5) * -33;
+  });
+
+  window.addEventListener('pointerleave', function(){
+    targetX = 0; targetY = 0;
+  });
+
+  document.addEventListener('mouseleave', function(){
+    cursorEl.classList.remove('is-visible');
+  });
+
+  portalButton.addEventListener('pointerenter', function(){ cursorEl.classList.add('is-enter'); });
+  portalButton.addEventListener('pointerleave', function(){ cursorEl.classList.remove('is-enter'); });
+
+  // "Book Now" and the "Stays" nav lead into the product login (top-window nav
+  // so this works whether the file is opened directly or embedded in an iframe).
+  function goToLogin(ev){
+    if(ev) ev.preventDefault();
+    try { (window.top || window.parent || window).location.href = '/login'; }
+    catch(e){ window.location.href = '/login'; }
+  }
+  if(menuButton) menuButton.addEventListener('click', goToLogin);
+  if(stayLink) stayLink.addEventListener('click', goToLogin);
+
+  // ---- Boot order (section 12) ----
+  var bgVideos = document.querySelectorAll('.background');
+  for(var v = 0; v < bgVideos.length; v++){
+    bgVideos[v].pause();
+    try { bgVideos[v].currentTime = 0; } catch(e){}
+  }
+  resizeCanvas();
+  render();
+  requestAnimationFrame(draw);
+  requestAnimationFrame(cursorLoop);
+  runPreloader();
+})();
+</script>
+</body>
+</html>

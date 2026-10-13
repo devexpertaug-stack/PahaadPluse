@@ -86,6 +86,19 @@ const config: Config = {
           600: "#b23a26",
           700: "#8a2c1c",
         },
+        // Mountain / forest glassmorphism palette for the immersive landing
+        // experience (mirrors app/globals.css --pp-* and lib/theme.ts
+        // palette.pp). These three files are the single source of truth and
+        // must stay consistent. Additive — the alpine scales above are intact.
+        pp: {
+          forest: "#1b3b2a",
+          moss: "#4e7a3f",
+          leaf: "#7fb069",
+          mist: "#cfe3d4",
+          slate: "#243b35",
+          stone: "#0c1410",
+          amber: "#e5b25d",
+        },
       },
       fontFamily: {
         sans: ["var(--font-sans)", "system-ui", "sans-serif"],
@@ -95,6 +108,10 @@ const config: Config = {
         ridge: "0 16px 40px -16px rgba(15, 95, 68, 0.35)",
         tile: "0 1px 2px 0 rgba(18, 59, 47, 0.07), 0 10px 24px -14px rgba(18, 59, 47, 0.22)",
         glow: "0 8px 28px -10px rgba(29, 155, 209, 0.4)",
+        // Soft layered shadow for frosted glassmorphism panels (pairs with the
+        // .glass-panel utility and the pp palette).
+        glass:
+          "0 8px 32px -12px rgba(12, 20, 16, 0.45), inset 0 1px 0 0 rgba(255, 255, 255, 0.3)",
       },
       borderRadius: {
         xl: "0.9rem",
@@ -110,6 +127,10 @@ const config: Config = {
         // Lively sunrise-over-ridge accent for hero/emphasis surfaces.
         "dawn-ridge":
           "linear-gradient(120deg, #1d9bd1 0%, #17b47f 55%, #f6a623 100%)",
+        // Subtle translucent sheen for frosted glass surfaces (pairs with the
+        // .glass-panel utility and the pp palette).
+        "glass-sheen":
+          "linear-gradient(135deg, rgba(255,255,255,0.22) 0%, rgba(255,255,255,0.04) 48%, rgba(207,227,212,0.08) 100%)",
       },
     },
   },

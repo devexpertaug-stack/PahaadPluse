@@ -30,7 +30,9 @@ export function LoginForm() {
     try {
       const { token, user } = await api.login(username, password);
       setSession(token, user);
-      router.push("/");
+      // Routing: '/' is the immersive landing, '/login' is auth, and the
+      // gated product home now lives at '/dashboard'.
+      router.push("/dashboard");
     } catch {
       setError("Invalid username or password. Please try again.");
       setSubmitting(false);

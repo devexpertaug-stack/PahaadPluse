@@ -663,13 +663,21 @@ body:not(.intro-ready) .planet-content .fact{opacity:0}
 
   // ---- Preloader (section 6) ----
   function startExperience(){
-    var media = states[current].image ? portalImage : portalVideo;
-    waitLoadable(media, 2000).then(function(){
-      return revealMask();
-    }).then(function(){
+    var revealed = false;
+    function revealChrome(){
+      if(revealed) return;
+      revealed = true;
+      // Reveals + makes the header / nav / "Book Now" interactive.
       document.body.classList.add('intro-ready');
       setTimeout(revealPlanetContent, 850);
-    });
+    }
+    // Guarantee the chrome (and therefore "Book Now") becomes visible and
+    // clickable quickly even if the portal media never becomes loadable.
+    setTimeout(revealChrome, 1600);
+    var media = states[current].image ? portalImage : portalVideo;
+    waitLoadable(media, 1600).then(function(){
+      return revealMask();
+    }).then(revealChrome);
   }
 
   function runPreloader(){
@@ -701,6 +709,11 @@ body:not(.intro-ready) .planet-content .fact{opacity:0}
 
     preloaderVideo.addEventListener('ended', finish);
 
+    // If the preloader media 404s / is CORS-blocked / errors, don't wait for
+    // the long safety timeout — reveal the interactive chrome right away.
+    preloaderVideo.addEventListener('error', finish);
+    preloaderVideo.addEventListener('stalled', function(){ setTimeout(finish, 1200); });
+
     function tick(){
       if(finished) return;
       if(preloaderVideo.duration){
@@ -710,8 +723,10 @@ body:not(.intro-ready) .planet-content .fact{opacity:0}
     }
     requestAnimationFrame(tick);
 
-    // Safety timeout if metadata never arrives / playback never ends.
-    setTimeout(finish, 7000);
+    // Hard safety timeout: ALWAYS complete the intro and reveal a usable
+    // "Book Now" within a few seconds, even if metadata never arrives, playback
+    // never ends, or the videos 404 / CORS-fail silently without an error event.
+    setTimeout(finish, 3500);
   }
 
   // ---- Event wiring ----
@@ -743,6 +758,10 @@ body:not(.intro-ready) .planet-content .fact{opacity:0}
   // so this works whether the file is opened directly or embedded in an iframe).
   function goToLogin(ev){
     if(ev) ev.preventDefault();
+    // Navigate the TOP window to the same-origin /login route. The experience
+    // is same-origin with its Next.js host (served from /pahaadpulse.html), so
+    // window.top is reachable; the try/catch is a defensive fallback that still
+    // routes this frame to /login if top-window access is ever blocked.
     try { (window.top || window.parent || window).location.href = '/login'; }
     catch(e){ window.location.href = '/login'; }
   }

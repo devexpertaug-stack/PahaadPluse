@@ -38,11 +38,14 @@ export default function LandingPage() {
         }}
       />
       {/*
-        Resilient entry affordance rendered by Next itself (outside the iframe).
-        A real <a href="/login"> so a visitor can always reach the product even
-        if the iframe's inline JS or the remote media fail to load. It sits in
-        the top-right corner as an on-brand frosted pill and is kept small so it
-        never covers the "Book Now"/portal interactions in the normal case.
+        Resilient entry affordances rendered by Next ITSELF (outside the iframe).
+        These are real <a href="/login"> anchors, so clicking them navigates the
+        TOP window — they work even if the iframe's inline JS or the remote
+        cinematic media never load. Both sit ABOVE the iframe (high zIndex,
+        pointer-events auto) and are visible from first paint so a visitor is
+        never trapped on a dark/loading screen with no way into the product.
+
+        Top-right frosted pill: the primary, always-present entry button.
       */}
       <a
         href="/login"
@@ -51,25 +54,29 @@ export default function LandingPage() {
           position: "fixed",
           top: "clamp(18px, 3.1vh, 28px)",
           right: "clamp(18px, 1.95vw, 28px)",
-          zIndex: 50,
+          zIndex: 2147483647,
+          pointerEvents: "auto",
           display: "inline-flex",
           alignItems: "center",
-          height: 36,
-          padding: "0 18px",
+          gap: 8,
+          height: 44,
+          padding: "0 22px",
           borderRadius: 999,
-          border: "1px solid rgba(207, 227, 212, 0.45)",
-          background: "rgba(27, 59, 42, 0.42)",
+          border: "1px solid rgba(207, 227, 212, 0.72)",
+          background: "rgba(127, 176, 105, 0.92)",
           backdropFilter: "blur(12px)",
           WebkitBackdropFilter: "blur(12px)",
-          color: "#f3f7f1",
+          color: "#0c1410",
           fontFamily: "var(--font-sans), Arial, sans-serif",
-          fontSize: 14,
-          fontWeight: 600,
+          fontSize: 15,
+          fontWeight: 700,
           lineHeight: 1,
+          letterSpacing: "0.01em",
           textDecoration: "none",
+          boxShadow: "0 10px 30px rgba(6, 16, 10, 0.45)",
         }}
       >
-        Enter dashboard
+        Enter dashboard <span aria-hidden="true">→</span>
       </a>
     </>
   );
